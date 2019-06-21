@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hanno Reuvers on Hanno Reuvers</title>
+    <link>https://hannoreuvers.github.io/</link>
+    <description>Recent content in Hanno Reuvers on Hanno Reuvers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>6th :heart: RCE Time Series Econometrics Workshop 2019 - Rimini Centre for Economic Analysis</title>
+      <link>https://hannoreuvers.github.io/talk/cyprus/</link>
+      <pubDate>Sat, 22 Jun 2019 13:00:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/talk/cyprus/</guid>
+      <description>&lt;p&gt;📆&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Inference on VAR Models using Least Absolute Deviations</title>
+      <link>https://hannoreuvers.github.io/publication/lad-paper/</link>
+      <pubDate>Sat, 01 Jun 2019 00:02:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/lad-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Efficient Estimation by Fully Modified GLS with an Application to the Environmental Kuznets Curve</title>
+      <link>https://hannoreuvers.github.io/publication/ekc-paper/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/ekc-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nonparametric estimation and bootstrap inference on trends in atmospheric time series: an application to ethane</title>
+      <link>https://hannoreuvers.github.io/publication/liege-paper/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/liege-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Which computational language to choose?</title>
+      <link>https://hannoreuvers.github.io/post/which-language/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/post/which-language/</guid>
+      <description>
+
+&lt;h2 id=&#34;short-intro&#34;&gt;Short intro&lt;/h2&gt;
+
+&lt;p&gt;Let us compare the performance of C++, Matlab, Python and R when performing typical econometrical/statistical tasks. The word ‘typical’ is quite ambiguous since computational requirements can vary substantially between subfields. As such, I will consider a setting that is standard yet also computationally demanding: &lt;em&gt;bootstrap inference on the Durbin-Watson test statistic&lt;/em&gt;. This setting is easy to understand and the computational performance of the programming languages is probably representative for a wide range of Monte Carlo (MC) simulations. MC simulations are very often needed in research when relying on frequentist statistics.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-durbin-watson-test-statistic&#34;&gt;The Durbin-Watson test statistic&lt;/h2&gt;
+
+&lt;p&gt;Consider a standard multivariate regression model $y_t^{} = \mathbf{x}_t&amp;rsquo; \boldsymbol \beta + u_t^{}$ for $t = 1, 2, &amp;hellip; , T$. The presence of serial correlation in $u_t$ will render standard ordinary least squares (OLS) inference invalid. The Durbin-Watson test statistic was one of the first test statistics to test for the presence of serial correlation.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; It is computed as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Calculate the OLS estimator $\widehat{\boldsymbol \beta}=(\mathbf{X}&amp;rsquo;\mathbf{X})^{-1} \mathbf{X}&amp;rsquo;\mathbf{y}$.&lt;/li&gt;
+&lt;li&gt;Obtain the residuals $\widehat{u}_t=y_t- \mathbf{x}_t&amp;rsquo;\widehat{\boldsymbol \beta}$ for $t = 1, 2, &amp;hellip; , T$.&lt;/li&gt;
+&lt;li&gt;The Durbin-Watson test statisic is now computed as $DW= \frac{\sum_{t=2}^T \left(\widehat{u}_t-\widehat{u}_{t-1}\right)^2  }{\sum_{t=1}^T \widehat{u}_t^2}$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Simple algebraic manipulations show that the Durbin-Watson statistic can be expressed in terms of the first order sample autocorrelation $\widehat{\rho}= \frac{\sum_{t=2}^T \widehat{u}_t\widehat{u}_{t-1} }{\sum_{t=1}^T \widehat{u}_t^2}$, namely $DW=2(1-\widehat{\rho})-\frac{\widehat{u}_1^2+\widehat{u}_T^2}{\sum_{t=1}^T \widehat{u}_t^2}$. Based on this result we would expect outcomes close to the value 2 if first order autocorrelation is absent. Values different from 2 indicate serial correlation. Using the Durbin-Watson statistic to carry out a formal hypothesis test is more complicated because its (asymptotic) distribution is difficult to derive. This motivates the use of a bootstrap approach.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; The specific steps are:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Estimate $\widehat{\boldsymbol \beta}$ and compute the residual series ${\widehat{u}_t }$ as well as the Durbin-Watson statistic $DW$.&lt;/li&gt;
+&lt;li&gt;Compute $\widehat{\rho}$ (see the definition above) and $\widehat{\varepsilon\,}_t=\widehat{u}_t- \widehat{\rho} \widehat{u}_{t-1}$ for $t=2,3,\ldots,T$.&lt;/li&gt;
+&lt;li&gt;Draw bootstrap errors $\varepsilon_t^\star$ by resampling with replacement from $\{\widehat{\varepsilon\,}_2,\widehat{\varepsilon\,}_3,\ldots,\widehat{\varepsilon\,}_T \}$. Store these in the vector $\boldsymbol \varepsilon^\star=[\varepsilon_1^\star,\varepsilon_2^\star,\ldots,\varepsilon_T^\star]&amp;rsquo; $.&lt;/li&gt;
+&lt;li&gt;Set $\mathbf{u}^\star=\boldsymbol \varepsilon^\star$ (to impose the null hypothesis in the bootstrap sample), construct the bootstrap sample $\mathbf{y}^\star=\mathbf{X}\widehat{\boldsymbol \beta}+$, and compute the DW statistic from $\mathbf{y}^\star$.&lt;/li&gt;
+&lt;li&gt;Repeat steps 3-4 $B$ times and store these outcomes in a list $\left\{ DW_b^\star \right\}_{b=1}^B$.&lt;/li&gt;
+&lt;li&gt;For a given significance level $\alpha$, we define $q_{\alpha/2}^\star$ and $q_{1-\alpha/2}^\star$ as the $\alpha/2$ and $1-\alpha/2$ empirical quantiles of $\left\{ DW_b^\star \right\}_{b=1}^B$. We reject the null hypothesis of no serial correlation if either $DW &amp;lt; q_{\alpha/2}^\star$ or if $DW&amp;gt;q_{1-\alpha/2}^\star$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;the-simulation-setting&#34;&gt;The simulation setting&lt;/h2&gt;
+
+&lt;p&gt;We consider a simple simulation setting to compare the different programming environments, namely&lt;/p&gt;
+
+&lt;p&gt;$$
+\begin{aligned}
+y_t &amp;amp;= \mathbf{x}_t&amp;rsquo;\boldsymbol{\beta}+u_t \\&lt;br /&gt;
+ u_t &amp;amp;= \rho u_{t-1}+\varepsilon_t, \qquad \qquad t=1,2,\ldots,T,
+\end{aligned}
+$$&lt;/p&gt;
+
+&lt;p&gt;where $T=\{100,250,500\}$. The fixed regressor matrix $\mathbf{X}$ contains a column of ones and a column that repeats the sequence $0,1,0,-1$ (orthogonal design). The error terms ${\epsilon_t}$ are standard normal and a presample of 50 observations is used to remove the influence of the initial values. We set $\boldsymbol \beta=[1,2]&amp;rsquo; $ and vary the value for $\rho$ over the grid $[0,0.025,\ldots,0.5]&amp;rsquo; $ (21 grid points). The resulting power curves are depicted in Figure 1. Overall, we use 1000 Monte Carlo replications where each replication uses $B=499$ bootstrap resamples.&lt;/p&gt;
+
+&lt;h2 id=&#34;results-and-discussion&#34;&gt;Results and discussion&lt;/h2&gt;
+
+&lt;p&gt;Simulations are performed on a Macbook with a 2.6 GHz Intel Core i5 processor. I used serial computing. The computational times are reported in Table 1.&lt;/p&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;comp_time_table.png&#34; /&gt;
+
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Table 1: Absolute and relative (using C++ as the benchmark) computational times in seconds.&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;The conclusions from this table are unambiguous. The C++ implementation is significantly faster than the scientific programming environments of Matlab and R. However, this should be balanced against the fact that the programming itself is much easier/faster in the user-friendly environments offered by either of these languages. The results do not promote the use of Python. The computational times are longest and coding is less comfortable because matrix algebra requires an additional library (such as numpy). My conclusions are qualitatively the same as those in Borağan Aruoba and Fernández-Villaverde (2015).&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;J. Durbin and G. S. Watson (1971), &lt;em&gt;Testing for Serial Correlation in Least Squares Regression&lt;/em&gt;, Biometrika
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;J. Jeong and S. Chung (2001), &lt;em&gt;Bootstrap Tests for Autocorrelation&lt;/em&gt;, Computational Statistics and Data Analysis
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;S.  Borağan Aruoba and J. Fernández-Villaverde (2015), &lt;em&gt;A Comparison of Programming Languages in Macroeconomics&lt;/em&gt;, Journal of Economic Dynamics &amp;amp; Control
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Focused Information Criterion for Locally Misspecified Vector Autoregressive Models</title>
+      <link>https://hannoreuvers.github.io/publication/fic-paper/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/fic-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

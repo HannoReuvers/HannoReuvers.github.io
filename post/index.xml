@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Hanno Reuvers</title>
+    <link>https://hannoreuvers.github.io/post/</link>
+    <description>Recent content in Blog on Hanno Reuvers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jun 2018 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://hannoreuvers.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Which computational language to choose?</title>
+      <link>https://hannoreuvers.github.io/post/which-language/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/post/which-language/</guid>
+      <description>Short intro Let us compare the performance of C++, Matlab, Python and R when performing typical econometrical/statistical tasks. The word ‘typical’ is quite ambiguous since computational requirements can vary substantially between subfields. As such, I will consider a setting that is standard yet also computationally demanding: bootstrap inference on the Durbin-Watson test statistic. This setting is easy to understand and the computational performance of the programming languages is probably representative for a wide range of Monte Carlo (MC) simulations.</description>
+    </item>
+    
+  </channel>
+</rss>

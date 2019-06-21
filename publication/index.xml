@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Hanno Reuvers</title>
+    <link>https://hannoreuvers.github.io/publication/</link>
+    <description>Recent content in Publications on Hanno Reuvers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Jun 2019 00:02:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://hannoreuvers.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Inference on VAR Models using Least Absolute Deviations</title>
+      <link>https://hannoreuvers.github.io/publication/lad-paper/</link>
+      <pubDate>Sat, 01 Jun 2019 00:02:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/lad-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Efficient Estimation by Fully Modified GLS with an Application to the Environmental Kuznets Curve</title>
+      <link>https://hannoreuvers.github.io/publication/ekc-paper/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0200</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/ekc-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nonparametric estimation and bootstrap inference on trends in atmospheric time series: an application to ethane</title>
+      <link>https://hannoreuvers.github.io/publication/liege-paper/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/liege-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Focused Information Criterion for Locally Misspecified Vector Autoregressive Models</title>
+      <link>https://hannoreuvers.github.io/publication/fic-paper/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://hannoreuvers.github.io/publication/fic-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
