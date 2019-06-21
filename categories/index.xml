@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Hanno Reuvers</title>
-    <link>https://hannoreuvers.github.io/categories/</link>
+    <link>https://HannoReuvers.github.io/categories/</link>
     <description>Recent content in Categories on Hanno Reuvers</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://hannoreuvers.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://HannoReuvers.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
