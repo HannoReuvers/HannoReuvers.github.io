@@ -680,10 +680,10 @@
 <p>Simple algebraic manipulations show that the Durbin-Watson statistic can be expressed in terms of the first order sample autocorrelation $\widehat{\rho}= \frac{\sum_{t=2}^T \widehat{u}_t\widehat{u}_{t-1} }{\sum_{t=1}^T \widehat{u}_t^2}$, namely $DW=2(1-\widehat{\rho})-\frac{\widehat{u}_1^2+\widehat{u}_T^2}{\sum_{t=1}^T \widehat{u}_t^2}$. Based on this result we would expect outcomes close to the value 2 if first order autocorrelation is absent. Values different from 2 indicate serial correlation. Using the Durbin-Watson statistic to carry out a formal hypothesis test is more complicated because its (asymptotic) distribution is difficult to derive. This motivates the use of a bootstrap approach.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> The specific steps are:</p>
 
 <ol>
-<li>Estimate $\widehat{\boldsymbol \beta}$ and compute the residual series ${\widehat{u}_t }$ as well as the Durbin-Watson statistic $DW$.</li>
+<li>Estimate $\boldsymbol \beta$ by OLS and compute the residual series ${\widehat{u}_t }$ as well as the Durbin-Watson statistic $DW$.</li>
 <li>Compute $\widehat{\rho}$ (see the definition above) and $\widehat{\varepsilon\,}_t=\widehat{u}_t- \widehat{\rho} \widehat{u}_{t-1}$ for $t=2,3,\ldots,T$.</li>
 <li>Draw bootstrap errors $\varepsilon_t^\star$ by resampling with replacement from $\{\widehat{\varepsilon\,}_2,\widehat{\varepsilon\,}_3,\ldots,\widehat{\varepsilon\,}_T \}$. Store these in the vector $\boldsymbol \varepsilon^\star=[\varepsilon_1^\star,\varepsilon_2^\star,\ldots,\varepsilon_T^\star]&rsquo; $.</li>
-<li>Set $\mathbf{u}^\star=\boldsymbol \varepsilon^\star$ (to impose the null hypothesis in the bootstrap sample), construct the bootstrap sample $\mathbf{y}^\star=\mathbf{X}\widehat{\boldsymbol \beta}+$, and compute the DW statistic from $\mathbf{y}^\star$.</li>
+<li>Set $\mathbf{u}^\star=\boldsymbol \varepsilon^\star$ (to impose the null hypothesis in the bootstrap sample), construct the bootstrap sample $\mathbf{y}^\star=\mathbf{X}\widehat{\boldsymbol \beta}+\mathbf{u}^\star$, and compute the DW statistic from $\mathbf{y}^\star$.</li>
 <li>Repeat steps 3-4 $B$ times and store these outcomes in a list $\left\{ DW_b^\star \right\}_{b=1}^B$.</li>
 <li>For a given significance level $\alpha$, we define $q_{\alpha/2}^\star$ and $q_{1-\alpha/2}^\star$ as the $\alpha/2$ and $1-\alpha/2$ empirical quantiles of $\left\{ DW_b^\star \right\}_{b=1}^B$. We reject the null hypothesis of no serial correlation if either $DW &lt; q_{\alpha/2}^\star$ or if $DW&gt;q_{1-\alpha/2}^\star$.</li>
 </ol>
@@ -765,7 +765,7 @@ $$</p>
 <div class="media author-card" itemscope itemtype="http://schema.org/Person">
   
   
-  <img class="portrait mr-3" src="/author/admin/avatar_hue48227479cc850add524abd5a4959223_14753349_250x250_fill_lanczos_center_2.png" itemprop="image" alt="Avatar">
+  <img class="portrait mr-3" src="/author/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" itemprop="image" alt="Avatar">
   
 
   <div class="media-body">
