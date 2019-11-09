@@ -6,10 +6,19 @@
     <description>Recent content in Recent &amp; Upcoming Talks on Hanno Reuvers</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Jun 2019 13:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 14 Dec 2019 13:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://HannoReuvers.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CFE 2019</title>
+      <link>https://HannoReuvers.github.io/talk/cfe2019/</link>
+      <pubDate>Sat, 14 Dec 2019 13:00:00 +0100</pubDate>
+      
+      <guid>https://HannoReuvers.github.io/talk/cfe2019/</guid>
+      <description>📆</description>
+    </item>
     
     <item>
       <title>6th :heart: RCE Time Series Econometrics Workshop 2019 - Rimini Centre for Economic Analysis</title>
