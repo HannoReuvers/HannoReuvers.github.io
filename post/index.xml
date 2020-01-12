@@ -13,46 +13,6 @@
     </image>
     
     <item>
-      <title>A Spatial Exploration of Regional Housing Prices in California</title>
-      <link>https://HannoReuvers.github.io/post/a-spatial-exploration-of-housing-prices/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
-      <guid>https://HannoReuvers.github.io/post/a-spatial-exploration-of-housing-prices/</guid>
-      <description>&lt;h2 id=&#34;short-intro&#34;&gt;Short intro&lt;/h2&gt;
-&lt;p&gt;We will explore the empirical application by Brady (2011)&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; to ilustrate the use of spatial econometrics. The focus is on data visualization (with Matlab) and the estimation of some basic spatial models. We do not aim to provide a sound and detailed econometric model. Quite the contrary, we aim to display a set of basic tools that can serve as a point of departure for the interested reader.&lt;/p&gt;
-&lt;h2 id=&#34;regional-housing-prices-in-california2&#34;&gt;Regional housing prices in California&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/h2&gt;
-&lt;p&gt;The dataset by Brady (2011) contains: (1) monthly average single-family sales prices for 31 counties in California, (2) the monthly unemployment rates in these counties, (3) a construction variable reporting the number of new units of single-family housing built per month, and (4) additional variables that we will omit for ease of exposition. Similarly, we will ignore the time series dimension of the data to avoid difficulties that can arrise from the panel data structure. In conclusion, with $i={1,2,\ldots,31}$ enumerating the counties, we define:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$HP_i$: the average housing price in county $i$,&lt;/li&gt;
-&lt;li&gt;$Unemp_i$: monthly unemployment rate in county $i$,&lt;/li&gt;
-&lt;li&gt;$Constr_i$: number of new single housing units in county $i$,&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;and restrict our attention to one specific month in the sample: .&lt;/p&gt;
-&lt;h2 id=&#34;a-visual-inspection-of-the-data&#34;&gt;A visual inspection of the data&lt;/h2&gt;
-&lt;p&gt;Simple algebraic manipulations show that the Durbin-Watson statistic can be expressed in terms of the first order sample autocorrelation $\widehat{\rho}= \frac{\sum_{t=2}^T \widehat{u}_t\widehat{u}_{t-1} }{\sum_{t=1}^T \widehat{u}_t^2}$, namely $DW=2(1-\widehat{\rho})-\frac{\widehat{u}_1^2+\widehat{u}_T^2}{\sum_{t=1}^T \widehat{u}_t^2}$. Based on this result we would expect outcomes close to the value 2 if first order autocorrelation is absent. Values different from 2 indicate serial correlation. Using the Durbin-Watson statistic to carry out a formal hypothesis test is more complicated because its (asymptotic) distribution is difficult to derive. This motivates the use of a bootstrap approach.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; The specific steps are:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Estimate $\boldsymbol \beta$ by OLS and compute the residual series ${\widehat{u}_t }$ as well as the Durbin-Watson statistic $DW$.&lt;/li&gt;
-&lt;li&gt;Compute $\widehat{\rho}$ (see the definition above) and $\widehat{\varepsilon,}_t=\widehat{u}_t- \widehat{\rho} \widehat{u}_{t-1}$ for $t=2,3,\ldots,T$.&lt;/li&gt;
-&lt;li&gt;Draw bootstrap errors $\varepsilon_t^\star$ by resampling with replacement from $\{\widehat{\varepsilon,}_2,\widehat{\varepsilon,}_3,\ldots,\widehat{\varepsilon,}_T \}$. Store these in the vector $\boldsymbol \varepsilon^\star=[\varepsilon_1^\star,\varepsilon_2^\star,\ldots,\varepsilon_T^\star]&amp;rsquo; $.&lt;/li&gt;
-&lt;li&gt;Set $\mathbf{u}^\star=\boldsymbol \varepsilon^\star$ (to impose the null hypothesis in the bootstrap sample), construct the bootstrap sample $\mathbf{y}^\star=\mathbf{X}\widehat{\boldsymbol \beta}+\mathbf{u}^\star$, and compute the DW statistic from $\mathbf{y}^\star$.&lt;/li&gt;
-&lt;li&gt;Repeat steps 3-4 $B$ times and store these outcomes in a list $\left\{ DW_b^\star \right\}_{b=1}^B$.&lt;/li&gt;
-&lt;li&gt;For a given significance level $\alpha$, we define $q_{\alpha/2}^\star$ and $q_{1-\alpha/2}^\star$ as the $\alpha/2$ and $1-\alpha/2$ empirical quantiles of $\left\{ DW_b^\star \right\}_{b=1}^B$. We reject the null hypothesis of no serial correlation if either $DW &amp;lt; q_{\alpha/2}^\star$ or if $DW&amp;gt;q_{1-\alpha/2}^\star$.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;R. Brady (2011), &lt;em&gt;Measuring the Diffusion of Housing Prices across Space and over Time&lt;/em&gt;, Journal of Applied Econometrics &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;The data set is freely available from the Journal of Applied Econometrics Data Archive (&lt;a href=&#34;http://qed.econ.queensu.ca/jae/&#34;&gt;here&lt;/a&gt;). It can be found in the repository linked to volume 26, number 2, and 2011. &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Which computational language to choose?</title>
       <link>https://HannoReuvers.github.io/post/which-language/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
