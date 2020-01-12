@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publication_types on Hanno Reuvers</title>
+    <title>Publication_types | Hanno Reuvers</title>
     <link>https://HannoReuvers.github.io/publication_types/</link>
-    <description>Recent content in Publication_types on Hanno Reuvers</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="https://HannoReuvers.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://HannoReuvers.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publication_types</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Publication_types</title>
+      <link>https://HannoReuvers.github.io/publication_types/</link>
+    </image>
     
   </channel>
 </rss>

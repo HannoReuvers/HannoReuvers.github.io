@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Marina Friedrich, Eric Beutner, Hanno Reuvers, Stephan Smeekes, Jean-Pierre Urbain, Whitney Bader, Bruno Franco, Bernard Lejeune, and Emmanuel Mahieu | Hanno Reuvers</title>
+    <link>https://HannoReuvers.github.io/authors/marina-friedrich-eric-beutner-hanno-reuvers-stephan-smeekes-jean-pierre-urbain-whitney-bader-bruno-franco-bernard-lejeune-and-emmanuel-mahieu/</link>
+      <atom:link href="https://HannoReuvers.github.io/authors/marina-friedrich-eric-beutner-hanno-reuvers-stephan-smeekes-jean-pierre-urbain-whitney-bader-bruno-franco-bernard-lejeune-and-emmanuel-mahieu/index.xml" rel="self" type="application/rss+xml" />
+    <description>Marina Friedrich, Eric Beutner, Hanno Reuvers, Stephan Smeekes, Jean-Pierre Urbain, Whitney Bader, Bruno Franco, Bernard Lejeune, and Emmanuel Mahieu</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0100</lastBuildDate>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Marina Friedrich, Eric Beutner, Hanno Reuvers, Stephan Smeekes, Jean-Pierre Urbain, Whitney Bader, Bruno Franco, Bernard Lejeune, and Emmanuel Mahieu</title>
+      <link>https://HannoReuvers.github.io/authors/marina-friedrich-eric-beutner-hanno-reuvers-stephan-smeekes-jean-pierre-urbain-whitney-bader-bruno-franco-bernard-lejeune-and-emmanuel-mahieu/</link>
+    </image>
+    
+    <item>
+      <title>Nonparametric estimation and bootstrap inference on trends in atmospheric time series: an application to ethane</title>
+      <link>https://HannoReuvers.github.io/publication/liege-paper/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0100</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/liege-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

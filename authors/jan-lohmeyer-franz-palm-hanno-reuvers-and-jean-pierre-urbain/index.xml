@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jan Lohmeyer, Franz Palm, Hanno Reuvers, and Jean-Pierre Urbain | Hanno Reuvers</title>
+    <link>https://HannoReuvers.github.io/authors/jan-lohmeyer-franz-palm-hanno-reuvers-and-jean-pierre-urbain/</link>
+      <atom:link href="https://HannoReuvers.github.io/authors/jan-lohmeyer-franz-palm-hanno-reuvers-and-jean-pierre-urbain/index.xml" rel="self" type="application/rss+xml" />
+    <description>Jan Lohmeyer, Franz Palm, Hanno Reuvers, and Jean-Pierre Urbain</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 01 Feb 2018 00:00:00 +0100</lastBuildDate>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Jan Lohmeyer, Franz Palm, Hanno Reuvers, and Jean-Pierre Urbain</title>
+      <link>https://HannoReuvers.github.io/authors/jan-lohmeyer-franz-palm-hanno-reuvers-and-jean-pierre-urbain/</link>
+    </image>
+    
+    <item>
+      <title>Focused Information Criterion for Locally Misspecified Vector Autoregressive Models</title>
+      <link>https://HannoReuvers.github.io/publication/fic-paper/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0100</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/fic-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

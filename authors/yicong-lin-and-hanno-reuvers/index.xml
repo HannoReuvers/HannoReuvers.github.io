@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yicong Lin and Hanno Reuvers | Hanno Reuvers</title>
+    <link>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</link>
+      <atom:link href="https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/index.xml" rel="self" type="application/rss+xml" />
+    <description>Yicong Lin and Hanno Reuvers</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2019 00:02:00 +0200</lastBuildDate>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Yicong Lin and Hanno Reuvers</title>
+      <link>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</link>
+    </image>
+    
+    <item>
+      <title>Flexible Nonlinear Trend Specifications and Cointegration</title>
+      <link>https://HannoReuvers.github.io/publication/flexibletrend/</link>
+      <pubDate>Sat, 01 Jun 2019 00:02:00 +0200</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/flexibletrend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Efficient Estimation by Fully Modified GLS with an Application to the Environmental Kuznets Curve</title>
+      <link>https://HannoReuvers.github.io/publication/ekc-paper/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0200</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/ekc-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

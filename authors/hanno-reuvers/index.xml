@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hanno Reuvers</title>
+    <link>https://HannoReuvers.github.io/authors/hanno-reuvers/</link>
+      <atom:link href="https://HannoReuvers.github.io/authors/hanno-reuvers/index.xml" rel="self" type="application/rss+xml" />
+    <description>Hanno Reuvers</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2019 00:02:00 +0200</lastBuildDate>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Hanno Reuvers</title>
+      <link>https://HannoReuvers.github.io/authors/hanno-reuvers/</link>
+    </image>
+    
+    <item>
+      <title>Inference on VAR Models using Least Absolute Deviations</title>
+      <link>https://HannoReuvers.github.io/publication/lad-paper/</link>
+      <pubDate>Sat, 01 Jun 2019 00:02:00 +0200</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/lad-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

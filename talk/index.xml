@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Recent &amp; Upcoming Talks on Hanno Reuvers</title>
+    <title>Recent &amp; Upcoming Talks | Hanno Reuvers</title>
     <link>https://HannoReuvers.github.io/talk/</link>
-    <description>Recent content in Recent &amp; Upcoming Talks on Hanno Reuvers</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2019 13:00:00 +0100</lastBuildDate>
-    
-	<atom:link href="https://HannoReuvers.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>CFE 2019</title>
-      <link>https://HannoReuvers.github.io/talk/cfe2019/</link>
-      <pubDate>Sat, 14 Dec 2019 13:00:00 +0100</pubDate>
-      
-      <guid>https://HannoReuvers.github.io/talk/cfe2019/</guid>
-      <description>📆</description>
-    </item>
-    
-    <item>
-      <title>6th :heart: RCE Time Series Econometrics Workshop 2019 - Rimini Centre for Economic Analysis</title>
-      <link>https://HannoReuvers.github.io/talk/cyprus/</link>
-      <pubDate>Sat, 22 Jun 2019 13:00:00 +0200</pubDate>
-      
-      <guid>https://HannoReuvers.github.io/talk/cyprus/</guid>
-      <description>📆</description>
-    </item>
+      <atom:link href="https://HannoReuvers.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent &amp; Upcoming Talks</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Recent &amp; Upcoming Talks</title>
+      <link>https://HannoReuvers.github.io/talk/</link>
+    </image>
     
   </channel>
 </rss>
