@@ -30,7 +30,7 @@
 &lt;ol&gt;
 &lt;li&gt;Estimate $\boldsymbol \beta$ by OLS and compute the residual series ${\widehat{u}_t }$ as well as the Durbin-Watson statistic $DW$.&lt;/li&gt;
 &lt;li&gt;Compute $\widehat{\rho}$ (see the definition above) and $\widehat{\varepsilon,}_t=\widehat{u}_t- \widehat{\rho} \widehat{u}_{t-1}$ for $t=2,3,\ldots,T$.&lt;/li&gt;
-&lt;li&gt;Draw bootstrap errors $\varepsilon_t^\star$ by resampling with replacement from $\{\widehat{\varepsilon,}_2,\widehat{\varepsilon,}_3,\ldots,\widehat{\varepsilon,}_T \}$. Store these in the vector $\boldsymbol \varepsilon^\star=[\varepsilon_1^\star,\varepsilon_2^\star,\ldots,\varepsilon_T^\star]&amp;rsquo; $.&lt;/li&gt;
+&lt;li&gt;Draw bootstrap errors $\varepsilon_t^\star$ by resampling with replacement from $\{\widehat{\varepsilon}_2,\widehat{\varepsilon,}_3,\ldots,\widehat{\varepsilon,}_T \}$. Store these in the vector $\boldsymbol \varepsilon^\star=[\varepsilon_1^\star,\varepsilon_2^\star,\ldots,\varepsilon_T^\star]&amp;rsquo; $.&lt;/li&gt;
 &lt;li&gt;Set $\mathbf{u}^\star=\boldsymbol \varepsilon^\star$ (to impose the null hypothesis in the bootstrap sample), construct the bootstrap sample $\mathbf{y}^\star=\mathbf{X}\widehat{\boldsymbol \beta}+\mathbf{u}^\star$, and compute the DW statistic from $\mathbf{y}^\star$.&lt;/li&gt;
 &lt;li&gt;Repeat steps 3-4 $B$ times and store these outcomes in a list $\left\{ DW_b^\star \right\}_{b=1}^B$.&lt;/li&gt;
 &lt;li&gt;For a given significance level $\alpha$, we define $q_{\alpha/2}^\star$ and $q_{1-\alpha/2}^\star$ as the $\alpha/2$ and $1-\alpha/2$ empirical quantiles of $\left\{ DW_b^\star \right\}_{b=1}^B$. We reject the null hypothesis of no serial correlation if either $DW &amp;lt; q_{\alpha/2}^\star$ or if $DW&amp;gt;q_{1-\alpha/2}^\star$.&lt;/li&gt;

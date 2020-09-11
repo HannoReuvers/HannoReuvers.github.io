@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hanno Reuvers and Etiënne Wijler | Hanno Reuvers</title>
+    <link>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</link>
+      <atom:link href="https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/index.xml" rel="self" type="application/rss+xml" />
+    <description>Hanno Reuvers and Etiënne Wijler</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Sep 2020 00:02:00 +0200</lastBuildDate>
+    <image>
+      <url>https://HannoReuvers.github.io/img/icon-192.png</url>
+      <title>Hanno Reuvers and Etiënne Wijler</title>
+      <link>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</link>
+    </image>
+    
+    <item>
+      <title>Sparse Generalized Yule–Walker Estimation for Spatio-temporal Models</title>
+      <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
+      <pubDate>Tue, 01 Sep 2020 00:02:00 +0200</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

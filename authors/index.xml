@@ -5,7 +5,7 @@
     <link>https://HannoReuvers.github.io/authors/</link>
       <atom:link href="https://HannoReuvers.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2019 00:02:00 +0200</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Sep 2020 00:02:00 +0200</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Authors</title>
@@ -13,17 +13,17 @@
     </image>
     
     <item>
-      <title>Hanno Reuvers</title>
-      <link>https://HannoReuvers.github.io/authors/hanno-reuvers/</link>
-      <pubDate>Sat, 01 Jun 2019 00:02:00 +0200</pubDate>
-      <guid>https://HannoReuvers.github.io/authors/hanno-reuvers/</guid>
+      <title>Hanno Reuvers and Etiënne Wijler</title>
+      <link>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</link>
+      <pubDate>Tue, 01 Sep 2020 00:02:00 +0200</pubDate>
+      <guid>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Yicong Lin and Hanno Reuvers</title>
       <link>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</link>
-      <pubDate>Sat, 01 Jun 2019 00:02:00 +0200</pubDate>
+      <pubDate>Sat, 01 Aug 2020 00:02:00 +0200</pubDate>
       <guid>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</guid>
       <description></description>
     </item>
@@ -31,7 +31,7 @@
     <item>
       <title>Marina Friedrich, Eric Beutner, Hanno Reuvers, Stephan Smeekes, Jean-Pierre Urbain, Whitney Bader, Bruno Franco, Bernard Lejeune, and Emmanuel Mahieu</title>
       <link>https://HannoReuvers.github.io/authors/marina-friedrich-eric-beutner-hanno-reuvers-stephan-smeekes-jean-pierre-urbain-whitney-bader-bruno-franco-bernard-lejeune-and-emmanuel-mahieu/</link>
-      <pubDate>Fri, 01 Mar 2019 00:00:00 +0100</pubDate>
+      <pubDate>Fri, 01 May 2020 00:00:00 +0200</pubDate>
       <guid>https://HannoReuvers.github.io/authors/marina-friedrich-eric-beutner-hanno-reuvers-stephan-smeekes-jean-pierre-urbain-whitney-bader-bruno-franco-bernard-lejeune-and-emmanuel-mahieu/</guid>
       <description></description>
     </item>
@@ -39,7 +39,7 @@
     <item>
       <title>Jan Lohmeyer, Franz Palm, Hanno Reuvers, and Jean-Pierre Urbain</title>
       <link>https://HannoReuvers.github.io/authors/jan-lohmeyer-franz-palm-hanno-reuvers-and-jean-pierre-urbain/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0100</pubDate>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0100</pubDate>
       <guid>https://HannoReuvers.github.io/authors/jan-lohmeyer-franz-palm-hanno-reuvers-and-jean-pierre-urbain/</guid>
       <description></description>
     </item>
@@ -49,7 +49,8 @@
       <link>https://HannoReuvers.github.io/authors/admin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://HannoReuvers.github.io/authors/admin/</guid>
-      <description>&lt;p&gt;As of September 2018, I am an assistant professor at the Econometric Institute of the Erasmus University Rotterdam. I became a candidate fellow of the Tinbergen Institute in May 2019.&lt;/p&gt;
+      <description>&lt;h3 id=&#34;about-me&#34;&gt;About me&lt;/h3&gt;
+&lt;p&gt;As of September 2018, I am an assistant professor at the Econometric Institute of the Erasmus University Rotterdam. I became a candidate fellow of the Tinbergen Institute in May 2019.&lt;/p&gt;
 </description>
     </item>
     
