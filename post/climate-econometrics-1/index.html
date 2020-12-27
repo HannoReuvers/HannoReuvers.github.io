@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Hanno Reuvers">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Understanding global warming">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://HannoReuvers.github.io/post/climate-econometrics-1/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://HannoReuvers.github.io/post/climate-econometrics-1/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Hanno Reuvers">
+  <meta property="og:url" content="https://HannoReuvers.github.io/post/climate-econometrics-1/">
+  <meta property="og:title" content="Climate Econometrics 1: the greenhouse effect | Hanno Reuvers">
+  <meta property="og:description" content="Understanding global warming"><meta property="og:image" content="https://HannoReuvers.github.io/post/climate-econometrics-1/featured.jpg">
+  <meta property="twitter:image" content="https://HannoReuvers.github.io/post/climate-econometrics-1/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2018-06-01T00:00:00&#43;02:00">
+    
+    <meta property="article:modified_time" content="2020-07-30T00:00:00&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://HannoReuvers.github.io/post/climate-econometrics-1/"
+  },
+  "headline": "Climate Econometrics 1: the greenhouse effect",
+  
+  "image": [
+    "https://HannoReuvers.github.io/post/climate-econometrics-1/featured.jpg"
+  ],
+  
+  "datePublished": "2018-06-01T00:00:00+02:00",
+  "dateModified": "2020-07-30T00:00:00+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Hanno Reuvers"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hanno Reuvers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://HannoReuvers.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Understanding global warming"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Climate Econometrics 1: the greenhouse effect | Hanno Reuvers</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#links"><span>Links</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Climate Econometrics 1: the greenhouse effect</h1>
+
+  
+  <p class="page-subtitle">Understanding global warming</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Jul 30, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 450px; max-height: 450px;">
+  <div style="position: relative">
+    <img src="/post/climate-econometrics-1/featured.jpg" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="short-intro">Short intro</h2>
+<p>We will first have to understand the origins of global warming before we can attempt to model the past and predict the future. Two key players are displayed in Figure 1. We see how both the global temperature and the global carbon dioxide<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> ($\text{CO}_2$) concentration have been rising steadily over the last 40 years. The connection between these two graphs is commonly known as the &ldquo;greenhouse effect&rdquo;.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="tempCO2.png" data-caption="Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: https://climate.nasa.gov) . (b) Global CO$_2$ concentrations as obtained from NOAA Global Monitoring Laboratory.">
+<img data-src="tempCO2.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: <a href="https://climate.nasa.gov">https://climate.nasa.gov</a>) . (b) Global CO$_2$ concentrations as obtained from <a href="https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html">NOAA Global Monitoring Laboratory</a>.
+  </figcaption>
+
+
+</figure>
+
+<p>How exactly are these tiny molecules affecting the temperature on earth? The answer to this question is the topic of this post. We will look at two toy models: the bare-rock model and the layer model.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> The latter model contains all necessary ingredients to fully understand the greenhouse effect.</p>
+<h2 id="the-bare-rock-model">The bare-rock model</h2>
+<p>The bare-rock model is a stylized model to explain the temperature on earth. This earth is represented by a large ball and its temperature is assumed to be the same everywhere. An energy balance between incoming sunlight and heat loss to space determines the temperature on our planet.</p>
+<h4 id="energy-received-by-the-earth">Energy received by the earth</h4>
+<p>When taking a walk on a beautiful summer day, you will feel the warmth of the sun. Similarly, the earth is continuously heated by the sun. How much energy is our spherical earth receiving from the sun? Let $I_{sun}$ denote the energy influx of sunlight, i.e. the amount of incoming energy per second and per $\text{m}^2$. To calculate the amount of energy absorbed per second, we have to multiply $I_{sun}$ by the area of the earth which is absorbing sunlight. An inspection of Figure 2 shows that the relevant area equals $\pi r_{earth}^2$. We additionally have to account for the fact that snow, ice, and clouds will reflect a fraction of the incoming sunlight back to space. This fraction is called the albedo and is generally denoted by $\alpha$. If a fraction $\alpha$ is reflected, then there remains a fraction $1-\alpha$ to be absorbed. Overall, the effective incoming flux of solar energy is:
+\begin{equation}
+\label{eq1}
+F_{in} [\text{Watt}]= I_{sun} \times \pi r_{earth}^2 \times (1-\alpha).
+\end{equation}
+The units of this energy flux is Watt (also abbreviated by W).<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="earthwithshadow.png" data-caption="Figure 2: The earth will leave a circular shadow on a screen placed behind it. The area of this circle is $\pi r_{earth}^2$, where $r_{earth}^{}$ is the radius of our spherical planet.">
+<img data-src="earthwithshadow.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 2: The earth will leave a circular shadow on a screen placed behind it. The area of this circle is $\pi r_{earth}^2$, where $r_{earth}^{}$ is the radius of our spherical planet.
+  </figcaption>
+
+
+</figure>
+
+<h4 id="emitted-energy">Emitted energy</h4>
+<p>The earth is not only absorbing energy, it is also emitting energy. The emitted energy is in the form of so-called black-body radiation. All warm objects emit this type of radiation and both the dominant wavelengths of the emitted light and the total energy flux depend on the body's temperature. Warmer objects emit radiation of shorter wavelength. This explains why we see a shining sun and a glow on the iron that has just been taken out of the fire. Our earth is much colder than either of these objects and is thus radiating light of much longer wavelength. These wavelenghts are too long for the human eye to observe.</p>
+<p>Of particular interest for our bare-rock model is the energy flux from a black-body radiator. The amount of energy emitted per second and per $\text{m}^2$ is governed by the Stefan-Boltzmann law:
+\begin{equation}
+I_{black\text{ }body} = \sigma T^4,
+\end{equation}
+where $\sigma$ is the Stefan-Boltzmann constant (a constant of nature) and $T$ denotes the temperature in Kelvins.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> Each square meter of surface area can emit black-body radiation. Given that the total surface area of the earth is $4 \pi r_{Earth}^2$, the outgoing energy flux of our planet is
+\begin{equation}
+F_{out} [\text{Watt}] = \sigma T^4\times 4 \pi r_{earth}^2.
+\end{equation}</p>
+<h4 id="finding-a-balance">Finding a balance&hellip;</h4>
+<p>Depending on the magnitudes of $F_{in}$ and $F_{out}$, we find ourselves in one of the following three situations:</p>
+<ol>
+<li>$F_{in} &gt; F_{out}$: The earth is receiving more energy than it is sending back to space. The accumulation of energy will cause the earth to heat up.</li>
+<li>$F_{in} &lt; F_{out}$: The nett heat flux is negative, that is, our spherical earth is steadily losing energy and hence cooling down.</li>
+<li>$F_{in} = F_{out}$: The incoming and outgoing energy flux are exactly equal. There is neither heat gain nor heat loss and the temperature will remain constant.</li>
+</ol>
+<p>If $F_{in} = F_{out}$, then our earth is in equilibrium &ndash; or in steady-state &ndash; and this provides a good indication of the earth's temperature according to our bare-rock model. Inserting the expressions for $F_{in}$ and $F_{out}$, this equilibrium temperature turns out to be:
+$$
+T_{equilibrium} = \left(  \frac{ (1-\alpha) I_{sun}}{4 \sigma} \right)^{1/4}.
+$$
+If we plug in some representative numbers,<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> then this ball-shaped earth will have an equilibrium temperature of 254 K (or -19 $^\circ$C). This earth is too cold, we better add a blanket!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="layermodel.png" data-caption="Figure 3: A schematic representation of the layer model. Sunlight shines unhindered through the layer and warms the earth. The radiation from the earth is trapped by the layer and re-emitted towards both the earth and the universe.">
+<img data-src="layermodel.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 3: A schematic representation of the layer model. Sunlight shines unhindered through the layer and warms the earth. The radiation from the earth is trapped by the layer and re-emitted towards both the earth and the universe.
+  </figcaption>
+
+
+</figure>
+
+<h2 id="the-layer-model">The layer model</h2>
+<p>Our blanket is an additional layer placed between the earth and the sun, see Figure 3. This layer is special. The incoming light from the sun will pass straight through it, but the outgoing radiation from the earth is absorbed and subsequently re-emitted. Our new task is to determine the resulting equilibrium temperature of the earth. We again match the incoming and outgoing energy fluxes but now we should do so for the earth and the layer simulaneously. Additionally, we set the sun's energy flux per unit of area equal to $I_{sunlight}= \frac{1}{4} (1-\alpha) I_{sun}$.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> The equilibrium equations are
+$$
+I_{sunlight} + I_{layer,down} = I_{earth} \iff \frac{1}{4} (1-\alpha) I_{sun} + \sigma T_{layer}^4 = \sigma T_{earth}^4
+$$
+and
+$$
+I_{earth} = I_{layer,up} + I_{layer,down} \iff \sigma T_{earth}^4 =  \sigma T_{layer}^4 +  \sigma T_{layer}^4
+$$
+for the earth and layer, respectively. We can solve these two equations simultaneously to determine the earth's temperature in this layer model:
+$$
+T_{earth} =  \left(  \frac{ 2 (1-\alpha) I_{sun}}{4 \sigma} \right)^{1/4}.
+$$
+A quick comparison with $T_{equilibrium}$ shows that the new temperature $T_{earth}$ is a factor $2^{1/4}\approx 1.1892$ higher. The new temperature on earth is now 302 K (or about 29 $^\circ$C). The current temperature is probably a bit too high but we will see that $\text{CO}_2$ is not behaving as extreme as our layer. That is, this greenhouse gas does not absorb all the radiation coming from earth. Most importantly, we can now understand why the additional layer works as a blanket. It creates an additional energy flow $I_{layer,down}$ back to earth that causes the earth to warm up.</p>
+<h2 id="the-analogy-between-carbon-dioxide-and-the-layer">The analogy between carbon dioxide and the layer</h2>
+<p>Carbon dioxide behaves similarly to our layer. The incoming sunlight from our warm sun has a relatively short wavelenght and this light will not (or hardly) interact with the $\text{CO}_2$ molecules in the air. As the earth is much colder than the sun, it will emit black body radiation with longer wavelength. This radiation is partly(!) absorbed by the carbon dioxide molecules in the air and released into any arbitrary direction. This process creates an energy flow back to earth much the same as $I_{layer,down}$ in Figure 3. The higher the $\text{CO}_2$ concentration in the atmosphere, the more energy is channeled back to earth, and the more global warming. Finally, do note that there is nothing special about carbon dioxide. The warming mechanism behind the other greenhouse gasses is the same!</p>
+<h2 id="notes">Notes</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Of course, there are also other greenhouse gasses (e.g. water vapor, methane, nitrous oxide, and ozone). Feel free to read &ldquo;greenhouse gasses&rdquo; instead of &ldquo;carbon dioxide&rdquo; throughout this post. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>The discussions of the bare-rock and layer model are inspired by chapters 2-4 from <i>Global Warming: Understanding the Forecast</i> by <a href="https://geosci.uchicago.edu/people/david-archer/">David Archer</a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>1 Watt is equal to 1 Joule per second. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>It is easy to convert a temperature from degree Celsius to Kelvin, just add 273.15. For example, water freezes at 0 $^\circ$C or equivalently 273.15 K. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>The numerical value of the Stephan-Boltzmann constant is $\sigma = 5.670\times 10^{-8} \text{ J} \text{ s}^{-1} \text{ m}^{-2} \text{ K}^{-4}$. For $\alpha$ and $I_{sun}$, we follow the book by David Archer, and use $\alpha=0.3$ and $I_{sun}= 1350 \text{ W m}^{-2}$. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>The factor $(1-\alpha)$ accounts for the earth's albedo. Subsequently recall that: (1) a surface area of $\pi r_{earth}^2$ is facing the sun and thus absorbing energy, and (2) that the total surface area of the earth is $4 \pi r_{earth}^2$. The effective energy influx <i>per unit of surface area</i> thus requires a factor $\frac{1}{4}$. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://HannoReuvers.github.io/post/climate-econometrics-1/&amp;text=Climate%20Econometrics%201:%20the%20greenhouse%20effect" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://HannoReuvers.github.io/post/climate-econometrics-1/&amp;t=Climate%20Econometrics%201:%20the%20greenhouse%20effect" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Climate%20Econometrics%201:%20the%20greenhouse%20effect&amp;body=https://HannoReuvers.github.io/post/climate-econometrics-1/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://HannoReuvers.github.io/post/climate-econometrics-1/&amp;title=Climate%20Econometrics%201:%20the%20greenhouse%20effect" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Climate%20Econometrics%201:%20the%20greenhouse%20effect%20https://HannoReuvers.github.io/post/climate-econometrics-1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://HannoReuvers.github.io/post/climate-econometrics-1/&amp;title=Climate%20Econometrics%201:%20the%20greenhouse%20effect" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://HannoReuvers.github.io/">Hanno Reuvers</a></h5>
+      <h6 class="card-subtitle">Assistant Professor</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/files/cv.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/HannoReuvers" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

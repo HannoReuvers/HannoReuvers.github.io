@@ -53,6 +53,175 @@
     </item>
     
     <item>
+      <title>Climate Econometrics 1: the greenhouse effect</title>
+      <link>https://HannoReuvers.github.io/post/climate-econometrics-1/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
+      <guid>https://HannoReuvers.github.io/post/climate-econometrics-1/</guid>
+      <description>&lt;h2 id=&#34;short-intro&#34;&gt;Short intro&lt;/h2&gt;
+&lt;p&gt;We will first have to understand the origins of global warming before we can attempt to model the past and predict the future. Two key players are displayed in Figure 1. We see how both the global temperature and the global carbon dioxide&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; ($\text{CO}_2$) concentration have been rising steadily over the last 40 years. The connection between these two graphs is commonly known as the &amp;ldquo;greenhouse effect&amp;rdquo;.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;tempCO2.png&#34; data-caption=&#34;Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: https://climate.nasa.gov) . (b) Global CO$_2$ concentrations as obtained from NOAA Global Monitoring Laboratory.&#34;&gt;
+&lt;img data-src=&#34;tempCO2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; &gt;&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: &lt;a href=&#34;https://climate.nasa.gov&#34;&gt;https://climate.nasa.gov&lt;/a&gt;) . (b) Global CO$_2$ concentrations as obtained from &lt;a href=&#34;https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html&#34;&gt;NOAA Global Monitoring Laboratory&lt;/a&gt;.
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;How exactly are these tiny molecules affecting the temperature on earth? The answer to this question is the topic of this post. We will look at two toy models: the bare-rock model and the layer model.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; The latter model contains all necessary ingredients to fully understand the greenhouse effect.&lt;/p&gt;
+&lt;h2 id=&#34;the-bare-rock-model&#34;&gt;The bare-rock model&lt;/h2&gt;
+&lt;p&gt;The bare-rock model is a stylized model to explain the temperature on earth. This earth is represented by a large ball and its temperature is assumed to be the same everywhere. An energy balance between incoming sunlight and heat loss to space determines the temperature on our planet.&lt;/p&gt;
+&lt;h4 id=&#34;energy-received-by-the-earth&#34;&gt;Energy received by the earth&lt;/h4&gt;
+&lt;p&gt;When taking a walk on a beautiful summer day, you will feel the warmth of the sun. Similarly, the earth is continuously heated by the sun. How much energy is our spherical earth receiving from the sun? Let $I_{sun}$ denote the energy influx of sunlight, i.e. the amount of incoming energy per second and per $\text{m}^2$. To calculate the amount of energy absorbed per second, we have to multiply $I_{sun}$ by the area of the earth which is absorbing sunlight. An inspection of Figure 2 shows that the relevant area equals $\pi r_{earth}^2$. We additionally have to account for the fact that snow, ice, and clouds will reflect a fraction of the incoming sunlight back to space. This fraction is called the albedo and is generally denoted by $\alpha$. If a fraction $\alpha$ is reflected, then there remains a fraction $1-\alpha$ to be absorbed. Overall, the effective incoming flux of solar energy is:
+\begin{equation}
+\label{eq1}
+F_{in} [\text{Watt}]= I_{sun} \times \pi r_{earth}^2 \times (1-\alpha).
+\end{equation}
+The units of this energy flux is Watt (also abbreviated by W).&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;earthwithshadow.png&#34; data-caption=&#34;Figure 2: The earth will leave a circular shadow on a screen placed behind it. The area of this circle is $\pi r_{earth}^2$, where $r_{earth}^{}$ is the radius of our spherical planet.&#34;&gt;
+&lt;img data-src=&#34;earthwithshadow.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; &gt;&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Figure 2: The earth will leave a circular shadow on a screen placed behind it. The area of this circle is $\pi r_{earth}^2$, where $r_{earth}^{}$ is the radius of our spherical planet.
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h4 id=&#34;emitted-energy&#34;&gt;Emitted energy&lt;/h4&gt;
+&lt;p&gt;The earth is not only absorbing energy, it is also emitting energy. The emitted energy is in the form of so-called black-body radiation. All warm objects emit this type of radiation and both the dominant wavelengths of the emitted light and the total energy flux depend on the body&#39;s temperature. Warmer objects emit radiation of shorter wavelength. This explains why we see a shining sun and a glow on the iron that has just been taken out of the fire. Our earth is much colder than either of these objects and is thus radiating light of much longer wavelength. These wavelenghts are too long for the human eye to observe.&lt;/p&gt;
+&lt;p&gt;Of particular interest for our bare-rock model is the energy flux from a black-body radiator. The amount of energy emitted per second and per $\text{m}^2$ is governed by the Stefan-Boltzmann law:
+\begin{equation}
+I_{black\text{ }body} = \sigma T^4,
+\end{equation}
+where $\sigma$ is the Stefan-Boltzmann constant (a constant of nature) and $T$ denotes the temperature in Kelvins.&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; Each square meter of surface area can emit black-body radiation. Given that the total surface area of the earth is $4 \pi r_{Earth}^2$, the outgoing energy flux of our planet is
+\begin{equation}
+F_{out} [\text{Watt}] = \sigma T^4\times 4 \pi r_{earth}^2.
+\end{equation}&lt;/p&gt;
+&lt;h4 id=&#34;finding-a-balance&#34;&gt;Finding a balance&amp;hellip;&lt;/h4&gt;
+&lt;p&gt;Depending on the magnitudes of $F_{in}$ and $F_{out}$, we find ourselves in one of the following three situations:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$F_{in} &amp;gt; F_{out}$: The earth is receiving more energy than it is sending back to space. The accumulation of energy will cause the earth to heat up.&lt;/li&gt;
+&lt;li&gt;$F_{in} &amp;lt; F_{out}$: The nett heat flux is negative, that is, our spherical earth is steadily losing energy and hence cooling down.&lt;/li&gt;
+&lt;li&gt;$F_{in} = F_{out}$: The incoming and outgoing energy flux are exactly equal. There is neither heat gain nor heat loss and the temperature will remain constant.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If $F_{in} = F_{out}$, then our earth is in equilibrium &amp;ndash; or in steady-state &amp;ndash; and this provides a good indication of the earth&#39;s temperature according to our bare-rock model. Inserting the expressions for $F_{in}$ and $F_{out}$, this equilibrium temperature turns out to be:
+$$
+T_{equilibrium} = \left(  \frac{ (1-\alpha) I_{sun}}{4 \sigma} \right)^{1/4}.
+$$
+If we plug in some representative numbers,&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; then this ball-shaped earth will have an equilibrium temperature of 254 K (or -19 $^\circ$C). This earth is too cold, we better add a blanket!&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;layermodel.png&#34; data-caption=&#34;Figure 3: A schematic representation of the layer model. Sunlight shines unhindered through the layer and warms the earth. The radiation from the earth is trapped by the layer and re-emitted towards both the earth and the universe.&#34;&gt;
+&lt;img data-src=&#34;layermodel.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; &gt;&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Figure 3: A schematic representation of the layer model. Sunlight shines unhindered through the layer and warms the earth. The radiation from the earth is trapped by the layer and re-emitted towards both the earth and the universe.
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;the-layer-model&#34;&gt;The layer model&lt;/h2&gt;
+&lt;p&gt;Our blanket is an additional layer placed between the earth and the sun, see Figure 3. This layer is special. The incoming light from the sun will pass straight through it, but the outgoing radiation from the earth is absorbed and subsequently re-emitted. Our new task is to determine the resulting equilibrium temperature of the earth. We again match the incoming and outgoing energy fluxes but now we should do so for the earth and the layer simulaneously. Additionally, we set the sun&#39;s energy flux per unit of area equal to $I_{sunlight}= \frac{1}{4} (1-\alpha) I_{sun}$.&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; The equilibrium equations are
+$$
+I_{sunlight} + I_{layer,down} = I_{earth} \iff \frac{1}{4} (1-\alpha) I_{sun} + \sigma T_{layer}^4 = \sigma T_{earth}^4
+$$
+and
+$$
+I_{earth} = I_{layer,up} + I_{layer,down} \iff \sigma T_{earth}^4 =  \sigma T_{layer}^4 +  \sigma T_{layer}^4
+$$
+for the earth and layer, respectively. We can solve these two equations simultaneously to determine the earth&#39;s temperature in this layer model:
+$$
+T_{earth} =  \left(  \frac{ 2 (1-\alpha) I_{sun}}{4 \sigma} \right)^{1/4}.
+$$
+A quick comparison with $T_{equilibrium}$ shows that the new temperature $T_{earth}$ is a factor $2^{1/4}\approx 1.1892$ higher. The new temperature on earth is now 302 K (or about 29 $^\circ$C). The current temperature is probably a bit too high but we will see that $\text{CO}_2$ is not behaving as extreme as our layer. That is, this greenhouse gas does not absorb all the radiation coming from earth. Most importantly, we can now understand why the additional layer works as a blanket. It creates an additional energy flow $I_{layer,down}$ back to earth that causes the earth to warm up.&lt;/p&gt;
+&lt;h2 id=&#34;the-analogy-between-carbon-dioxide-and-the-layer&#34;&gt;The analogy between carbon dioxide and the layer&lt;/h2&gt;
+&lt;p&gt;Carbon dioxide behaves similarly to our layer. The incoming sunlight from our warm sun has a relatively short wavelenght and this light will not (or hardly) interact with the $\text{CO}_2$ molecules in the air. As the earth is much colder than the sun, it will emit black body radiation with longer wavelength. This radiation is partly(!) absorbed by the carbon dioxide molecules in the air and released into any arbitrary direction. This process creates an energy flow back to earth much the same as $I_{layer,down}$ in Figure 3. The higher the $\text{CO}_2$ concentration in the atmosphere, the more energy is channeled back to earth, and the more global warming. Finally, do note that there is nothing special about carbon dioxide. The warming mechanism behind the other greenhouse gasses is the same!&lt;/p&gt;
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Of course, there are also other greenhouse gasses (e.g. water vapor, methane, nitrous oxide, and ozone). Feel free to read &amp;ldquo;greenhouse gasses&amp;rdquo; instead of &amp;ldquo;carbon dioxide&amp;rdquo; throughout this post. &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;The discussions of the bare-rock and layer model are inspired by chapters 2-4 from &lt;i&gt;Global Warming: Understanding the Forecast&lt;/i&gt; by &lt;a href=&#34;https://geosci.uchicago.edu/people/david-archer/&#34;&gt;David Archer&lt;/a&gt;. &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;1 Watt is equal to 1 Joule per second. &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;It is easy to convert a temperature from degree Celsius to Kelvin, just add 273.15. For example, water freezes at 0 $^\circ$C or equivalently 273.15 K. &lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;The numerical value of the Stephan-Boltzmann constant is $\sigma = 5.670\times 10^{-8} \text{ J} \text{ s}^{-1} \text{ m}^{-2} \text{ K}^{-4}$. For $\alpha$ and $I_{sun}$, we follow the book by David Archer, and use $\alpha=0.3$ and $I_{sun}= 1350 \text{ W m}^{-2}$. &lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;The factor $(1-\alpha)$ accounts for the earth&#39;s albedo. Subsequently recall that: (1) a surface area of $\pi r_{earth}^2$ is facing the sun and thus absorbing energy, and (2) that the total surface area of the earth is $4 \pi r_{earth}^2$. The effective energy influx &lt;i&gt;per unit of surface area&lt;/i&gt; thus requires a factor $\frac{1}{4}$. &lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Which computational language to choose?</title>
       <link>https://HannoReuvers.github.io/post/which-language/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
