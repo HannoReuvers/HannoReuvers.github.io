@@ -596,7 +596,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    7 min read
+    8 min read
   </span>
   
 
@@ -657,20 +657,20 @@
 <figure>
 
 
-  <a data-fancybox="" href="tempCO2.png" data-caption="Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: https://climate.nasa.gov) . (b) Global CO$_2$ concentrations as obtained from NOAA Global Monitoring Laboratory.">
+  <a data-fancybox="" href="tempCO2.png" data-caption="Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: https://climate.nasa.gov) . (b) Global $\text{CO}_2$ concentrations as obtained from NOAA Global Monitoring Laboratory.">
 <img data-src="tempCO2.png" class="lazyload" alt="" ></a>
 
 
   
   
   <figcaption>
-    Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: <a href="https://climate.nasa.gov">https://climate.nasa.gov</a>) . (b) Global CO$_2$ concentrations as obtained from <a href="https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html">NOAA Global Monitoring Laboratory</a>.
+    Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: <a href="https://climate.nasa.gov">https://climate.nasa.gov</a>) . (b) Global $\text{CO}_2$ concentrations as obtained from <a href="https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html">NOAA Global Monitoring Laboratory</a>.
   </figcaption>
 
 
 </figure>
 
-<p>How exactly are these tiny molecules affecting the temperature on earth? The answer to this question is the topic of this post. We will look at two toy models: the bare-rock model and the layer model.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> The latter model contains all necessary ingredients to fully understand the greenhouse effect.</p>
+<p>How exactly are these tiny $\text{CO}_2$ molecules affecting the temperature on earth? The answer to this question is the topic of this post. We will look at two models: the bare-rock model and the layer model.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Both models should be viewed as toy models as they describe a very much simplified version of reality. Indeed, the earth will be treated as a perfect sphere with the same temperature everywhere. All difficult heat flows and spatial variation on our planet, e.g. ocean currents and altitude differences, are simply ignored. Notwithstanding their simplicity, these models will still provide all necessary ingredients to fully understand the greenhouse effect.</p>
 <h2 id="the-bare-rock-model">The bare-rock model</h2>
 <p>The bare-rock model is a stylized model to explain the temperature on earth. This earth is represented by a large ball and its temperature is assumed to be the same everywhere. An energy balance between incoming sunlight and heat loss to space determines the temperature on our planet.</p>
 <h4 id="energy-received-by-the-earth">Energy received by the earth</h4>
@@ -769,7 +769,7 @@ and
 $$
 I_{earth} = I_{layer,up} + I_{layer,down} \iff \sigma T_{earth}^4 =  \sigma T_{layer}^4 +  \sigma T_{layer}^4
 $$
-for the earth and layer, respectively. We can solve these two equations simultaneously to determine the earth's temperature in this layer model:
+for the earth and layer, respectively. We can solve these two equations and find the earth's temperature in this layer model:
 $$
 T_{earth} =  \left(  \frac{ 2 (1-\alpha) I_{sun}}{4 \sigma} \right)^{1/4}.
 $$
@@ -793,7 +793,7 @@ A quick comparison with $T_{equilibrium}$ shows that the new temperature $T_{ear
 <p>It is easy to convert a temperature from degree Celsius to Kelvin, just add 273.15. For example, water freezes at 0 $^\circ$C or equivalently 273.15 K. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5" role="doc-endnote">
-<p>The numerical value of the Stephan-Boltzmann constant is $\sigma = 5.670\times 10^{-8} \text{ J} \text{ s}^{-1} \text{ m}^{-2} \text{ K}^{-4}$. For $\alpha$ and $I_{sun}$, we follow the book by David Archer, and use $\alpha=0.3$ and $I_{sun}= 1350 \text{ W m}^{-2}$. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>The numerical value of the Stefan-Boltzmann constant is $\sigma = 5.670\times 10^{-8} \text{ J} \text{ s}^{-1} \text{ m}^{-2} \text{ K}^{-4}$. For $\alpha$ and $I_{sun}$, we follow the book by David Archer, and use $\alpha=0.3$ and $I_{sun}= 1350 \text{ W m}^{-2}$. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6" role="doc-endnote">
 <p>The factor $(1-\alpha)$ accounts for the earth's albedo. Subsequently recall that: (1) a surface area of $\pi r_{earth}^2$ is facing the sun and thus absorbing energy, and (2) that the total surface area of the earth is $4 \pi r_{earth}^2$. The effective energy influx <i>per unit of surface area</i> thus requires a factor $\frac{1}{4}$. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>

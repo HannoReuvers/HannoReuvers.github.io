@@ -75,20 +75,20 @@
 &lt;figure&gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;tempCO2.png&#34; data-caption=&#34;Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: https://climate.nasa.gov) . (b) Global CO$_2$ concentrations as obtained from NOAA Global Monitoring Laboratory.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;tempCO2.png&#34; data-caption=&#34;Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: https://climate.nasa.gov) . (b) Global $\text{CO}_2$ concentrations as obtained from NOAA Global Monitoring Laboratory.&#34;&gt;
 &lt;img data-src=&#34;tempCO2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; &gt;&lt;/a&gt;
 
 
   
   
   &lt;figcaption&gt;
-    Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: &lt;a href=&#34;https://climate.nasa.gov&#34;&gt;https://climate.nasa.gov&lt;/a&gt;) . (b) Global CO$_2$ concentrations as obtained from &lt;a href=&#34;https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html&#34;&gt;NOAA Global Monitoring Laboratory&lt;/a&gt;.
+    Figure 1: Yearly temperature anomalies and carbon dioxide concentrations for the time period 1980-2019. (a) The temperature anomaly is the temperature difference with respect to the 1951-1980 global average (source: &lt;a href=&#34;https://climate.nasa.gov&#34;&gt;https://climate.nasa.gov&lt;/a&gt;) . (b) Global $\text{CO}_2$ concentrations as obtained from &lt;a href=&#34;https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html&#34;&gt;NOAA Global Monitoring Laboratory&lt;/a&gt;.
   &lt;/figcaption&gt;
 
 
 &lt;/figure&gt;
 
-&lt;p&gt;How exactly are these tiny molecules affecting the temperature on earth? The answer to this question is the topic of this post. We will look at two toy models: the bare-rock model and the layer model.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; The latter model contains all necessary ingredients to fully understand the greenhouse effect.&lt;/p&gt;
+&lt;p&gt;How exactly are these tiny $\text{CO}_2$ molecules affecting the temperature on earth? The answer to this question is the topic of this post. We will look at two models: the bare-rock model and the layer model.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Both models should be viewed as toy models as they describe a very much simplified version of reality. Indeed, the earth will be treated as a perfect sphere with the same temperature everywhere. All difficult heat flows and spatial variation on our planet, e.g. ocean currents and altitude differences, are simply ignored. Notwithstanding their simplicity, these models will still provide all necessary ingredients to fully understand the greenhouse effect.&lt;/p&gt;
 &lt;h2 id=&#34;the-bare-rock-model&#34;&gt;The bare-rock model&lt;/h2&gt;
 &lt;p&gt;The bare-rock model is a stylized model to explain the temperature on earth. This earth is represented by a large ball and its temperature is assumed to be the same everywhere. An energy balance between incoming sunlight and heat loss to space determines the temperature on our planet.&lt;/p&gt;
 &lt;h4 id=&#34;energy-received-by-the-earth&#34;&gt;Energy received by the earth&lt;/h4&gt;
@@ -187,7 +187,7 @@ and
 $$
 I_{earth} = I_{layer,up} + I_{layer,down} \iff \sigma T_{earth}^4 =  \sigma T_{layer}^4 +  \sigma T_{layer}^4
 $$
-for the earth and layer, respectively. We can solve these two equations simultaneously to determine the earth&#39;s temperature in this layer model:
+for the earth and layer, respectively. We can solve these two equations and find the earth&#39;s temperature in this layer model:
 $$
 T_{earth} =  \left(  \frac{ 2 (1-\alpha) I_{sun}}{4 \sigma} \right)^{1/4}.
 $$
@@ -211,7 +211,7 @@ A quick comparison with $T_{equilibrium}$ shows that the new temperature $T_{ear
 &lt;p&gt;It is easy to convert a temperature from degree Celsius to Kelvin, just add 273.15. For example, water freezes at 0 $^\circ$C or equivalently 273.15 K. &lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:5&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;The numerical value of the Stephan-Boltzmann constant is $\sigma = 5.670\times 10^{-8} \text{ J} \text{ s}^{-1} \text{ m}^{-2} \text{ K}^{-4}$. For $\alpha$ and $I_{sun}$, we follow the book by David Archer, and use $\alpha=0.3$ and $I_{sun}= 1350 \text{ W m}^{-2}$. &lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The numerical value of the Stefan-Boltzmann constant is $\sigma = 5.670\times 10^{-8} \text{ J} \text{ s}^{-1} \text{ m}^{-2} \text{ K}^{-4}$. For $\alpha$ and $I_{sun}$, we follow the book by David Archer, and use $\alpha=0.3$ and $I_{sun}= 1350 \text{ W m}^{-2}$. &lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:6&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;The factor $(1-\alpha)$ accounts for the earth&#39;s albedo. Subsequently recall that: (1) a surface area of $\pi r_{earth}^2$ is facing the sun and thus absorbing energy, and (2) that the total surface area of the earth is $4 \pi r_{earth}^2$. The effective energy influx &lt;i&gt;per unit of surface area&lt;/i&gt; thus requires a factor $\frac{1}{4}$. &lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
