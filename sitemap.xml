@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://HannoReuvers.github.io/authors/</loc>
-    <lastmod>2020-09-01T00:02:00+02:00</lastmod>
+    <loc>https://HannoReuvers.github.io/</loc>
+    <lastmod>2021-03-22T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://HannoReuvers.github.io/</loc>
+    <loc>https://HannoReuvers.github.io/post/</loc>
+    <lastmod>2021-03-22T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://HannoReuvers.github.io/post/vasicek/</loc>
+    <lastmod>2021-03-22T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://HannoReuvers.github.io/authors/</loc>
     <lastmod>2020-09-01T00:02:00+02:00</lastmod>
   </url>
   
@@ -64,11 +74,6 @@
   
   <url>
     <loc>https://HannoReuvers.github.io/post/climate-econometrics-1/</loc>
-    <lastmod>2020-07-30T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://HannoReuvers.github.io/post/</loc>
     <lastmod>2020-07-30T00:00:00+02:00</lastmod>
   </url>
   

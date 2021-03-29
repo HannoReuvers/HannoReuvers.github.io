@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Hanno Reuvers">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Zero-coupon bond pricing by risk-neutral valuation, Feynman-Kac, and Monte Carlo simulation">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://HannoReuvers.github.io/post/vasicek/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://HannoReuvers.github.io/post/vasicek/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Hanno Reuvers">
+  <meta property="og:url" content="https://HannoReuvers.github.io/post/vasicek/">
+  <meta property="og:title" content="The Vasiček short-rate model | Hanno Reuvers">
+  <meta property="og:description" content="Zero-coupon bond pricing by risk-neutral valuation, Feynman-Kac, and Monte Carlo simulation"><meta property="og:image" content="https://HannoReuvers.github.io/post/vasicek/featured.png">
+  <meta property="twitter:image" content="https://HannoReuvers.github.io/post/vasicek/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2021-03-22T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2021-03-22T00:00:00&#43;01:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://HannoReuvers.github.io/post/vasicek/"
+  },
+  "headline": "The Vasiček short-rate model",
+  
+  "image": [
+    "https://HannoReuvers.github.io/post/vasicek/featured.png"
+  ],
+  
+  "datePublished": "2021-03-22T00:00:00+01:00",
+  "dateModified": "2021-03-22T00:00:00+01:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Hanno Reuvers"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hanno Reuvers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://HannoReuvers.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Zero-coupon bond pricing by risk-neutral valuation, Feynman-Kac, and Monte Carlo simulation"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>The Vasiček short-rate model | Hanno Reuvers</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#links"><span>Links</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>The Vasiček short-rate model</h1>
+
+  
+  <p class="page-subtitle">Zero-coupon bond pricing by risk-neutral valuation, Feynman-Kac, and Monte Carlo simulation</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 22, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    13 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>The Vasiček model is an interest rate model which specifies the short rate $r(t)$ under the risk-neutral dynamics (or $\mathbb{Q}$-dynamics) as
+\begin{equation}
+dr(t) = \kappa \big( \theta -r(t)\big) dt + \sigma dW(t),
+\tag{1}
+\label{eq:Vasicek_dif_eq}
+\end{equation}
+with initial condition $r(0) = r_0$ and $W(t)$ denoting a standard Brownian motion driving the stochastic differential equation. An explicit expression for $r(t)$ can be derived using Itô calculus (see, e.g.  Mikosch(1998); Chapter 3). To solve \eqref{eq:Vasicek_dif_eq}, we try the solution $f\big(r(t),t\big) = r(t) e^{\kappa t}$. The Itô lemma implies
+\begin{equation}
+\begin{aligned}
+df\big(r(t),t\big)
+&amp;= \kappa r(t) e^{\kappa t} dt + e^{\kappa t} dr(t) \\<br>
+&amp;= \kappa r(t) e^{\kappa t} dt + e^{\kappa t}\Big[  \kappa \big( \theta -r(t)\big) dt + \sigma dW(t)\Big] \\<br>
+&amp;= \kappa \theta e^{\kappa t} dt + \sigma e^{\kappa t} dW(t).
+\end{aligned}
+\tag{2}
+\label{eq:ItoLemmaSolved}
+\end{equation}
+The RHS of \eqref{eq:ItoLemmaSolved} no longer depends on $r(t)$ and we can thus integrate to find expressions for $f\big(r(t),t\big)$. This result is important for two reasons. First, we can integrate over the range $[0,t]$ to find
+$$
+\begin{aligned}
+f\big( r(t), t \big) &amp;- f\big( r(0),0\big)
+= r(t) e^{\kappa t} -r_0
+= \int_0^t df\big( r(s),s\big) \\<br>
+&amp;= \int_0^t \kappa \theta e^{\kappa s} ds + \int_0^t \sigma e^{\kappa s} dW(s).
+\end{aligned}
+$$
+After some rearrangments the explicit solution for $r(t)$ is
+\begin{equation}
+r(t) = r_0 e^{-\kappa t} + e^{-\kappa t} \int_0^t \kappa \theta e^{\kappa s} ds + e^{-\kappa t}  \int_0^t \sigma e^{\kappa s} dW(s).
+\label{eq:rtexplicit}
+\tag{3}
+\end{equation}
+With this explicit expression for $r(t)$ we can calculate its mean and variance. Since stochastic integrals have zero mean we have
+$$
+\begin{aligned}
+\mathbb{E}\big[ r(t) \big]
+&amp;= r_0 e^{-\kappa t} + \theta e^{-\kappa t} \left[ e^{\kappa t} -1 \right]
+= r_0 e^{-\kappa t} + \theta  \left[ 1-e^{-\kappa t} \right] \\<br>
+&amp;=: r_0 e^{-\kappa t} + \theta \kappa \Lambda(t),
+\end{aligned}
+$$
+where we defined $\Lambda(t) = \int_0^t e^{-\kappa s} ds = \frac{1}{\kappa}\left[ 1 - e^{-\kappa t} \right]$. The long-run mean of the process is $\lim_{t\to\infty} \mathbb{E}\big[ r(t) \big] = \theta$. Moreover, by Itô isometry the variance of the process is
+$$
+\mathbb{V}\text{ar}\big[r(t)\big]
+= \sigma^2 e^{-2\kappa t} \int_0^t e^{2\kappa s} ds
+= \tfrac{\sigma^2}{2\kappa} \left[ 1- e^{-2\kappa t} \right] = \tfrac{1}{2} \sigma^2 \Lambda(2t).
+$$
+Second, \eqref{eq:ItoLemmaSolved} is the starting point to derive an exact discretization of $r(t)$. Such a discretization will allow us to simulate paths of $r(t)$ that can later be used to value interest rate derivatives. Given a time step $h$, we now integrate \eqref{eq:ItoLemmaSolved} over the interval $[t-h,t]$ to obtain
+$$
+\begin{aligned}
+f &amp;\big( r(t), t \big) - f\big( r(t-h),t-h\big)
+= \int_{t-h}^t df\big( r(s),s\big) \\
+&amp;= \theta \big( e^{\kappa t} - e^{\kappa(t-h)}\big) + \int_{t-h}^t \sigma e^{\kappa s} dW(s) \\<br>
+&amp; \iff r(t) = \theta \big(1-e^{-\kappa h}\big) +e^{-\kappa h}r(t-h) + e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s).
+\end{aligned}
+$$
+The discretized process of $r(t)$ thus follows an AR(1) model with intercept $\theta \big(1-e^{-\kappa h}\big)$, autoregressive coefficient $e^{-\kappa h}$, and innovation process $e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s)$. These innovations have some interesting properties. First, note how the integration intervals of subsequent steps of the discretization do not overlap. For example, $\int_{t-h}^t \sigma e^{\kappa s} dW(s)$ depends on $ \{ W(s) : t-h \leq s \leq t \}$, whereas $\int_{t}^{t+h} \sigma e^{\kappa s} dW(s)$ depends on $\{W(s) : t \leq s \leq t+h \}$. With increments of Brownian motions being independent, we must conclude that these stochastic integrals are independent. Second, stochastic integrals are normally distributed and mean zero. The distributions of the innovations is thus fully specified after computing its variance, or
+$$
+\begin{aligned}
+\mathbb{V} &amp;\text{ar}\left[ e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s) \right] \\<br>
+&amp;= \sigma^2 e^{-2\kappa t} \int_{t-h}^t e^{2\kappa s} ds
+= \tfrac{\sigma^2}{2\kappa }\left[ 1 - e^{-2\kappa h} \right]
+= \sigma^2 h \left[ \frac{e^{-2\kappa h}-1}{-2\kappa h} \right] \\<br>
+&amp;=: \sigma^2 h \alpha\big( -2\kappa h \big),
+\end{aligned}
+$$
+where we defined $\alpha(x)=\tfrac{e^x-1}{x} \text{ with }\alpha(0)=0$. Overall, we can simulate data from the Vasiček model using $r(0)=r_0$ as the starting value and moving forward according to the recursion
+\begin{equation}
+r(t) = \theta \kappa \Lambda(h) + e^{-\kappa h} r(t-h) + u_t^{(h)},\; u_t^{(h)}\stackrel{i.i.d.}{\sim}\mathcal{N}\left(0, \sigma^2 h \alpha\big( -2\kappa h \big)\right).
+\label{eq:vasiceksteps}
+\end{equation}
+Some sample paths of the Vasiček model are displayed in Figure 1.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="paths_overview.png" data-caption="Figure 1: An illustration of 5 sample paths for the Vasiček model (grey lines), the mean function (blue line), and 95% (pointwise) confidence intervals (light blue area).">
+<img data-src="paths_overview.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 1: An illustration of 5 sample paths for the Vasiček model (grey lines), the mean function (blue line), and 95% (pointwise) confidence intervals (light blue area).
+  </figcaption>
+
+
+</figure>
+
+<h2 id="risk-neutral-valuation-of-a-zero-coupon-bond">Risk-neutral valuation of a zero-coupon bond</h2>
+<p>Let $X$ denote a contingent claim with maturity date $T$. According to the risk-neutral valuation formula (cf. Proposition 8.1.2 in Bingham and Kiesel (2004)), the price at time $t$ of this claim can be computed as $\Pi_X(t) = \mathbb{E}_{\mathbb{Q}}\left.\left[ X e^{-\int_t^T r(s) ds}\right| \mathcal{F}_t \right]$. Since the zero-coupon bond, or $T$-bond, promises a cash payment of 1 at maturity, its time-$t$ price is given by</p>
+<p>\begin{equation}
+P(t,T) = \mathbb{E}_{\mathbb{Q}}\left.\left[e^{-\int_t^T r(s) ds}\right| \mathcal{F}_t \right],
+\label{eq:zerocouponbond}
+\tag{4}
+\end{equation}
+where $\mathcal{F}_t$ is the $\sigma$-algebra containing all information up to time $t$. In this section we will evaluated \eqref{eq:zerocouponbond} analytically. That is, starting from the explicit expression for $r(t)$ in \eqref{eq:rtexplicit}, we first derive the distribution of $\left. \int_t^T r(s) ds\right| \mathcal{F}_t$ and subsequently evaluated the conditional expectation. The first step is rather tedious and explained in detail in the Appendix. It turns out that $\left. \int_t^T r(s) ds\right| \mathcal{F}_t$ is normally distributed with mean
+$$
+r(t) \Lambda(T-t) + \theta\Big[(T-t) - \Lambda(T-t) \Big]
+$$
+and variance
+$$
+\tfrac{\sigma^2}{\kappa^2} \Big[  (T-t) -2 \Lambda(T-t) + \tfrac{1}{2} \Lambda \big(2(T-t) \big) \Big].
+$$
+The expectation in \eqref{eq:zerocouponbond} can be calculated rather quickly using moment generating functions. For a random variable $Y$, its moment generating function is defined as $M_Y(t) = \mathbb{E}\left[ e^{tY} \right]$. If $Y$ is normally distribution, say $Y\sim\mathcal{N}(\mu,\sigma^2)$, then $M_Y(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}$. To evaluate \eqref{eq:zerocouponbond}, we use this result for $t=-1$ and find that the time-$t$ price of a zero-coupon bond with maturity $T$ equals</p>
+<p>\begin{equation}
+\begin{aligned}
+P(t,T)
+&amp;= \exp\left\{  -r(t) \Lambda(T-t) - \theta\Big[(T-t) - \Lambda(T-t) \Big]+ \tfrac{\sigma^2}{2\kappa^2} \left[  (T-t) -2\Lambda(T-t) + \frac{1}{2} \Lambda\Big(2(T-t) \Big) \right] \right\} \\<br>
+&amp;= \exp\left\{ -r(t) \Lambda(T-t) + \left( \tfrac{\sigma^2}{2\kappa^2} -\theta \right) (T-t) + \left(\theta -\tfrac{\sigma^2}{\kappa^2}  \right)
+\Lambda(T-t) + \tfrac{\sigma^2}{4 \kappa^2}  \Lambda\Big(2(T-t) \Big)\right\}.
+\end{aligned}
+\label{eq:zerocouponbondprice}
+\tag{5}
+\end{equation}</p>
+<p>We can translate these zero-coupon bond prices into yields using
+$$
+y(t,T) = - \tfrac{1}{T-t} \log P(t,T) = \left( \theta - \tfrac{\sigma^2}{2\kappa^2}\right) + \tfrac{1}{T-t}\left[r(t)\Lambda(T-t)+ \left(\tfrac{\sigma^2}{\kappa^2}  -\theta\right) \Lambda(T-t) - \tfrac{\sigma^2}{4 \kappa^2}  \Lambda\Big(2(T-t)\Big)\right].
+$$
+At long maturities, as $T\to\infty$, the yield converges to $\theta - \tfrac{\sigma^2}{2\kappa^2}$. Visualisations of the complete yield curve are shown in the section entitled <em>Verification by Monte Carlo simulation</em>.</p>
+<h2 id="feynman-kac-formula-solving-the-pde">Feynman-Kac formula: solving the PDE</h2>
+<p>Consider a short-rate model with $\mathbb{Q}$-dynamics given by
+$$
+d r(t) = a\big(t,r(t)\big) dt + b\big(t,r(t) \big) dW(t)
+$$
+and write $P(t,T) = F(t,r(t);T)$ to explicitly indicate the dependence on $r(t)$. For brevity, we will sometimes in this section omit the function arguments, e.g. write $F$ instead of $F(t,r(t);T)$. The Feynman-Kac formula (see, e.g. ) stipulates that $F(t,r(t);T)$ solves the partial differential equation (PDE)</p>
+<p>\begin{equation}
+\frac{\partial F}{\partial t} + a \frac{\partial F}{\partial r} + \frac{b^2}{2} \frac{\partial^2 F}{\partial r^2} - r F = 0,
+\label{eq:FeynmanKac}
+\tag{6}
+\end{equation}</p>
+<p>with terminal condition $F(T,r;T)=1$ <em>for all</em> $r\in\mathbb{R}$. We make two observations. First, we have $a\big(t,r(t) \big)=\kappa(\theta-r(t))$ and $b\big(t,r(t) \big)=\sigma$ for the Vasiček model. Second, it is hard (or sometimes even impossible) to solve \eqref{eq:FeynmanKac} analytically. We are however in the lucky situation where $a\big(t,r(t) \big)$ and $b\big(t,r(t) \big)$ are linear in $r(t)$. It can be shown (cf. Filipović (2009) ; Proposition 5.2) that this leads to an affine term structure, that is the solution $F(t,r;T)$ must take the form
+$$
+F(t,r;T) = \exp\Big[ -A(t,T) - B(t,T) r \Big],
+$$
+for appropriate $A(t,T)$ and $B(t,T)$.</p>
+<p>We can now solve the PDE by inserting this specific functional form into \eqref{eq:FeynmanKac} and see what this implies for $A$ and $B$. Since $\frac{\partial F}{\partial t}= \left( -\frac{\partial A}{\partial t} - \frac{\partial B}{\partial t} r \right)F$, $\frac{\partial F}{\partial r}= -B F$ and $\frac{\partial^2 F}{\partial r^2}= B^2 F$, we find
+$$
+\left( -\frac{\partial A}{\partial t} - \frac{\partial B}{\partial t} r \right)F-\kappa(\theta-r)B F + \frac{\sigma^2}{2}B^2 F - r F = 0
+$$
+or equivalently after collecting terms
+$$
+F\left[\Big(-\frac{\partial A}{\partial t}-\kappa \theta B+ \frac{\sigma^2}{2} B^2 \Big) + \Big( -\frac{\partial B}{\partial t}+\kappa B -1\Big) r \right] = 0.
+$$
+The boundary condition is $F(T,r;T) = \exp[-A(T,T)-B(T,T)r]=1$ or $A(T,T)+B(T,T)r=0$. If these relations need to hold for all $r\in\mathbb{R}$, then intercept terms should be zero as well as the expressions proportional to $r$. The PDE for $F(T,r(t);T)$ is now seen to reduce to a set of coupled ordinary differential equations (ODEs):</p>
+<p>\begin{equation}
+\begin{aligned}
+&amp; -\frac{\partial A}{\partial t}-\kappa \theta B+ \frac{\sigma^2}{2} B^2=0,\\<br>
+&amp; -\frac{\partial B}{\partial t}+\kappa B -1=0,\\<br>
+&amp;A(T,T) = B(T,T) = 0.
+\end{aligned}
+\label{eq:ODEs}
+\tag{7}
+\end{equation}</p>
+<p>The second equation in \eqref{eq:ODEs} completely specifies $B$.  With some rewriting, we have $\frac{\partial B}{\partial t}-\kappa B = e^{\kappa t} \frac{\partial}{\partial t}\left[e^{-\kappa t} B \right]= -1$. Integrating over $[t,T]$ gives
+$$
+e^{-\kappa T} B(T,T) - e^{-\kappa t} B(t,T)=  - \int_t^T e^{-\kappa s} ds.
+$$
+Together with the boundary condition $B(T,T)=0$ we conclude that $B(t,T) = \int_t^T e^{-\kappa(s-t)}ds = \frac{1}{\kappa}\left[ 1 - e^{-\kappa (T-t)} \right] = \Lambda(T-t)$. Having found the explicit solution for $B(t,T)$, we can complete the derivations by
+$$
+\begin{aligned}
+&amp;A(t,T)
+= -\big[A(T,T)-A(t,T)\big]
+=\int_t^T -\frac{\partial A}{\partial s} ds \\<br>
+&amp;= \int_t^T \Big[ \kappa \theta B(s,T) - \frac{\sigma^2}{2} \big[B(s,T)\big]^2 \Big]ds \\<br>
+&amp;= \theta \left[(T-t) - \int_t^T e^{-\kappa (T-s)} ds  \right] - \tfrac{\sigma^2}{2\kappa^2} \int_t^T \big[1 -2 e^{-\kappa(T-s)}+e^{-2\kappa(T-s)} \big]ds , \\<br>
+&amp;=  \theta \Big[(T-t) - \Lambda(T-t)  \Big] - \tfrac{\sigma^2}{2\kappa^2}\left[ (T-t) -2 \Lambda(T-t) + \frac{1}{2} \Lambda\big( 2(T-t)\big) \right] \\<br>
+&amp;= \left( \theta - \tfrac{\sigma^2}{2\kappa^2}  \right) (T-t) +\left( \tfrac{\sigma^2}{\kappa^2} - \theta\right) \Lambda(T-t) - \tfrac{\sigma^2}{4 \kappa^2}\Lambda\big( 2(T-t)\big),
+\end{aligned}
+$$
+where we used $\int_t^T e^{-\kappa (T-s)} ds = \tfrac{1}{\kappa}\left[ 1 - e^{-\kappa (T-t)} \right] = \Lambda(T-t)$ and $\int_t^T e^{-2\kappa(T-s)}ds= \frac{1}{2} \Lambda \big( 2(T-t)\big)$. The overall expression for $P(t,T) = F(t,r(t);T)$ coincides with the result from the previous section.</p>
+<h2 id="verification-by-monte-carlo-simulation">Verification by Monte-Carlo simulation</h2>
+<p>If we like to avoid extensive algebraic computations, then we can opt for a simulation approach. That is, we approximate the expectation in \eqref{eq:zerocouponbond} by Monte Carlo simulation. Our example is $P(0,T)=\mathbb{E}_{\mathbb{Q}}\big[e^{-\int_0^T r(s) ds} \big]$. The steps are as follows:</p>
+<ol>
+<li>Partition the interval $[0,T]$ in $n$ intervals of equal length. For $j=0,1,\ldots,n$, the implied grid points are $t_j =  j\tfrac{T}{n}$.</li>
+<li>Start from $r(0)=r(t_0)=r_0$ and use the AR(1) recursion with stepsize $h=\frac{T}{n}$ to simulate $N_{sim}$ sample paths of the Vasiček model. We use $r^{(i)}(t_j)$ to denote the realised value of the $i^{\text{th}}$ path at grid point $t_j$.</li>
+<li>Approximate $P(0,T)$ by
+\begin{equation}
+\frac{1}{N_{sim}} \sum_{i=1}^{N_{sim}} e^{-h \sum_{j=1}^n r^{(i)}(t_j)} .
+\label{eq:approx}
+\tag{8}
+\end{equation}</li>
+</ol>
+<p>The computation of \eqref{eq:approx} requires choices for $n$ and $N_{sim}$. We like both these quantities to be large. A large number of simulated paths is needed because the expectation in $\mathbb{E}_{\mathbb{Q}} \big[e^{-\int_0^T r(s) ds} \big]$ is being replaced by a sample average across the simulated paths. The large value for $n$ should ensure that the integral $\int_0^T r(s) ds$ is sufficiently well approximated  by the Riemann sum $\sum_{j=1}^n r^{(i)}(t_j)\big[ t_j - t_{j-1} \big] = h \sum_{j=1}^n r^{(i)}(t_j)$.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="Nsim_sensitivity.png" data-caption="Figure 2: Zero-coupon bond prices for various maturities. Analytical bond prices are depicted in red and simulated bond prices are shown by the black dots. The error bars are $\pm 1.96 \hat{\sigma}$ with $\hat\sigma$ denoting the standard error among $50$ replications of the bond price Monte Carlo simulation. All calculations in this figure are based on $n=100$ grid points.">
+<img data-src="Nsim_sensitivity.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 2: Zero-coupon bond prices for various maturities. Analytical bond prices are depicted in red and simulated bond prices are shown by the black dots. The error bars are $\pm 1.96 \hat{\sigma}$ with $\hat\sigma$ denoting the standard error among $50$ replications of the bond price Monte Carlo simulation. All calculations in this figure are based on $n=100$ grid points.
+  </figcaption>
+
+
+</figure>
+
+<p>Visual evidence for this simulated approach is available in Figures 2&ndash;3. We have taken $r_0=6%$, $\theta=0.08$, $\kappa=0.86$, and $\sigma=0.01$. The (estimated) zero-coupon bond prices from \eqref{eq:approx} are converted into yields. Figure 2 shows that: (1) differences between simulated and exact yields are small, and (2) variability between simulated yields decreases when $N_{sim}$ increases from 50 to 500. The influence of $n$ is portrayed in Figure 3. In practice, we can use these kind of graphs to decide on suitable choices for $n$ and $N_{sim}$. Simply select a pair $(n,N_{sim})$ and verify whether the computed quantity is insensitive to changes therein.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="YieldT5_various_n.png" data-caption="Figure 3: The simulated bond price for a maturity of 5 years. The true bond price, $P(0,5)\approx 7.54%$, is independent of $n$ (red). The  black dots are obtained by Monte Carlo simulation. The error bars are $\pm 1.96 \hat{\sigma}$ with $\hat\sigma$ denoting the standard error among $50$ replications.">
+<img data-src="YieldT5_various_n.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 3: The simulated bond price for a maturity of 5 years. The true bond price, $P(0,5)\approx 7.54%$, is independent of $n$ (red). The  black dots are obtained by Monte Carlo simulation. The error bars are $\pm 1.96 \hat{\sigma}$ with $\hat\sigma$ denoting the standard error among $50$ replications.
+  </figcaption>
+
+
+</figure>
+
+<h2 id="appendix">Appendix</h2>
+<p>Recall $\Lambda(t) = \int_0^t e^{-\kappa s} ds = \frac{1}{\kappa}\left[ 1 - e^{-\kappa t} \right]$ and note how it implies
+\begin{equation}
+\begin{aligned}
+\int_x^T e^{-\kappa(s-x)} ds
+&amp;= e^{\kappa x} \Big[ \Lambda(T) - \Lambda(x) \Big]
+= \tfrac{1}{\kappa} e^{\kappa x} \left[ e^{-\kappa x} - e^{-\kappa T}\right] \\<br>
+&amp; = \Lambda(T-x).
+\end{aligned}
+\label{eq:MyINT}
+\tag{A1}
+\end{equation}
+The integral in this last equation will be used at several occasions in the derivations below. Using the expression for $r(t)$, we have
+$$
+\begin{aligned}
+\int_t^T r(s) ds
+&amp;= \int_t^T e^{-\kappa s} r(0) ds \\<br>
+&amp; \quad + \int_t^T \int_0^s e^{-\kappa(s-x)} \kappa \theta dx ds + \int_t^T \int_0^s e^{-\kappa (s-x)}\sigma dW(x) ds \\<br>
+&amp;=: I+II+III.
+\end{aligned}
+$$
+We will develop these three contributions separately. Term $I$ is easiest. Using \eqref{eq:MyINT}, we find
+$$
+I = \int_t^T e^{-\kappa s} r(0) ds = r(0) e^{-\kappa t} \int_t^T e^{ -\kappa(s-t) }ds = r(0) e^{-\kappa t} \Lambda(T-t).
+$$</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="integrationarea.png" data-caption="Figure 4: The separation of the area of integration into two parts.">
+<img data-src="integrationarea.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 4: The separation of the area of integration into two parts.
+  </figcaption>
+
+
+</figure>
+
+<p>Term $II$ requires a change in the order of integration. Inspecting the area of integration in Figure 4, we arrive at the following integral relation
+$$
+\begin{aligned}
+II &amp;= \int_t^T \int_0^s e^{-\kappa(s-x)} \kappa \theta dx ds \\<br>
+&amp;= \int_0^t \int_t^T e^{-\kappa(s-x)} \kappa \theta ds dx + \int_t^T \int_x^T e^{-\kappa(s-x)} \kappa \theta ds dx \\<br>
+&amp;= \int_0^t \int_t^T e^{-\kappa(s-t+t-x)} \kappa \theta ds dx  + \kappa \theta \int_t^T \Lambda(T-x) dx \\<br>
+&amp;= \int_0^t e^{-\kappa(t-x)}\kappa \theta dx , \Lambda(T-t) + \kappa \theta \int_t^T \Lambda(T-x) dx.
+\end{aligned}
+$$
+We apply exactly the same change in the order of integration to term $III$. The result is
+$$
+\begin{aligned}
+III &amp;= \int_t^T \int_0^s e^{-\kappa (s-x)}\sigma dW(x) ds \\<br>
+&amp;= \int_0^t \int_t^T e^{-\kappa (s-x)}\sigma ds dW(x) + \int_t^T \int_x^T e^{-\kappa (s-x)}\sigma ds dW(x) \\<br>
+&amp;= \int_0^t \int_t^T e^{-\kappa (s-t+t-x)}\sigma ds dW(x) + \sigma \int_t^T \Lambda(T-x)dW(x) \\<br>
+&amp;= \int_0^t e^{-\kappa(t-x)} \sigma dW(x) , \Lambda(T-t) + \sigma \int_t^T \Lambda(T-x)dW(x).
+\end{aligned}
+$$
+If terms $I$&ndash;$III$ are added together, then we see that $\int_x^T e^{-\kappa(s-x)} ds$ is an affine transformation of the prevailing short rate $r(t)$, i.e.
+$$
+\begin{aligned}
+\int_t^T &amp;r(s) ds \\<br>
+&amp; = I+II+III \\<br>
+&amp;= \left[ r(0) e^{-\kappa t} +  \int_0^t e^{-\kappa(t-x)}\kappa \theta dx+\int_0^t e^{-\kappa(t-x)} \sigma dW(x) \right] \Lambda(T-t) \\<br>
+&amp;\quad+ \kappa \theta \int_t^T \Lambda(T-x) dx+\sigma \int_t^T \Lambda(T-x)dW(x) \\<br>
+&amp;= r(t) \Lambda(T-t)+\kappa \theta \int_t^T \Lambda(T-x) dx+\sigma \int_t^T \Lambda(T-x)dW(x).
+\end{aligned}
+$$
+Conditional on all information up to time t, i.e. conditional on $\mathcal{F}_t$, the first two terms are deterministic. Moreover, since (1) increments of Brownian motions are independent of the current value and (2) stochastic integrals are normally distributed, we know that $ \left.\int_t^T r(s) ds\right| \mathcal{F}_t$ is normally distributed with mean
+$$
+\begin{aligned}
+r(t) \Lambda(T-t) &amp;+\kappa \theta \int_t^T \Lambda(T-x) dx \\<br>
+&amp;= r(t) \Lambda(T-t)+\kappa \theta \int_0^{T-t} \Lambda(x) dx \\<br>
+&amp;= r(t) \Lambda(T-t) + \theta\Big[(T-t) - \Lambda(T-t) \Big]
+\end{aligned}
+$$
+and by Itô isometry a variance of
+$$
+\begin{aligned}
+\sigma^2 \int_t^T &amp;\big[ \Lambda(T-x) \big]^2 dx = \sigma^2 \int_0^{T-t} \big[ \Lambda(x) \big]^2 dx \\<br>
+&amp;= \tfrac{\sigma^2}{\kappa^2} \int_0^{T-t} \left( 1-2 e^{-\kappa x} + e^{-2\kappa x} \right) dx \\<br>
+&amp;= \tfrac{\sigma^2}{\kappa^2} \left[ (T-t) -2 \int_0^{T-t} e^{-\kappa x} dx + \tfrac{1}{2} \int_0^{2(T-t)} e^{-\kappa x} dx  \right] \\<br>
+&amp;= \tfrac{\sigma^2}{\kappa^2} \left[  (T-t) -2 \Lambda(T-t) + \tfrac{1}{2} \Lambda\Big(2(T-t) \Big) \right].
+\end{aligned}
+$$</p>
+<h2 id="references">References</h2>
+<p>N. H. Bingham and R. Kiesel (2004), <em>Risk-neutral Valuation</em>, Springer Finance.</p>
+<p>D. Filipović (2009), <em>Term-structure Models</em>, Springer Finance.</p>
+<p>T. Mikosch (1998), <em>Elementary Stochastic Calculus with Finance in View</em>, World Scientific.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://HannoReuvers.github.io/post/vasicek/&amp;text=The%20Vasi%c4%8dek%20short-rate%20model" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://HannoReuvers.github.io/post/vasicek/&amp;t=The%20Vasi%c4%8dek%20short-rate%20model" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=The%20Vasi%c4%8dek%20short-rate%20model&amp;body=https://HannoReuvers.github.io/post/vasicek/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://HannoReuvers.github.io/post/vasicek/&amp;title=The%20Vasi%c4%8dek%20short-rate%20model" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=The%20Vasi%c4%8dek%20short-rate%20model%20https://HannoReuvers.github.io/post/vasicek/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://HannoReuvers.github.io/post/vasicek/&amp;title=The%20Vasi%c4%8dek%20short-rate%20model" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://HannoReuvers.github.io/">Hanno Reuvers</a></h5>
+      <h6 class="card-subtitle">Assistant Professor</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/files/cv.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/HannoReuvers" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
