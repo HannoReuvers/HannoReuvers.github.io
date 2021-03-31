@@ -630,7 +630,7 @@ dr(t) = \kappa \big( \theta -r(t)\big) dt + \sigma dW(t),
 \tag{1}
 \label{eq:Vasicek_dif_eq}
 \end{equation}
-with initial condition $r(0) = r_0$ and $W(t)$ denoting a standard Brownian motion driving the stochastic differential equation. An explicit expression for $r(t)$ can be derived using Itô calculus (see, e.g.  Mikosch(1998); Chapter 3). To solve \eqref{eq:Vasicek_dif_eq}, we try the solution $f\big(r(t),t\big) = r(t) e^{\kappa t}$. The Itô lemma implies
+with initial condition $r(0) = r_0$ and $W(t)$ denoting a standard Brownian motion driving the stochastic differential equation. An explicit expression for $r(t)$ can be derived using Itô calculus (see, e.g.  Mikosch (1998); Chapter 3). To solve \eqref{eq:Vasicek_dif_eq}, we try the solution $f\big(r(t),t\big) = r(t) e^{\kappa t}$. The Itô lemma implies
 \begin{equation}
 \begin{aligned}
 df\big(r(t),t\big)
@@ -740,7 +740,7 @@ and variance
 $$
 \tfrac{\sigma^2}{\kappa^2} \Big[  (T-t) -2 \Lambda(T-t) + \tfrac{1}{2} \Lambda \big(2(T-t) \big) \Big].
 $$
-The expectation in \eqref{eq:zerocouponbond} can be calculated rather quickly using moment generating functions. For a random variable $Y$, its moment generating function is defined as $M_Y(t) = \mathbb{E}\left[ e^{tY} \right]$. If $Y$ is normally distribution, say $Y\sim\mathcal{N}(\mu,\sigma^2)$, then $M_Y(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}$. To evaluate \eqref{eq:zerocouponbond}, we use this result for $t=-1$ and find that the time-$t$ price of a zero-coupon bond with maturity $T$ equals</p>
+The expectation in \eqref{eq:zerocouponbond} can be calculated rather quickly using moment generating functions. For a random variable $Y$, its moment generating function is defined as $M_Y(t) = \mathbb{E}\left[ e^{tY} \right]$. If $Y$ is normally distributed, say $Y\sim\mathcal{N}(\mu,\sigma^2)$, then $M_Y(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}$. To evaluate \eqref{eq:zerocouponbond}, we use this result for $t=-1$ and find that the time-$t$ price of a zero-coupon bond with maturity $T$ equals</p>
 <p>\begin{equation}
 \begin{aligned}
 P(t,T)
@@ -761,7 +761,7 @@ At long maturities, as $T\to\infty$, the yield converges to $\theta - \tfrac{\si
 $$
 d r(t) = a\big(t,r(t)\big) dt + b\big(t,r(t) \big) dW(t)
 $$
-and write $P(t,T) = F(t,r(t);T)$ to explicitly indicate the dependence on $r(t)$. For brevity, we will sometimes in this section omit the function arguments, e.g. write $F$ instead of $F(t,r(t);T)$. The Feynman-Kac formula (see, e.g. ) stipulates that $F(t,r(t);T)$ solves the partial differential equation (PDE)</p>
+and write $P(t,T) = F(t,r(t);T)$ to explicitly indicate the dependence on $r(t)$. For brevity, we will sometimes in this section omit the function arguments, e.g. write $F$ instead of $F(t,r(t);T)$. The Feynman-Kac formula (see, e.g. Bingham and Kiesel (2004); Proposition 8.2.2) stipulates that $F(t,r(t);T)$ solves the partial differential equation (PDE)</p>
 <p>\begin{equation}
 \frac{\partial F}{\partial t} + a \frac{\partial F}{\partial r} + \frac{b^2}{2} \frac{\partial^2 F}{\partial r^2} - r F = 0,
 \label{eq:FeynmanKac}
@@ -807,7 +807,7 @@ $$
 \end{aligned}
 $$
 where we used $\int_t^T e^{-\kappa (T-s)} ds = \tfrac{1}{\kappa}\left[ 1 - e^{-\kappa (T-t)} \right] = \Lambda(T-t)$ and $\int_t^T e^{-2\kappa(T-s)}ds= \frac{1}{2} \Lambda \big( 2(T-t)\big)$. The overall expression for $P(t,T) = F(t,r(t);T)$ coincides with the result from the previous section.</p>
-<h2 id="verification-by-monte-carlo-simulation">Verification by Monte-Carlo simulation</h2>
+<h2 id="verification-by-monte-carlo-simulation">Verification by Monte Carlo simulation</h2>
 <p>If we like to avoid extensive algebraic computations, then we can opt for a simulation approach. That is, we approximate the expectation in \eqref{eq:zerocouponbond} by Monte Carlo simulation. Our example is $P(0,T)=\mathbb{E}_{\mathbb{Q}}\big[e^{-\int_0^T r(s) ds} \big]$. The steps are as follows:</p>
 <ol>
 <li>Partition the interval $[0,T]$ in $n$ intervals of equal length. For $j=0,1,\ldots,n$, the implied grid points are $t_j =  j\tfrac{T}{n}$.</li>
