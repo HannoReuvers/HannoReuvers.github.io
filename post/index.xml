@@ -5,85 +5,12 @@
     <link>https://HannoReuvers.github.io/post/</link>
       <atom:link href="https://HannoReuvers.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 03 Apr 2021 00:00:00 +0200</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0100</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Posts</title>
       <link>https://HannoReuvers.github.io/post/</link>
     </image>
-    
-    <item>
-      <title>Population forecasting with the Lee-Carter model</title>
-      <link>https://HannoReuvers.github.io/post/population-forecasting/</link>
-      <pubDate>Sat, 03 Apr 2021 00:00:00 +0200</pubDate>
-      <guid>https://HannoReuvers.github.io/post/population-forecasting/</guid>
-      <description>&lt;h2 id=&#34;introducing-the&#34;&gt;Introducing the&lt;/h2&gt;
-&lt;p&gt;The population of a country consists of people who each have their unique features and talents. As a simpliflication, we focus on a single individual for now. That is, we let $(x)$ denote a life aged $x$ (where $x\geq 0$). The death of $(x)$ is unknown and we therefore introduce the continuous random variable $T_x$ to model the remaining lifetime. This implies that $(x)$ will live to the age of $x+T_x$. Further notation related to the random variable $T_x$ is collected in Table 1.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Name&lt;/th&gt;
-&lt;th&gt;Notation&lt;/th&gt;
-&lt;th&gt;``Probability that $(x)$&amp;hellip;&amp;rsquo;&amp;rsquo;&lt;/th&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Distribution function&lt;/td&gt;
-&lt;td&gt;$F_x(t) = \mathbb{P}(T_x\leq t)$ $[ _tq_x ]$&lt;/td&gt;
-&lt;td&gt;&amp;hellip; dies before age $x+t$&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Survival function&lt;/td&gt;
-&lt;td&gt;$S_x(t) = 1- F_x(t)$ $[ _tp_x ]$&lt;/td&gt;
-&lt;td&gt;&amp;hellip; survives to at least age $x+t$&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ol&gt;
-&lt;li&gt;Explain force of mortality (use newly downloaded book)&lt;/li&gt;
-&lt;li&gt;Lee-Carter model&lt;/li&gt;
-&lt;li&gt;Estimation&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The remainder of this post consists of four parts. I first illustrate/explain the two advantages mentioned above. The subsequent discussion revolves around the choice of the penalization parameter. Finally, there is a section on Monte Carlo simulation. This&lt;/p&gt;
-&lt;h2 id=&#34;the-bare-rock-model&#34;&gt;The bare-rock model&lt;/h2&gt;
-&lt;p&gt;The bare-rock model is a stylized model to explain the temperature on earth. This earth is represented by a large ball with a single uniform temperature. An energy balance between incoming sunlight and heat loss to space determines the temperature on our planet.&lt;/p&gt;
-&lt;h4 id=&#34;energy-received-by-the-earth&#34;&gt;Energy received by the earth&lt;/h4&gt;
-&lt;p&gt;When taking a walk on a beautiful summer day, you will feel the warmth of the sun. Similarly, the earth is continuously heated by the sun. How much energy is our spherical earth receiving from the sun? Let $I_{sun}$ denote the energy influx of sunlight, i.e. the amount of incoming energy per second and per $\text{m}^2$. To calculate the amount of energy absorbed per second, we have to multiply $I_{sun}$ by the area of the earth which is absorbing sunlight. An inspection of Figure 2 shows that the relevant area equals $\pi r_{earth}^2$. We additionally have to account for the fact that snow, ice, and clouds will reflect a fraction of the incoming sunlight back to space. This fraction is called the albedo and is generally denoted by $\alpha$. If a fraction $\alpha$ is reflected, then there remains a fraction $1-\alpha$ to be absorbed. Overall, the effective incoming flux of solar energy is:
-\begin{equation}
-\label{eq1}
-F_{in} [\text{Watt}]= I_{sun} \times \pi r_{earth}^2 \times (1-\alpha).
-\end{equation}
-The units of this energy flux is Watt (also abbreviated by W).[^3]&lt;/p&gt;
-&lt;h2 id=&#34;the-simulation-setting&#34;&gt;The simulation setting&lt;/h2&gt;
-&lt;p&gt;The data generating process for the simulations is inspired by Example 4.1 of Fan and Li (2001).&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; That is, we consider the linear regression model
-$$
-y_i = \mathbf x_i^\prime \boldsymbol \beta + \varepsilon_i, \qquad\qquad i=1,\ldots,n,
-$$
-where $\boldsymbol \beta = [3,1.5,0,0,2,0,0,0]^\prime$ and the error terms $\{ \varepsilon_i \}_{i=1}^n$ are drawn as independent standard normally distributed random variables. In each Monte Carlo replication, the vector of explanatory variables $\mathbf x_i$ is redrawn from a multivariate normal distribution with mean vector $\boldsymbol 0$ and a Toeplitz covariance matrix, i.e.
-$$
-\mathbf x_i \sim \mathcal{N}\left( \boldsymbol 0 , \begin{bmatrix} 1 &amp;amp; \rho &amp;amp; \cdots &amp;amp; \rho^7 \\ \rho &amp;amp;1 &amp;amp; \cdots &amp;amp;\rho^6 \\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ \rho^7 &amp;amp; \rho^6 &amp;amp; \cdots &amp;amp; 1\end{bmatrix} \right).
-$$&lt;/p&gt;
-&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;J. Fan and R. Li (2001), &lt;em&gt;Variable Selection via Nonconcave Penalized Likelihood and its Oracle Properties&lt;/em&gt;, Journal of the American Statistical Association &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
-</description>
-    </item>
     
     <item>
       <title>The Vasiček short-rate model</title>
