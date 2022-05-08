@@ -5,7 +5,7 @@
     <link>https://HannoReuvers.github.io/publication/</link>
       <atom:link href="https://HannoReuvers.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Sep 2020 00:02:00 +0200</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 31 Dec 2021 00:02:00 +0100</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Publications</title>
@@ -15,15 +15,15 @@
     <item>
       <title>Sparse Generalized Yule-Walker Estimation of Large Spatio-temporal Models with an Application to NO2 Satellite Data</title>
       <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
-      <pubDate>Tue, 01 Sep 2020 00:02:00 +0200</pubDate>
+      <pubDate>Fri, 31 Dec 2021 00:02:00 +0100</pubDate>
       <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Cointegrating Polynomial Regressions with Power Law Trends: A New Angle on the Environmental Kuznets Curve</title>
+      <title>Cointegrating Polynomial Regressions with Power Law Trends: Environmental Kuznets Curve or Omitted Time Effects?</title>
       <link>https://HannoReuvers.github.io/publication/flexible-trend/</link>
-      <pubDate>Sat, 01 Aug 2020 00:02:00 +0200</pubDate>
+      <pubDate>Mon, 13 Dec 2021 00:02:00 +0100</pubDate>
       <guid>https://HannoReuvers.github.io/publication/flexible-trend/</guid>
       <description></description>
     </item>

@@ -5,12 +5,28 @@
     <link>https://HannoReuvers.github.io/</link>
       <atom:link href="https://HannoReuvers.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Hanno Reuvers</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0100</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 31 Dec 2021 00:02:00 +0100</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Hanno Reuvers</title>
       <link>https://HannoReuvers.github.io/</link>
     </image>
+    
+    <item>
+      <title>Sparse Generalized Yule-Walker Estimation of Large Spatio-temporal Models with an Application to NO2 Satellite Data</title>
+      <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
+      <pubDate>Fri, 31 Dec 2021 00:02:00 +0100</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cointegrating Polynomial Regressions with Power Law Trends: Environmental Kuznets Curve or Omitted Time Effects?</title>
+      <link>https://HannoReuvers.github.io/publication/flexible-trend/</link>
+      <pubDate>Mon, 13 Dec 2021 00:02:00 +0100</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/flexible-trend/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>The Vasiček short-rate model</title>
@@ -379,22 +395,6 @@ $$&lt;/p&gt;
     </item>
     
     <item>
-      <title>Sparse Generalized Yule-Walker Estimation of Large Spatio-temporal Models with an Application to NO2 Satellite Data</title>
-      <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
-      <pubDate>Tue, 01 Sep 2020 00:02:00 +0200</pubDate>
-      <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cointegrating Polynomial Regressions with Power Law Trends: A New Angle on the Environmental Kuznets Curve</title>
-      <link>https://HannoReuvers.github.io/publication/flexible-trend/</link>
-      <pubDate>Sat, 01 Aug 2020 00:02:00 +0200</pubDate>
-      <guid>https://HannoReuvers.github.io/publication/flexible-trend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Efficient Estimation by Fully Modified GLS with an Application to the Environmental Kuznets Curve</title>
       <link>https://HannoReuvers.github.io/publication/ekc-paper/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0200</pubDate>
@@ -419,7 +419,7 @@ $$&lt;/p&gt;
     </item>
     
     <item>
-      <title>Climate Econometrics 1: the greenhouse effect</title>
+      <title>The greenhouse effect</title>
       <link>https://HannoReuvers.github.io/post/climate-econometrics-1/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0200</pubDate>
       <guid>https://HannoReuvers.github.io/post/climate-econometrics-1/</guid>
