@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Hanno Reuvers">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Benchmark stochastic volatility models">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://HannoReuvers.github.io/post/garch11/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://HannoReuvers.github.io/post/garch11/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Hanno Reuvers">
+  <meta property="og:url" content="https://HannoReuvers.github.io/post/garch11/">
+  <meta property="og:title" content="The GARCH(1,1) model and its extensions | Hanno Reuvers">
+  <meta property="og:description" content="Benchmark stochastic volatility models"><meta property="og:image" content="https://HannoReuvers.github.io/post/garch11/featured.png">
+  <meta property="twitter:image" content="https://HannoReuvers.github.io/post/garch11/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2022-05-10T00:00:00&#43;02:00">
+    
+    <meta property="article:modified_time" content="2022-05-10T00:00:00&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://HannoReuvers.github.io/post/garch11/"
+  },
+  "headline": "The GARCH(1,1) model and its extensions",
+  
+  "image": [
+    "https://HannoReuvers.github.io/post/garch11/featured.png"
+  ],
+  
+  "datePublished": "2022-05-10T00:00:00+02:00",
+  "dateModified": "2022-05-10T00:00:00+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Hanno Reuvers"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hanno Reuvers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://HannoReuvers.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Benchmark stochastic volatility models"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>The GARCH(1,1) model and its extensions | Hanno Reuvers</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#teaching"><span>Teaching</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#links"><span>Links</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>The GARCH(1,1) model and its extensions</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 10, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    16 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/HannoReuvers/GARCHOneOne" target="_blank" rel="noopener">
+  Code
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>The GARCH(1,1) model was proposed in Bollerslev (1986). The early publication date of this paper might give the impression that the model is somewhat outdated. Regardless of whether or not this last sentence is true, there are still two important reasons to discuss this model: (1) a discussion of the GARCH(1,1) model facilitates the understanding of more complex univariate GARCH specifications, and (2) many multivariate GARCH models follow a similar methodology. The GARCH(1,1) specification reads:</p>
+<p>\begin{equation}
+\begin{aligned}
+y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1), \\<br>
+\sigma_t^2 &amp;= \omega + \alpha y_{t-1}^2 + \beta \sigma_{t-1}^2,
+\end{aligned}
+\tag{1}
+\label{eq:GARCHspec}
+\end{equation}
+where $\eta_t \stackrel{i.i.d.}{\sim} (0,1)$ is shorthand indicating an independent and identically distributed series ${\eta_t}$ with mean $\mathbb{E}[\eta_t]=0$ and variance $\mathbb{V}\mathrm{ar}[\eta_t]=1$. The unknown parameters in the model are $\omega&gt;0$, $\alpha\geq 0$, and $\beta\geq 0$. For convenience, we stack all parameters in the $(3\times 1)$ vector $\boldsymbol{\theta}=(\omega,\alpha,\beta)^\prime$.</p>
+<p>The GARCH(1,1) model defines the volatility process ${\sigma_t^2}$ recursively. To see this, we note that $y_{t-1}^2=\sigma_{t-1}^2 \eta_{t-1}^2$ and rewrite the volatility recursion in \eqref{eq:GARCHspec} as $\sigma_t^2=\omega+\big(\alpha \eta_{t-1}^2+ \beta  \big)\sigma_{t-1}^2$. By repeated substitution, the volatility process $\sigma_t^2$ is subsequently rewritten as
+\begin{equation}
+\begin{aligned}
+\sigma_t^2
+&amp;= \omega + \big( \alpha \eta_{t-1}^2+ \beta \big) \sigma_{t-1}^2 \\<br>
+&amp;= \omega + \big( \alpha \eta_{t-1}^2+ \beta \big) \Bigg( \omega + \big( \alpha \eta_{t-2}^2+ \beta \big) \sigma_{t-2}^2 \Bigg) \\<br>
+&amp;= \ldots = \omega \left(1 + \sum_{j=1}^\infty \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \right),
+\end{aligned}
+\tag{2}
+\label{eq:sigma2expr}
+\end{equation}
+whenever the infinite sum $ \sum_{j=1}^\infty \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big)$ converges in a statistically meaningful sense. A sufficient condition for convergence (see, e.g. section 2.2 in Francq and Zakoian (2019)) is
+\begin{equation}
+\mathbb{E}\Big[\log(\alpha \eta_t^2 + \beta) \Big] &lt; 0.
+\tag{3}
+\label{eq:stationaritycondition}
+\end{equation}
+This convergence criterion depends on: the parameter $\alpha$, the parameter $\beta$, and the distribution of $\eta_t$. Overall, if condition \eqref{eq:stationaritycondition} is fulfilled, then the GARCH(1,1) process is uniquely defined and it will be strictly stationary.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> More stringent parameter conditions are needed to guarantee finite higher moments. An illustration is provided in Figure 1.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="StationarityRegions.png" data-caption="Figure 1: The coloured parameter regions indicate strict stationarity (blue&#43;red&#43;gray), second-order stationarity (blue&#43;red), and stationarity with finite fourth moments (blue). Expectations have been simulated using $1\times 10^6$ Monte Carlo replications.">
+<img data-src="StationarityRegions.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 1: The coloured parameter regions indicate strict stationarity (blue+red+gray), second-order stationarity (blue+red), and stationarity with finite fourth moments (blue). Expectations have been simulated using $1\times 10^6$ Monte Carlo replications.
+  </figcaption>
+
+
+</figure>
+
+<h2 id="statistical-properties-of-the-garch11-process">Statistical Properties of the GARCH(1,1) Process</h2>
+<p>We first investigate the covariance structure of the levels of a GARCH(1,1) process. Let $\mathcal{F}_t=\sigma(y_u; u\leq t)$ denote the $\sigma$-algebra containing all information up to and including time $t$. Since $\sigma_t$ depends solely on observations prior to time $t$, the law of iterated expectations provides</p>
+<p>\begin{equation}
+\mathbb{E}[y_t] = \mathbb{E}\Big[ \mathbb{E}[y_t  \mathcal{F}_{t-1}] \Big]= \mathbb{E}\Big[ \sigma_{t} \mathbb{E}[ \eta_t  \mathcal{F}_{t-1}] \Big]=0.
+\end{equation}</p>
+<p>Similarly, since $\mathbb{V}\text{ar}[\eta_t]=\mathbb{E}[\eta_t^2]=1$, we have $\mathbb{V}\text{ar}[y_t]=\mathbb{E}[\sigma_t^2]$. This last expectation is rather easily computed using \eqref{eq:sigma2expr}. Indeed, the i.i.d. property of the series ${\eta_t}$ combined with $\mathbb{E}[a(\eta_{t-i};\boldsymbol \theta)]=\alpha+\beta$ (for any $i\in\mathbb{Z}$) provides</p>
+<p>\begin{equation}
+\begin{aligned}
+\mathbb{E}[\sigma_t^2]
+&amp;= \omega \left(1 + \sum_{i=1}^\infty \mathbb{E}\big[a(\eta_{t-1}^2;\boldsymbol \theta)\big] \cdots \mathbb{E}\big[ a(\eta_{t-i}^2;\boldsymbol \theta) \big] \right) \\<br>
+&amp;= \omega \left(1 + \sum_{i=1}^\infty (\alpha+\beta)^i \right)= \frac{\omega}{1-\alpha-\beta},
+\end{aligned}
+\label{eq:expsigma2}
+\end{equation}</p>
+<p>assuming that the geometric series converges, i.e. assuming $\alpha+\beta&lt;1$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> The covariance structure of the levels of the GARCH(1,1) process is now clear. If $\alpha+\beta&lt;1$, then $\mathbb{V}\text{ar}[y_t]=\omega/(1-\alpha-\beta)$ and
+$$
+\begin{aligned}
+\mathbb{C}\text{ov}[y_t, y_{t-j}]
+&amp;= \mathbb{E}[y_t y_{t-j}] \\<br>
+&amp;= \mathbb{E}\big[ \sigma_t y_{t-j} \mathbb{E}[\eta_t|\mathcal{F}_{t-1}] \big] = 0,\qquad\text{for }j=1,2,\ldots.
+\end{aligned}
+$$
+Overall, this shows that the levels of a GARCH(1,1) process have an unconditional variance of $\mathbb{V}\text{ar}[y_t]=\omega/(1-\alpha-\beta)$ and do not exhibit autocorrelation.</p>
+<p>Because the GARCH(1,1) process is designed to model volatility (the second moment), all interesting properties are related to the covariance structure of $y_t^2$. The kurtosis of $y_t$, $\kappa_y = \mathbb{E}[y_t^4]/\big(\mathbb{V}\text{ar}[y_t]\big)^2$, is computed along the way. As full derivations are somewhat tedious, we relegate all details to the appendix. The two most important findings are:</p>
+<ol>
+<li>If $\lambda = \mathbb{E}\big[(\alpha \eta_t^2+ \beta)^2\big] &lt;1$, then $\kappa_y$ exists. Denoting the kurtosis of the innovations by $\kappa_\eta = \mathbb{E}[\eta_t^4]$, its mathematical expression is
+$$
+\begin{aligned}
+\kappa_y
+&amp;= \left( 1 + \frac{\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]}{1-\lambda} \right)  \kappa_\eta \\<br>
+&amp;=  \frac{1-(\alpha+\beta)^2}{1-(\alpha+\beta)^2 - \alpha^2(\kappa_\eta -1)} \kappa_\eta.
+\end{aligned}
+$$
+The recursive nature of the volatility process thus causes the kurtosis of the GARCH(1,1) process  to exceed the kurtosis of its innovations.</li>
+<li>The autocorrelations of the squares of a GARCH(1,1) process decay geometrically, i.e. $\rho_k = \mathbb{C}\mathrm{or}[y_t^2,y_{t-k}^2] = \rho_1(\boldsymbol \theta) (\alpha+\beta)^{k-1}$ where $\rho_1(\boldsymbol \theta)$ is a function of the parameters $\alpha$ and $\beta$ but not of $k$.</li>
+</ol>
+<h2 id="estimation">Estimation</h2>
+<p>GARCH(1,1) models are frequently estimated by <em>conditional Gaussian quasi-maximum likelihood</em>. The second part of this terminology, Gaussian quasi-maximum likelihood, refers to the gaussianity assumption we place upon the distribution of ${\eta_t}$. That is, our likelihood derivation simply assumes $\eta_t \stackrel{i.i.d.}{\sim} \mathcal{N}(0,1)$ even when the true innovation density is different. Our inference is conditional because we select some fixed initial values for $y_0$ and $\sigma_0^2$ ourselves. The precise estimation steps are enumerated below.</p>
+<p><strong>Step 1.</strong> Set initial values for $y_0$ and $\tilde\sigma_0^2$. A common choice is the unconditional variance for the volatility, $\tilde\sigma_0^2=\omega/(1-\alpha-\beta)$, and $y_0=\tilde\sigma_0$.</p>
+<p><strong>Step 2.</strong> Given the observations $y_1,\ldots,y_T$ and a parameter vector $\boldsymbol \theta=(\omega,\alpha,\beta)$&rsquo;, we recursively compute $\{\tilde\sigma_t^2(\boldsymbol \theta)\}_{1\leq t\leq T}$ using
+\begin{equation}
+\tilde\sigma_t^2(\boldsymbol \theta) = \tilde\sigma_t^2 = \omega + \alpha y_{t-1}^2 + \beta \tilde\sigma_{t-1}^2.
+\label{eq:ApproximateVolatility}
+\end{equation}
+The value of $\tilde\sigma_t^2(\boldsymbol \theta)$ is determined by all observations up to and including time $t-1$.</p>
+<p><strong>Step 3.</strong> Approximating the volatility process $\sigma_t^2$ by $\tilde\sigma_t^2(\boldsymbol \theta) $ and recalling the gaussianity assumption on the innovations, we have $y_t|y_{t-1},\ldots,y_1\sim \mathcal{N}(0,\tilde\sigma_t^2)$. The quasi-likelihood is thus
+$$
+L_T(\boldsymbol \theta) = \prod_{i=1}^T \frac{1}{\sqrt{2\pi \tilde\sigma_t^2(\boldsymbol \theta)}} \exp\left( - \frac{y_t^2}{2 \tilde\sigma_t^2(\boldsymbol \theta)} \right).
+$$
+The maximisation of the quasi-likelihood is identical to the minimisation of
+$$
+\bar\ell_T(\boldsymbol \theta) = \frac{1}{T} \sum_{t=1}^T \tilde\ell_t(\boldsymbol \theta),\text{ where }\tilde\ell_t(\boldsymbol \theta) = \frac{y_t^2}{\tilde\sigma_t^2(\boldsymbol \theta)} + \log\big( \tilde\sigma_t^2(\boldsymbol \theta) \big).
+$$
+This latter representation is more suitable when numerically solving this nonlinear optimisation problem. Stationarity conditions can be imposed during estimation.</p>
+<h2 id="parameter-inference">Parameter Inference</h2>
+<p>Under suitable regularity conditions, the quasi-maximum likelihood estimator (QMLE) $\hat{\boldsymbol \theta}_T$ is asymptotically normally distributes:</p>
+<p>\begin{equation}
+\sqrt{T} \big( \hat{\boldsymbol \theta}_T - \boldsymbol\theta \big) \stackrel{D}{\rightarrow} \mathcal{N}\Big( \boldsymbol 0,(\kappa_\eta-1) \mathbf{J}^{-1}\Big) \qquad\text{as}\qquad T\to\infty,
+\label{eq:AsymptoticDistribution}
+\tag{4}
+\end{equation}</p>
+<p>where $\kappa_\eta=\mathbb{E}[\eta_t^4]$ (the kurtosis of the innovations) and $\boldsymbol J = \mathbb{E}\left[\frac{\partial^2 \ell_t}{\partial \boldsymbol \theta \partial \boldsymbol \theta&rsquo;}\right]$ with $\ell_t=\frac{y_t^2}{\sigma_t^2(\boldsymbol \theta)} + \log\big( \sigma_t^2(\boldsymbol \theta) \big)$. The full details of the derivation can be found in Chapter 7 of Francq and Zakoian (2019). Broadly speaking, the proof consists of three steps:</p>
+<ol>
+<li>
+<p>Establishing that $\{\tilde{\sigma}_t^2(\boldsymbol \theta)\}$ is close to $\{\sigma_t^2(\boldsymbol \theta)\}$. That is, the initialisation of $y_0$ and $\tilde\sigma_0^2$ in Step 1 should have a negligible influence asymptotically. This is expected to hold because stationarity requirements such as $\alpha+\beta&lt;1$ imply both $\alpha&lt;1$ and $\beta&lt;1$. Looking at the recursion $\sigma_t^2 = \omega + \alpha y_{t-1}^2 + \beta \sigma_{t-1}^2$, we see that the impact of the initialisation will decay rapidly in $t$.</p>
+</li>
+<li>
+<p>Proving consistency of the QMLE, i.e. proving $\hat{\boldsymbol \theta}_T \stackrel{P}{\to} \boldsymbol\theta$ as $T\to\infty$. This is the most difficult step because it requires (uniform) convergence of the objective function to a limiting criterion function with a unique optimum.</p>
+</li>
+<li>
+<p>As in the usual likelihood framework, a mean-value expansion of the gradient of the quasi-likelihood around $\boldsymbol \theta$ provides the asymptotic distribution.</p>
+</li>
+</ol>
+<p>The result in \eqref{eq:AsymptoticDistribution} is rather easily used for (asymptotically) valid inference because consistent estimators for $\boldsymbol J$ and  $\kappa_\eta$ are readily available. A consistent estimator for $\boldsymbol J$ is the Hessian of the average quasi-likelihood evaluated at $\hat{\boldsymbol\theta}_T$:</p>
+<p>$$
+\hat{\boldsymbol J}_T = \frac{\partial^2\bar\ell_T(\hat{\boldsymbol\theta}_T)}{\partial \boldsymbol \theta \partial \boldsymbol \theta&rsquo;}
+= \frac{1}{T} \sum_{t=1}^T\frac{\partial \tilde\ell_t(\hat{\boldsymbol\theta}_T)}{\partial \boldsymbol \theta \partial \boldsymbol \theta&rsquo;}.
+$$</p>
+<p>This Hessian matrix is usually immediately available from the numerical optimiser. A subsequent run of the volatility recursions at the estimated parameters gives estimated innovations $\hat\eta_t = y_t/ \tilde\sigma_t(\hat{\boldsymbol \theta}_T)$ ($t=1,\ldots,T$). The sample kurtosis of these estimated innovations consistently estimates $\kappa_\eta$.</p>
+<h2 id="illustration">Illustration</h2>
+<p>We illustrate the model using log-returns from the AEX index for 2000/08/08 until 2021/08/04. The $T=5400$ observations are visualised in Figure 2(a).<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> The Gaussian quasi-maximum likelihood estimates are: $\hat\omega=2.33\times 10^{-6}$, $\hat\alpha=0.109$, and $\hat\beta=0.876$. With these parameter estimates, we can initialise the estimated volatility process as $\hat\sigma_0=\hat\omega/(1-\hat\alpha-\hat\beta)$ and iterate through $\hat\sigma_t = \hat\omega + \hat\alpha y_{t-1}^2+\hat\beta \hat\sigma_{t-1}^2$ to approximate the volatility over time (Figure 2(b)). Clearly, the estimated volatility peaks during the Global Financial crisis (2008/09/29) and around the introduction of the preventive Coronavirus regulations in the Netherlands (2020/03/12). The ability to model the conditional volatility as time-varying and thereby capture volatility clusters is one of the successes of GARCH modelling.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="AEXOverviews.png" data-caption="Figure 2: The log returns of the AEX index (left) and estimated volatility (right).">
+<img data-src="AEXOverviews.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 2: The log returns of the AEX index (left) and estimated volatility (right).
+  </figcaption>
+
+
+</figure>
+
+<p>This empirical example can also demonstrate how the GARCH(1,1) model can successfully replicate other stylised facts from financial data. First, we look at the autocorrelation function (ACF) of both $y_t$ and $y_t^2$ (Figure 3). The absence of autocorrelation in $y_t$ and the slow decay of the autocorrelations in $y_t^2$ align well with the theoretical properties of the GARCH(1,1) model. Second, some statistical characteristics of the innovations can be explored through the residuals $\hat\eta_t = y_t/\hat\sigma_t$ ($t=1,\ldots,T$). The sample kurtosis of the log-returns and residuals are $\hat\kappa_y = 10.55$ and $\hat\kappa_\eta=4.10$, respectively. The mismatch between these numbers indicates that the recursive structure of the GARCH(1,1) model should amplify the tails of the innovation distribution considerably.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="AutocorrelationOverview.png" data-caption="Figure 3: The autocorrelations for the levels and squares of the data. The dashed red lines at $\pm1.96/\sqrt{n}$ are the approximate 95% confidence interval of a strong white noise.">
+<img data-src="AutocorrelationOverview.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 3: The autocorrelations for the levels and squares of the data. The dashed red lines at $\pm1.96/\sqrt{n}$ are the approximate 95% confidence interval of a strong white noise.
+  </figcaption>
+
+
+</figure>
+
+<h2 id="extensions">Extensions</h2>
+<p>The main idea behind the GARCH(1,1) process, i.e. the volatility update based on past volatility and past realisations, can be generalised beyond the current GARCH(1,1) setting. A non-exhaustive list of generalisations is presented below.</p>
+<ol>
+<li>
+<p>The digits in the GARCH(1,1) specification indicate the number of lags of the volatility and squared observations influencing $\sigma_t^2$, respectively. That is, the general GARCH($p$,$q$) process reads
+\begin{equation}
+\begin{aligned}
+y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1). \\<br>
+\sigma_t^2 &amp;= \omega +  \sum_{i=1}^q \alpha y_{t-i}^2 + \sum_{j=1}^p \beta_j \sigma_{t-j}^2,
+\end{aligned}
+\label{eq:GARCHpq}
+\end{equation}
+Clearly, the GARCH(1,1) process is simply a GARCH($p$,$q$) process with $p=q=1$. The additional lags in the GARCH($p$,$q$) allow for a better fit to the data while keeping the developed intuition from the GARCH(1,1) model intact. The paper by P. R. Hansen and A. Lunde &ndash; <em>A Forecast Comparison of Volatility Models: Does Anything Beat a GARCH(1,1)?</em> &ndash; probably explains why the GARCH(1,1) model has become somewhat of a benchmark.</p>
+</li>
+<li>
+<p>The volatility of the GARCH(1,1) model does not distinguish positive and negative past returns. That is, only $y_{t-1}^2$ (note the square) affects the volatility. However, if volatility is interpreted as riskiness, then we might expect a past negative return to have a larger impact on volatility than a past positive return. A Threshold GARCH (TGARCH) model  allows for this leverage effect. Defining $y_t^+=\max(y_t,0)$ and $y_t^- = \max(-y_t,0)$, the TGARCH(1,1) specification is
+\begin{equation}
+\begin{aligned}
+y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1). \\<br>
+\sigma_t^2 &amp;= \omega + \alpha_{1,+} y_{t-1}^+  + \alpha_{1,-} y_{t-1}^- + \beta \sigma_{t-1}^2,
+\end{aligned}
+\label{eq:TGARCHspec}
+\end{equation}</p>
+</li>
+<li>
+<p>Multivariate extensions of the GARCH(1,1) model are needed if multiple return series are to be investigated simultaneously. Let $\mathbf{y}_t\in \mathbb{R}^m$ denote the $m$-dimensional return vector at time $t$. There are two popular modelling strategies. The first strategy is a direct multivariate generalisation of \eqref{eq:GARCHspec}. That is, we let $\boldsymbol \eta_t\stackrel{i.i.d.}{\sim} (\boldsymbol 0, \boldsymbol{I}_m)$ denote an i.i.d. sequence of $m$-dimensional innovations with mean vector $\boldsymbol 0$ and an identity matrix as covariance matrix. The model assumes
+$$
+\mathbf{y}_t = \boldsymbol H_t^{1/2} \boldsymbol\eta_t,
+$$
+with $\boldsymbol H_t \in \mathbb{R}^{m\times m}$ following a recursive structure. Different recursive structures will lead to different multivariate GARCH (MGARCH) models. One example is the BEKK-GARCH(1,1),
+$$
+\boldsymbol H_t = \boldsymbol\Omega + \boldsymbol A \boldsymbol{y}_{t-1} \boldsymbol{y}_{t-1}&rsquo; \boldsymbol A&rsquo;  + \boldsymbol B \boldsymbol H_{t-1} \boldsymbol B&rsquo;,
+$$
+as introduced in Engle and Kroner (1995).<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> The similarities to the GARCH(1,1) specification should be evident as the outer product $\boldsymbol{y}_{t-1} \boldsymbol{y}_{t-1}^\prime$ and conditional covariance matrix $\boldsymbol H_t$ are the natural multivariate extensions to respectively $y_{t-1}^2$ and $\sigma_t^2$ of the GARCH(1,1) model. The main issue with this class of MGARCH models is parameter interpretability and the difficulties in ensuring stationarity and positive-definiteness of $\boldsymbol H_t$.</p>
+<p>The second strategy, the so-called Cholesky GARCH models, starts from a collection of $m$ univariate processes. For $i=1,\ldots,m$, we thus consider
+\begin{equation}
+\begin{aligned}
+v_{it} &amp;= \sqrt{g_{it}} \eta_{it},\\<br>
+g_{it} &amp;= \omega_i + \alpha_i v_{i,t-1}^2 + \beta_i g_{i,t-1},
+\end{aligned}
+\label{eq:CholeskyGARCHspec}
+\end{equation}
+or in vector form as $\boldsymbol v_{t} = \boldsymbol G_t^{1/2} \boldsymbol \eta_t$ after defining $\boldsymbol{v}_t = (v_{1t},\ldots,v_{mt})^\prime$ and $\boldsymbol{G}_t = \text{diag}(g_{1t},\ldots, g_{mt})$. A lower unitriangular matrix $\boldsymbol L$, that is a matrix of the form
+$$
+\boldsymbol L
+=
+\begin{bmatrix}
+1        \\<br>
+l_{2,1}      &amp; 1    \\<br>
+\vdots      &amp; \ddots    &amp; \ddots \\<br>
+l_{m-1,1}    &amp;           &amp; \ddots &amp; 1\\<br>
+l_{m,1}     &amp; l_{m,2}  &amp; \cdots &amp; l_{m,m-1}    &amp; 1 <br>
+\end{bmatrix},
+$$
+subsequently connects the univarariate GARCH(1,1) process with the return series through $\boldsymbol y_t =  \boldsymbol L \boldsymbol v_t =  \boldsymbol L \boldsymbol G_t^{1/2} \boldsymbol \eta_t$.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> The advantages of Cholesky GARCH are: (1) the conditional variance $\boldsymbol L \boldsymbol{G}_t \boldsymbol{L}^\prime$ is positive-definite by construction, and (2) the elements in $\boldsymbol L^{-1}$ are interpretable as conditional betas. The main disadvantage of Cholesky GARCH is that the model is not invariant to changes in the ordering of the return series.</p>
+</li>
+</ol>
+<h2 id="a-computation-comparison">A Computation Comparison</h2>
+<p>Finally, we conduct a Monte Carlo simulation to compare computational speeds across Matlab, Python and R. The computational tasks are: (1) generating a GARCH(1,1) process with standard Gaussian innovations and $(\omega,\alpha,\beta)^{\prime}= (0.1, 0.05, 0.8)^{\prime}$ (ensuring stationarity), (2) estimating the parameters by conditional quasi-maximum likelihood using the generated data series, and (3) computing the asymptotically valid t-statistic based on the limiting distribution in \eqref{eq:AsymptoticDistribution}. We use $N_{sim}=1000$ Monte Carlo replications. To see the code, click the corresponding button at the top of this blog.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="StatisticHistograms.png" data-caption="Figure 4: A histogram of the standarised test statistics related to the parameter $\alpha$ for sample sizes: (a) $T=2500$, (b) $T=5000$, and (c) $T=10000$.">
+<img data-src="StatisticHistograms.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 4: A histogram of the standarised test statistics related to the parameter $\alpha$ for sample sizes: (a) $T=2500$, (b) $T=5000$, and (c) $T=10000$.
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="ComputationalTimes.png" data-caption="Table 1: Absolute and relative (using C&#43;&#43; as the benchmark) computational times in seconds.">
+<img data-src="ComputationalTimes.png" class="lazyload" alt="" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 1: Absolute and relative (using C++ as the benchmark) computational times in seconds.
+  </figcaption>
+
+
+</figure>
+
+<p>The results are shown in Figure 4 and Table 1. We make the following two observations:</p>
+<ol>
+<li>Theoretically, the standardised statistics converge in distribution to a standard normal as $n\to\infty$. The finite sample distribution of the test statistics (Figure 4) indeed seems to approach the $\mathcal{N}(0,1)$ distribution but truly large sample sizes are needed.</li>
+<li>The Matlab and Python implementation are fastest and slowest, respectively. The same ranking was also observed in <a href="https://hannoreuvers.github.io/post/which-language/">this</a> previous post. The overall speed of the implementation is probably determined by the speed of for-loops (to recursively compute the volatility process) and the numerical optimiser (<em>fmincon()</em> for Matlab, the <em>minimize()</em> function from scipy for Python, and <em>optim()</em> for R). The good performance of Matlab is thus perhaps unsurprising. Its for-loops are known to be quick and <em>fmincon()</em> is a pretty robust nonlinear optimisation routine.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
+</ol>
+<h2 id="appendix">Appendix</h2>
+<h4 id="calculating-mathbbey-t4">Calculating $\mathbb{E}[y_t^4]$</h4>
+<p>By the law of iterated expectations, we have $\mathbb{E}[y_t^4]= \mathbb{E}[\sigma_t^4] \mathbb{E}[\eta_t^4]$. Clearly, $\mathbb{E}[\eta_t^4]$ is implied by the distributional assumption on $\eta_t$ and we only need to calculate $\mathbb{E}[\sigma_t^4]$. Using \eqref{eq:sigma2expr}, we find
+\begin{equation}
+\begin{aligned}
+\mathbb{E}\big[\sigma_t^4\big]
+&amp;= \mathbb{E}\left[ \omega^2 \left(1 + \sum_{j=1}^\infty \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \right)^2 \right] \\<br>
+&amp;= \omega^2 \Bigg( 1 +  2 \sum_{j=1}^\infty \mathbb{E}\Bigg[ \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \Bigg] \\<br>
+&amp;\qquad\qquad+ \sum_{j=1}^\infty \sum_{k=1}^\infty \mathbb{E}\Bigg[\prod_{i=1}^j \prod_{l=1}^k  \big( \alpha \eta_{t-i}^2+ \beta \big) \big( \alpha \eta_{t-l}^2+ \beta \big)  \Bigg] \Bigg).
+\end{aligned}
+\label{eq:expsigma4}
+\end{equation}
+For brevity, we define $\zeta = \mathbb{E}\big[\alpha \eta_t^2+ \beta\big]=\alpha+\beta$ and $\lambda = \mathbb{E}\big[(\alpha \eta_t^2+ \beta)^2\big]=\alpha^2 \mathbb{E}\big[\eta_t^4 \big]+2\alpha\beta + \beta^2$. Standard results on geometric series imply
+\begin{equation}
+\begin{aligned}
+\mathbb{E}\big[\sigma_t^4\big]
+&amp;= \omega^2 \left( 1 + 2 \sum_{j=1}^\infty \zeta^j + \sum_{j=1}^\infty \sum_{k=1}^\infty \lambda^{\min(j,k)} \zeta^{\max(j,k)-\min(j,k)} \right) \\<br>
+&amp;= \omega^2 \left( 1 + 2 \sum_{j=1}^\infty \zeta^j + \sum_{j=1}^\infty \lambda^j + 2 \sum_{j=1}^\infty \sum_{k=j+1}^\infty \lambda^j \zeta^{k-j} \right) \\<br>
+&amp;=  \omega^2 \left( 1 + \frac{2\zeta}{1-\zeta}+ \frac{\lambda}{1-\lambda}+ \frac{2 \zeta}{1-\zeta} \frac{\lambda}{1-\lambda} \right) \\<br>
+&amp;= \omega^2 \left( \frac{1}{1-\lambda} + \frac{2\zeta}{(1-\zeta)(1-\lambda)} \right) = \omega^2 \frac{1+\zeta}{(1-\zeta)(1-\lambda)} \\<br>
+&amp;= \big( \mathbb{E}[\sigma_t^2] \big)^2 \frac{1-\zeta^2}{1-\lambda} = \big( \mathbb{E}[\sigma_t^2] \big)^2 \left( 1 + \frac{\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]}{1-\lambda} \right) ,
+\end{aligned}
+\tag{5}
+\label{eq:sigmat4}
+\end{equation}
+where the convergence of the geometric series requires $\lambda&lt;1$. We also used $\mathbb{E}[\sigma_t^2] = \omega/(1-\alpha-\beta) = \omega/(1-\zeta)$ and $\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]=\lambda-\zeta^2$.</p>
+<h4 id="kurtosis">Kurtosis</h4>
+<p>For any random variable $X$, its kurtosis is defined as its standardised fourth moment
+$$
+\kappa_X = \mathbb{E}\left[\left(\frac{X-\mu}{\sqrt{\mathbb{V}\mathrm{ar}[X]}}\right)^4\right] .
+$$
+Clearly, we have $\kappa_\eta=\mathbb{E}[\eta_t^4]$ and $\kappa_y=\mathbb{E}[y_t^4]/\big( \mathbb{E}[y_t^2]\big)^2$. The derivations in \eqref{eq:sigmat4} directly imply
+$$
+\kappa_y
+= \frac{\mathbb{E}[y_t^4]}{\big( \mathbb{E}[y_t^2]\big)^2}
+= \frac{\mathbb{E}[\sigma_t^4]}{\big( \mathbb{E}[\sigma_t^2]\big)^2} , \mathbb{E}[\eta_t^4]
+= \left( 1 + \frac{\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]}{1-\lambda} \right)  \kappa_\eta.
+$$
+As $0&lt;\lambda&lt;1$ (the upper bound is needed to guarantee the existence of $\mathbb{E}[y_t^4]$), this formula stresses the fact that $\kappa_y\geq \kappa_\eta$. The marginal distribution of $y_t$ thus has thicker tails than the distribution of the innovations. Using $\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]=\alpha^2(\kappa_\eta-1)$ and $\lambda=(\alpha+\beta)^2 + \alpha^2(\kappa_\eta -1)$, the expression for $\kappa_y$ in terms of $\alpha$ and $\beta$ reads
+$$
+\kappa_y =  \frac{1-(\alpha+\beta)^2}{1-(\alpha+\beta)^2 - \alpha^2(\kappa_\eta -1)} \kappa_\eta.
+$$</p>
+<h4 id="autocorrelations-of-the-squares-of-a-garch11-process">Autocorrelations of the Squares of a GARCH(1,1) Process</h4>
+<p>For any $k&gt;1$, using stationarity, the $k$<sup>th</sup> autocorrelation of the square of a GARCH(1,1) process is
+\begin{equation}
+\begin{aligned}
+\rho_k
+&amp;= \mathbb{C}\mathrm{or}[y_t^2,y_{t-k}^2]
+= \frac{\mathbb{C}\mathrm{ov}[y_t^2,y_{t-k}^2]}{\sqrt{\mathbb{V}\mathrm{ar}[y_t^2] , \mathbb{V}\mathrm{ar}[y_{t-k}^2]  }} \\<br>
+&amp;= \frac{\mathbb{C}\mathrm{ov}[y_t^2,y_{t-k}^2]}{\mathbb{V}\mathrm{ar}[y_t^2] }
+= \frac{\mathbb{E}[y_t^2 y_{t-k}^2] - \big( \mathbb{E}[y_t^2] \big)^2 }{ \mathbb{E}[y_t^4] - \big( \mathbb{E}[y_t^2] \big)^2 }.
+\end{aligned}
+\label{eq:autocorrelationcoef}
+\tag{6}
+\end{equation}
+Having derived $ \mathbb{E}[\sigma_t^4]$ in \eqref{eq:sigmat4}, the denominator of \eqref{eq:autocorrelationcoef} is easiest to simplify. We have
+$$
+\begin{aligned}
+\mathbb{E}[y_t^4] - \big( \mathbb{E}[y_t^2] \big)^2
+&amp;= \mathbb{E}[\sigma_t^4] \kappa_\eta - \big( \mathbb{E}[\sigma_t^2] \big)^2 = \big( \mathbb{E}[\sigma_t^2] \big)^2\big(\kappa_y -1\big).
+\end{aligned}
+$$
+The numerator is evaluated using a recursion similar to \eqref{eq:sigma2expr}. Only this time we stop the substitution as soon as we have related $\sigma_t^2$ to $\sigma_{t-k}^2$, that is
+$$
+\sigma_t^2 = \omega\left( 1 + \sum_{j=1}^{k-1} \prod_{i=1}^j \big(\alpha \eta_{t-i}^2 + \beta\big) \right) + \sigma_{t-k}^2 \prod_{i=1}^k \big(\alpha \eta_{t-i}^2 + \beta\big).
+$$
+The expression above allows us to evaluate $\mathbb{E}[y_t^2 y_{t-k}^2]$. We repeatedly use the law of iterated expectations and find
+$$
+\begin{aligned}
+\mathbb{E}[y_t^2 y_{t-k}^2]
+&amp;= \mathbb{E}[\sigma_t^2 \sigma_{t-k}^2 \eta_{t-k}^2] \\<br>
+&amp;= \mathbb{E}\left[\Bigg\{  \omega\Bigg( 1 + \sum_{j=1}^{k-1} \prod_{i=1}^j \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg) + \sigma_{t-k}^2 \prod_{i=1}^k \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg\} \sigma_{t-k}^2 \eta_{t-k}^2 \right] \\<br>
+&amp;= \omega \mathbb{E}\big[\sigma_{t-k}^2\big] \mathbb{E}\left[ \Bigg( 1 + \sum_{j=1}^{k-1} \prod_{i=1}^j \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg)  \right]
++ \mathbb{E}\big[\sigma_{t-k}^4\big]  \mathbb{E}\left[ \prod_{i=1}^{k-1} \big(\alpha \eta_{t-i}^2 + \beta\big) \right]  \mathbb{E}\left[ \alpha \eta_{t-k}^4 + \beta \eta_{t-k}^2 \right] \\<br>
+&amp;= \omega \mathbb{E}\big[ \sigma_{t-k}^2\big]\left(1+\sum_{j=1}^{k-1} \zeta^j \right) + \mathbb{E}\big[\sigma_{t-k}^4\big]  \zeta^{k-1}  (\alpha \kappa_\eta + \beta) \\<br>
+&amp;=  \big( \mathbb{E}[\sigma_t^2] \big)^2 \left( 1 - \zeta^k \right) + \big( \mathbb{E}[\sigma_t^2] \big)^2 \frac{\kappa_y}{\kappa_\eta} , \zeta^{k-1} , (\alpha \kappa_\eta + \beta)
+\end{aligned}
+$$
+where the last equality exploits $\mathbb{E}[\sigma_t^2] = \omega/(1-\zeta)$, intermediate results from \eqref{eq:sigmat4}, and stationarity. As $ \mathbb{E}[y_t^2] = \mathbb{E}[\sigma_t^2]$, the numerator in \eqref{eq:autocorrelationcoef} is
+$$
+\mathbb{E}[y_t^2 y_{t-k}^2] - \big( \mathbb{E}[y_t^2] \big)^2  = \zeta^{k-1} \big( \mathbb{E}[\sigma_t^2] \big)^2 \left(\frac{\kappa_y}{\kappa_\eta}  (\alpha \kappa_\eta + \beta) - \zeta  \right)
+$$
+and a simple division finally produces
+$$
+\rho_k = \frac{\frac{\kappa_y}{\kappa_\eta}  (\alpha \kappa_\eta + \beta) - \zeta}{\kappa_y -1}  \zeta^{k-1} = \rho_1(\boldsymbol \theta) \zeta^{k-1} .
+$$</p>
+<h2 id="references">References</h2>
+<p>T. Bollerslev (1986), <em>Generalized Autoregressive Conditional Heteroskedasticity</em>, Journal of Econometrics</p>
+<p>S. Darolles, C. Francq and S. Laurent (2018), <em>Asymptotics of Cholesky GARCH Models and Time-varying Conditional Betas</em>, Journal of Econometrics</p>
+<p>R.F. Engle and K. Kroner (1995), <em>Multivariate Simultaneous GARCH</em>, Econometric Theory</p>
+<p>C. Francq and J.-M. Zakoian (2019), <em>GARCH Models: Structure, Statistical Inference and Financial Applications</em>, John Wiley &amp; Sons</p>
+<p>P.R. Hansen and A. Lunde (2005), <em>A Forecast Comparison of Volatility Models: Does Anything Beat a GARCH(1,1)?</em>, Journal of Applied Econometrics</p>
+<h2 id="notes">Notes</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>The process ${X_t}$ is said to be strictly stationary if the random vectors $(X_1,\ldots,X_k)$&rsquo; and $(X_{1+h},\ldots,X_{k+h})$&rsquo; have the same joint distribution for any $k\in\mathbb{N}$ and $h\in\mathbb{Z}$. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>The natural logarithm is a concave function. Jensen's inequality implies that $\gamma = \mathbb{E}\big[\log(\alpha \eta_t^2 + \beta) \big]\leq \log\big( \alpha \mathbb{E}[\eta_t^2] + \beta  \big)=\log(\alpha+\beta)$. In other words, if $\alpha+\beta&lt;1$ holds, then \eqref{eq:stationaritycondition} must hold as well. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>A total of 57 missing observations (1.06% of all data points) were linearly interpolated. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>The representation here is somewhat of a simplification of the original model because I take $K=1$. The model can be made more flexible by allowing $K&gt;1$. The current specification was selected because it makes the link with the univariate GARCH(1,1) model most explicit. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>The exposition here is once again a simplification. Possible generalisations of this Cholesky GARCH model include: (1) more complicated processes for $v_{it}$ ($i=1,\ldots,m$), and (2) making the parameters in the matrix $\boldsymbol L$ time-varying. Details can be found in Darolles, Francq and Laurent (2018). <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>The nonlinear optimisation was started with the true parameter vector as initial guess. The Matlab function <em>fmincon()</em> typically does a better job at finding a nearby (possibly only local) optimum. The optimisers from Python and R show a tendency to wander around more before settling at a local optimum. I only imposed a lower bound on $\omega$, $\alpha$ and $\beta$ during optimisation. Computational times will differ if more elaborate parameter constraints are imposed during estimation. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://HannoReuvers.github.io/post/garch11/&amp;text=The%20GARCH%281,1%29%20model%20and%20its%20extensions" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://HannoReuvers.github.io/post/garch11/&amp;t=The%20GARCH%281,1%29%20model%20and%20its%20extensions" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=The%20GARCH%281,1%29%20model%20and%20its%20extensions&amp;body=https://HannoReuvers.github.io/post/garch11/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://HannoReuvers.github.io/post/garch11/&amp;title=The%20GARCH%281,1%29%20model%20and%20its%20extensions" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=The%20GARCH%281,1%29%20model%20and%20its%20extensions%20https://HannoReuvers.github.io/post/garch11/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://HannoReuvers.github.io/post/garch11/&amp;title=The%20GARCH%281,1%29%20model%20and%20its%20extensions" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://HannoReuvers.github.io/">Hanno Reuvers</a></h5>
+      <h6 class="card-subtitle">Assistant Professor</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/HannoReuvers" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
