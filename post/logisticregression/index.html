@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Hanno Reuvers">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Interpretation, implementation and computational comparison">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://HannoReuvers.github.io/post/logisticregression/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://HannoReuvers.github.io/post/logisticregression/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Hanno Reuvers">
+  <meta property="og:url" content="https://HannoReuvers.github.io/post/logisticregression/">
+  <meta property="og:title" content="Low- and high-dimensional logistic regression | Hanno Reuvers">
+  <meta property="og:description" content="Interpretation, implementation and computational comparison"><meta property="og:image" content="https://HannoReuvers.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://HannoReuvers.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2022-06-15T00:00:00&#43;02:00">
+    
+    <meta property="article:modified_time" content="2022-06-15T00:00:00&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://HannoReuvers.github.io/post/logisticregression/"
+  },
+  "headline": "Low- and high-dimensional logistic regression",
+  
+  "datePublished": "2022-06-15T00:00:00+02:00",
+  "dateModified": "2022-06-15T00:00:00+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Hanno Reuvers"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hanno Reuvers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://HannoReuvers.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Interpretation, implementation and computational comparison"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Low- and high-dimensional logistic regression | Hanno Reuvers</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blogs</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#courses"><span>Course info</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Low- and high-dimensional logistic regression</h1>
+
+  
+  <p class="page-subtitle">Interpretation, implementation and computational comparison</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 15, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    11 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+    
+  
+<a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/HannoReuvers/LogisticRegression" target="_blank" rel="noopener">
+  Code
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="model-specification">Model specification</h2>
+<p>The logistic regression is a popular binary classifier and arguably the elementary building block of a neural network. Specifically, given a feature vector $\mathbf{x} \in \mathbb{R}^p$, the logistic regression models the binary outcome $y\in \{0,1\}$ as
+\begin{equation}
+\mathbb{P}(y=1 | \mathbf{x} ; b, \boldsymbol \theta)
+=  \frac{1}{1+ \exp\big( -(b + \boldsymbol\theta&rsquo;\mathbf{x}) \big)}
+= : \Lambda ( b + \boldsymbol \theta&rsquo;\mathbf{x}),
+\label{eq:LogisticModel}
+\tag{1}
+\end{equation}
+where we introduced the sigmoid function $\Lambda(x) = \frac{1}{1+\exp(-x)}$ in the last equality. The step-wise explanation of the logistic regression is: (1) introduce the parameter vector $\boldsymbol{\theta}\in\mathbb{R}^p$ to linearly combine the input features into the scalar $\boldsymbol \theta&rsquo;\mathbf{x}$, (2) add the intercept/bias parameter $b$, and (3) transform $b+\boldsymbol \theta&rsquo;\mathbf{x}$ into a probability by guiding it through the sigmoid function.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Figure 1 clearly shows how the sigmoid function maps any input into the interval (0,1) thereby resulting in a valid probability.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="SigmoidFunctionPlot.png" data-caption="Figure 1: The sigmoid function $\Lambda(x)= \frac{1}{1&#43;\exp(-x)}$.">
+<img data-src="SigmoidFunctionPlot.png" class="lazyload" alt="" width="75%" height="75%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 1: The sigmoid function $\Lambda(x)= \frac{1}{1+\exp(-x)}$.
+  </figcaption>
+
+
+</figure>
+
+<p>To provide a geometrical interpretation of the logistic regression, we note that $\Lambda(x)\geq0.5$ whenever $x\geq 0$. If we label an outcome as 1 whenever its probability $\mathbb{P}(y=1 | \mathbf{x} ; b, \boldsymbol \theta)$ exceeds 0.5 (majority voting), then the label 1 is assigned whenever $b + \boldsymbol\theta&rsquo;\mathbf{x}\geq 0$. Two illustrations are provided in Figure 2.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="DecisionRegions.png" data-caption="Figure 2: A dataset of $n=50$ i.i.d. observations with two features ($x_1$ and $x_2$) and outcomes being visualized as 1 (blue circle) or 0 (red circle). The background colours specify the estimated decision regions. (a) A logistic regression using the vector $\mathbf{x}=[x_1, x_2]^\prime$ as input features gives parameter estimates $\hat b=0.40$ and $\hat{\boldsymbol{\theta}}=[-2.07,2.65]^\prime$. The estimated decision boundary $0.40-2.07 x_1 &#43;2.65 x_2= 0$ separates the $(x_1,x_2)$-space into two half-planes. (b) The decision boundary becomes nonlinear if the feature vector of the logistic regression includes nonlinear transformations of the input variables. The feature vector for this illustration is $\mathbf{x}^*=[x_1, x_2, x_1^2, x_1^3, x_2^2, x_2^3]^\prime$.">
+<img data-src="DecisionRegions.png" class="lazyload" alt="" width="75%" height="75%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 2: A dataset of $n=50$ i.i.d. observations with two features ($x_1$ and $x_2$) and outcomes being visualized as 1 (blue circle) or 0 (red circle). The background colours specify the estimated decision regions. <strong>(a)</strong> A logistic regression using the vector $\mathbf{x}=[x_1, x_2]^\prime$ as input features gives parameter estimates $\hat b=0.40$ and $\hat{\boldsymbol{\theta}}=[-2.07,2.65]^\prime$. The estimated decision boundary $0.40-2.07 x_1 +2.65 x_2= 0$ separates the $(x_1,x_2)$-space into two half-planes. <strong>(b)</strong> The decision boundary becomes nonlinear if the feature vector of the logistic regression includes nonlinear transformations of the input variables. The feature vector for this illustration is $\mathbf{x}^*=[x_1, x_2, x_1^2, x_1^3, x_2^2, x_2^3]^\prime$.
+  </figcaption>
+
+
+</figure>
+
+<h2 id="general-remarks-on-maximum-likelihood-estimation">General remarks on maximum likelihood estimation</h2>
+<p>The following two identities will be especially convenient when developing the maximum likelihood framework: (1) $1-\Lambda(x)=\frac{1}{1+\exp(x)}=\Lambda(-x)$, and (2) $\frac{d}{dx} \Lambda(x) =\big(1+\exp(-x)\big)^{-2}\times \exp(-x)= \Lambda(x)\big( 1 -\Lambda(x) \big)$. Exploiting the first identity, the likelihood function for $n$ independent observations $\big(y_i, \mathbf{x}_i \big)_{i=1,\ldots,n}$ from model \eqref{eq:LogisticModel} can be written as
+$$
+\begin{aligned}
+L(b,\boldsymbol\theta)
+&amp;= \prod_{i=1}^n  \Big(\Lambda ( b + \boldsymbol \theta&rsquo;\mathbf{x}_i)\Big)^{y_i} \Big(1-\Lambda ( b + \boldsymbol\theta&rsquo;\mathbf{x}_i)\Big)^{1-y_i} \\<br>
+&amp;= \prod_{i=1}^n \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big).
+\end{aligned}
+$$
+Clearly, the implied log-likelihood function is
+$$
+\log L(b,\boldsymbol \theta) = \sum_{i=1}^n \log \Lambda \Big( (2y_i -1) \big( b + \boldsymbol \theta&rsquo;\mathbf{x}_i \big)   \Big).
+$$
+The second identity is subsequently used to easily compute the derivatives of this scaled log-likelihood. Repeated application of the chain rule gives the gradients
+$$
+\begin{aligned}
+\frac{\partial \log L(b,\boldsymbol\theta) }{\partial b}
+&amp;= \sum_{i=1}^n \frac{1}{\Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big)} \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big) \Big)\Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)\Big) \Big] (2y_i -1) \\<br>
+&amp;= \sum_{i=1}^n  (2y_i -1) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big], \\<br>
+\frac{\partial \log L(b,\boldsymbol \theta) }{\partial \boldsymbol\theta}
+&amp;= \sum_{i=1}^n  (2y_i -1) \mathbf{x}_i \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big].
+\end{aligned}
+$$
+The stack of these two gradients will be denoted as $\mathbf{S}(b,\boldsymbol\theta)= \sum_{i=1}^n  (2y_i -1) \left[\begin{smallmatrix} 1 \\ \mathbf{x}_i \end{smallmatrix}\right] \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big]$.
+As these gradients are linear in $\Lambda\big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big) \big)$, the $(p+1)\times(p+1)$ Hessian matrix follows as</p>
+<p>\begin{equation}
+\begin{aligned}
+\mathbf{H}(b, \boldsymbol\theta)
+&amp;= \left[\begin{smallmatrix}
+\frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b^2}                    &amp; \frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b \partial \boldsymbol\theta&rsquo;} \\<br>
+\frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b \partial \boldsymbol\theta}        &amp; \frac{\partial^2  \log L(b,\boldsymbol \theta) }{\partial \boldsymbol \theta \partial \boldsymbol \theta&rsquo;}
+\end{smallmatrix}\right] \\<br>
+&amp;= -\sum_{i=1}^n \left[\begin{smallmatrix} 1 &amp; \mathbf{x}_i&rsquo; \\ \mathbf{x}_i  &amp; \mathbf{x}_i \mathbf{x}_i&rsquo;\end{smallmatrix}\right]   \Lambda\Big( (2y_i -1) \big( b + \boldsymbol \theta&rsquo;\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big],
+\end{aligned}
+\end{equation}
+where $(2 y_i-1)^2=1$ has been used. Finally, take an arbitrary $\mathbf{a} = (a_0,a_1,\ldots, a_p)'\in \mathbb{R}^{p+1}$, then
+\begin{equation}
+\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)\mathbf{a} = - \sum_{i=1}^n (a_0 + \mathbf{a}_{1:p}'\mathbf{x}_i)^2  \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big],
+\label{eq:PosDefHession}
+\tag{2}
+\end{equation}
+with $\mathbf{a}_{1:p}= (a_1,\ldots,a_p)^\prime$. We make several observations related to \eqref{eq:PosDefHession}:</p>
+<ol>
+<li>The sigmoid function satisfies $0 &lt; \Lambda(x) &lt; 1$ for all $x$. Each term within the summation is thus non-negative.</li>
+<li>The equality $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)  \mathbf{a} =0$ holds if and only if $a_0 + \mathbf{a}_{1:p}'\mathbf{x}_i=0$ for all $i\in{1,2,\ldots,n}$. Or equivalently, $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)  \mathbf{a} =0$ if and only if $\mathbf{a}$ is orthogonal to all vectors in the collection
+$$
+\left\{\begin{bmatrix}
+1 \\<br>
+\mathbf{x}_1
+\end{bmatrix},
+\begin{bmatrix}
+1 \\<br>
+\mathbf{x}_2
+\end{bmatrix},
+\ldots,
+\begin{bmatrix}
+1 \\<br>
+\mathbf{x}_n
+\end{bmatrix}
+\right\}.
+$$
+This analysis naturally leads to two important regimes.</li>
+</ol>
+<p><em>Low-dimensional</em>: If $p$ is small, then $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta) \mathbf{a}$ is strictly negative. The objective function is strictly concave because the Hessian matrix is negative-definite. The likelihood function has an unique minimizer and asymptotically valid inference is possible.</p>
+<p><em>High-dimensional</em>: If $p$ is large, then we enter a high-dimensional regime with (1) many parameters to estimate, and (2) a Hessian matrix with eigenvalues (close to) 0. The dimensionality of the problem requires faster algorithms and parameter regularization.</p>
+<p><br /></p>
+<h2 id="the-low-dimensional-regime">The low-dimensional regime</h2>
+<h3 id="estimation">Estimation</h3>
+<p>Let us denote the maximum likelihood estimators by $\hat b$ and $\hat{\boldsymbol\theta}$. These estimators are the solutions of
+$$
+\mathbf{S}(\hat b, \hat{\boldsymbol\theta})= \sum_{i=1}^n  (2y_i -1)\begin{bmatrix} 1 \\ \mathbf{x}_i \end{bmatrix} \Big[1 - \Lambda\Big( (2y_i -1) \big( \hat b + \hat{\boldsymbol \theta}'\mathbf{x}_i \big)   \Big) \Big] = \mathbf{0}.
+$$
+The solution to this set of equations is not available in closed form and we thus need to resort to numerical methods. The maximization of strictly concave objective functions is well-studied and numerical solution schemes are readily available. Especially for small $p$ (say $p&lt;50$ and $p&laquo;n$), we can rely on the Newton-Rhapson algorithm. The sketch of the algorithm is as follows:</p>
+<ol>
+<li>
+<p>Make a starting guess for the parameters, say $b_{[0]}$ and $\boldsymbol\theta_{[0]}$.</p>
+</li>
+<li>
+<p>Iteratively update the parameters based on a quadratic approximation of log-likelihood. That is, being located at the point $\big\{b_{[i]},\boldsymbol\theta_{[i]}\big\}$, the local quadratic approximation of the log-likelihood (read: its second order Taylor expansion) is
+\begin{equation}
+L(b,\boldsymbol \theta) \approx \log L(b_{[i]},\boldsymbol \theta_{[i]}) + \mathbf{S}(b_{[i]},\boldsymbol\theta_{[i]})^\prime
+\begin{bmatrix} b - b_{[i]} \\ \boldsymbol{\theta}-\boldsymbol{\theta}_{[i]} \end{bmatrix} + \frac{1}{2} \begin{bmatrix} b - b_{[i]}\\ \boldsymbol\theta - \boldsymbol\theta_{[i]} \end{bmatrix}^\prime \mathbf{H}(b_{[i]}, \boldsymbol\theta_{[i]})\begin{bmatrix} b - b_{[i]}\\ \boldsymbol\theta - \boldsymbol\theta_{[i]} \end{bmatrix}.
+\end{equation}</p>
+<p>The updates $b_{[i+1]}$ and $\boldsymbol{\theta}_{[i+1]}$ are the optimizers of this quadratic approximation, or
+\begin{equation}
+\begin{bmatrix} b_{[i+1]}\\ \boldsymbol \theta_{[i+1]} \end{bmatrix}
+= \begin{bmatrix} b_{[i]}\\ \boldsymbol \theta_{[i]} \end{bmatrix} - \big[ \mathbf{H}(b_{[i]},\boldsymbol\theta_{[i]}) \big]^{-1} \mathbf{S}(b_{[i]},\boldsymbol\theta_{[i]}).
+\label{eq:NewtonRhapsonUpdate}
+\tag{3}
+\end{equation}</p>
+</li>
+<li>
+<p>Repeatly update the parameter values using \eqref{eq:NewtonRhapsonUpdate} until (relative) parameter changes become negligible.</p>
+</li>
+</ol>
+<p>In typical settings the Newton-Rhapson algorithm converges after a small number of iterations.</p>
+<h3 id="asymptotically-valid-inference">Asymptotically valid inference</h3>
+<p>Define $\hat{\boldsymbol \gamma} = \left[\begin{smallmatrix} \hat{b} \\ \hat{\boldsymbol\theta}  \end{smallmatrix}\right]$ and $\boldsymbol \gamma = \left[\begin{smallmatrix} b \\ \boldsymbol\theta  \end{smallmatrix}\right]$. Results as in McFadden and W.K. Newey (1994) imply:
+$$
+\sqrt{n}\left( \hat{\boldsymbol \gamma} - \boldsymbol \gamma \right) \stackrel{D}{\to} \mathcal{N}(\mathbf{0}, \mathbf{J}^{-1}) \quad \text{as} \quad T\to\infty,
+\label{eq:AsymptoticDistr}
+\tag{4}
+$$
+where $\mathbf{J}= - \mathbb{E}\left[ \frac{\partial^2 \log \Lambda\big( (2y-1) (b+\boldsymbol\theta&rsquo;\mathbf{x}) \big) }{\partial \boldsymbol \gamma \partial \boldsymbol \gamma&rsquo;} \right]$ (the expectation is computed w.r.t. the joint distribution of $(y,\mathbf{x})$). A consistent estimator for $\mathbf{J}$, for example
+$$
+\hat{\mathbf{J}} = \frac{1}{n}\mathbf{H}(\hat b, \hat{\boldsymbol\theta})
+=-\frac{1}{n}\sum_{i=1}^n \left[\begin{smallmatrix} 1 &amp; \mathbf{x}_i&rsquo; \\ \mathbf{x}_i  &amp; \mathbf{x}_i \mathbf{x}_i&rsquo;\end{smallmatrix}\right]   \Lambda\Big( (2y_i -1) \big( \hat{b} + \hat{\boldsymbol \theta}'\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( \hat b + \hat{\boldsymbol\theta}'\mathbf{x}_i \big)   \Big) \Big],
+$$
+is an almost immediate byproduct of the Newton-Rhapson algorithm. Asymptotically valid hypothesis tests are thus easy to construct in this low-dimensional regime.</p>
+<h3 id="illustration-1-habermans-survival-data-set">Illustration 1: Haberman's survival data set</h3>
+<p>The data is freely available <a href="https://archive.ics.uci.edu/ml/datasets/haberman%27s+survival">here</a>, or you can readily download the SQL-file $\texttt{HabermanDataSet.sqlite}$ from <a href="https://github.com/HannoReuvers">my GitHub page</a>. The binary variable in this study is the survival status of $n=306$ patients who had undergone surgery for breast cancer. For $i=1,\ldots,n$, we recode this variable into $y_i=1$ (patient $i$ survived 5 years or longer) and $y_i=0$ (patient $i$ died within 5 years). There are three explanatory variables:</p>
+<ol>
+<li>$Age_i$: age of patient $i$ at the time of operation</li>
+<li>$Year_i$: year of operation for patient $i$ with offset of 1900 (i.e. the year 1960 is recorded as 60)</li>
+<li>$AxilNodes_i$: number of axillary nodes detected in patient $i$</li>
+</ol>
+<p>Following Landwehr et al. (1984), we entertain the model
+$$
+\mathbb{P}(y_i=1 | \mathbf{x}_i ; b, \boldsymbol\theta) =  \Lambda\Big( b + \theta_1 z_{1i} + \theta_2 z_{1i}^2 + \theta_3 z_{1i}^3   + \theta_4 z_{2i} +  \theta_5 z_{1i} z_{2i} +  \theta_6 \log(1+AxilNodes_i) \Big),
+$$
+where $z_{1i}=Age_{i}-52$ and $z_{2i} = Year_{i} - 63$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> The estimation results are listed in Tables 2&ndash;3 and Figure 3. Some short comments are:</p>
+<ul>
+<li>The levels of $z_1$ and $z_2$ do not significantly influence the 5-year survival probability. These features can be omitted from the model.</li>
+<li>The sigmoid function is monotonically increasing. An increase in $b + \theta_1 z_{1i} + \theta_2 z_{1i}^2 + \theta_3 z_{1i}^3   + \theta_4 z_{2i} +  \theta_5 z_{1i} z_{2i} +  \theta_6 \log(1+AxilNodes_i)$ will thus imply a higher survival probabiliy. The estimation results point towards nonlinear effect in $Age$. Generally speaking, older people are at a higher risk but this effect is not strictly monotone (Figure 3).<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
+<li>The accuracy, the fraction of correctly classified cases, is $235/305\approx 77.1\%$. Further classification details are shown in Table 3.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="HabermanEstimationOutput.png" data-caption="Table 2: The estimation output for the Haberman data set. The standard errors (Std. Error) and $p$-values are computed using the asymptotic distribution.">
+<img data-src="HabermanEstimationOutput.png" class="lazyload" alt="" width="75%" height="75%" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 2: The estimation output for the Haberman data set. The standard errors (Std. Error) and $p$-values are computed using the asymptotic distribution.
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="AgeContribution.png" data-caption="Figure 3: The estimated contribution of the age component to the 5-year survival probability. The blue line corresponds to $\hat \theta_1 z_1 &#43; \hat \theta_2 z_1^2 &#43; \hat \theta_3 z_1^3$. The red line is the age contribution after the two insignificant regressors $z_1$ and $z_2$ have been omitted and the model has been re-estimated. That is, we show $\tilde \theta_2 z_1^2 &#43; \tilde \theta_3 z_1^3$ with $\tilde{\boldsymbol{\theta}}$ denoting the vector of MLEs under the restricted model.">
+<img data-src="AgeContribution.png" class="lazyload" alt="" width="75%" height="75%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 3: The estimated contribution of the age component to the 5-year survival probability. The blue line corresponds to $\hat \theta_1 z_1 + \hat \theta_2 z_1^2 + \hat \theta_3 z_1^3$. The red line is the age contribution after the two insignificant regressors $z_1$ and $z_2$ have been omitted and the model has been re-estimated. That is, we show $\tilde \theta_2 z_1^2 + \tilde \theta_3 z_1^3$ with $\tilde{\boldsymbol{\theta}}$ denoting the vector of MLEs under the restricted model.
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="ConfusionMatrix.png" data-caption="Table 3: The confusion matrix for the Haberman data set. The label $\hat y =1$ is assigned if $\mathbb{P}(y=1| \mathbf{x};\hat b, \hat{\boldsymbol \theta})&gt;0.5$ (majority voting).">
+<img data-src="ConfusionMatrix.png" class="lazyload" alt="" width="50%" height="50%" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 3: The confusion matrix for the Haberman data set. The label $\hat y =1$ is assigned if $\mathbb{P}(y=1| \mathbf{x};\hat b, \hat{\boldsymbol \theta})&gt;0.5$ (majority voting).
+  </figcaption>
+
+
+</figure>
+
+<h3 id="illustration-2-a-monte-carlo-study-to-compare-implementations">Illustration 2: A Monte Carlo study to compare implementations</h3>
+<p>We also study the low-dimensional logistic regression through two small Monte-Carlo studies. The settings are outlined below.</p>
+<h5 id="dgp-1-comparing-languages">DGP 1: Comparing languages</h5>
+<p>The data features two regressors, $\mathbf{x}_i = (x_{1i},x_{2i})^\prime$, generated as $\mathbf{x}_i\stackrel{i.i.d.}{\sim} \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma})$ with $\boldsymbol{\Sigma}= \left[ \begin{smallmatrix} 1 &amp; \rho \\ \rho &amp;1 \end{smallmatrix} \right]$. The binary outcome $y_i\in\{0,1\}$ takes the value 1 with probability $\Lambda(b + \boldsymbol\theta&rsquo; \mathbf{x}_i)$. The selected parameters are: $\rho=0.3$, $b=0.5$, $\theta_1=0.3$ and $\theta_2=0.7$. For $n\in\{200,500\}$, we compare the following methods:</p>
+<ul>
+<li>Direct Newton-Rhapson implementations in Matlab, Numpy, R and TensorFlow. The implementations and convergence criteria are exactly the same across programming languages.</li>
+<li>The logistic regression implementations from GLM (R) and Scikit-learn (Python).</li>
+</ul>
+<p>For each setting, the code will (1) generate the data, (2) optimize the log-likelihood to compute the MLE, and (3) construct the asymptotically valid t-statistic based on the limiting distribution in \eqref{eq:AsymptoticDistr}.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> We repeat the procedure $N_{sim}=1000$ times.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="SimulationTimes.png" data-caption="Table 4: Computational times in seconds for the Newton-Rhapson algorithm and built-in logistic regression estimators.">
+<img data-src="SimulationTimes.png" class="lazyload" alt="" width="100%" height="100%" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 4: Computational times in seconds for the Newton-Rhapson algorithm and built-in logistic regression estimators.
+  </figcaption>
+
+
+</figure>
+
+<p>Computational times are reported in Table 4. Using $a&gt;b$ to denote $a$ being faster than $b$, we have $Matlab&gt;R&gt;Python&gt;TensorFlow$. The ranking of the first three has been the same in my other posts as well. As the Newton-Rhapson algorithm relies mainly on linear algebra, the good performance of Matlab (originally a linear algebra platform) might not come as a surpise. The poor performance of TensorFlow is perhaps rather unexpected. Possible explanations are: the manual implementation through $\texttt{tf.linalg}$ not allowing pieces of the code to be executed in faster lower level languages, and inefficiencies in the TensorFlow linear algebra implementation. The latter has been reported by Sankaran et al. (2022).</p>
+<p>The built-in function have similar performances to their manually implemented counterparts. Their implementation is probably faster but the built-in function incur some overhead costs.</p>
+<h5 id="dgp-2-adding-irrelevant-features-to-increase-p">DGP 2: Adding irrelevant features to increase $p$</h5>
+<p>Consider $\mathbf{x}_i = (x_{1i},\ldots,x_{pi})^\prime\stackrel{i.i.d.}{\sim} \mathcal{N}(\mathbf{0}, \boldsymbol \Sigma)$. The $(p\times p)$ matrix $\boldsymbol \Sigma$ takes value 1 on the main diagonal and $\rho$ on each off-diagonal element. The additional parameters are $b=0.5$, $\theta_1=0.3$, $\theta_2=0.7$ and $\theta_3=\ldots=\theta_p=0$. Again, the binary outcome $y_i\in\{0,1\}$ takes the value 1 with probability $\Lambda(b + \boldsymbol\theta&rsquo; \mathbf{x}_i)$. We fix $n=200$ but vary $\rho\in\{0.3,0.8 \}$ and $p\in\{2,3,\ldots,20\}$.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="GrowingPSimulations.png" data-caption="Figure 4: The effect of increasing $p$ for $\rho=0.3$ (blue) and $\rho=0.8$ (red). (a) The mean squared error (MSE) of the logistic regression estimator for $\theta_1$. (b) Computational time increases steadily with $p$.">
+<img data-src="GrowingPSimulations.png" class="lazyload" alt="" width="100%" height="100%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 4: The effect of increasing $p$ for $\rho=0.3$ (blue) and $\rho=0.8$ (red). <strong>(a)</strong> The mean squared error (MSE) of the logistic regression estimator for $\theta_1$. <strong>(b)</strong> Computational time increases steadily with $p$.
+  </figcaption>
+
+
+</figure>
+
+<p>Some comments on Figure 4 are:</p>
+<ul>
+<li>With more features it becomes increasingly more difficult to determine which explanatory variables are driving the success probability. The mean squared error of the parameter estimators increases. This effect amplifies if the regressors are more similar (increasing $\rho$).</li>
+<li>Computational times increase faster than linear in $p$. The correlation parameter $\rho$ does not influence computational times.</li>
+</ul>
+<p><br /></p>
+<h2 id="the-high-dimensional-regime">The high-dimensional regime</h2>
+<p>(UNDER CONSTRUCTION)</p>
+<h2 id="references">References</h2>
+<p>J.M. Landwehr, D. Pregibon and A.C. Shoemaker (1984), <em>Graphical Methods for Assessing Logistic Regression Models</em>, Journal of the American Statistical Association</p>
+<p>D. McFadden and W.K. Newey (1994), <em>Large Sample Estimation and Hypothesis Testing</em>, Chapter 36, Handbook of Econometrics</p>
+<p>A. Sankaran, N.A. Alashti and C. Psarras (2022), <em>Benchmarking the Linear Algebra Awareness of TensorFlow and PyTorch</em>, <a href="https://arxiv.org/abs/2202.09888">arXiv:2202.09888</a></p>
+<h2 id="notes">Notes</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Foreshadowing the discussion on penalized estimation, we prefer a model representation with an explicit bias term instead of implicitly assuming a specific element in $\mathbf{x}$ (typically the first) to always take the value 1. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Following Landwehr et al. (1984), we center (but not rescale) $Age_i$ and $Year_i$. Such rescaling is probably advisable because $z_1^3$ attains very high values compared to the other explanatory variables. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>As the logistic regression model is nonlinear, the numerical decrease in 5-year survival probability with increasing $Age$ depends on the specific values of all other explanatory variables. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>The asymptotically valid t-statistics are not automatically available from GLM (R) and Scikit-learn (Python). I added some extra lines of code to estimate the asymptotic covariance matrix. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://HannoReuvers.github.io/post/logisticregression/&amp;text=Low-%20and%20high-dimensional%20logistic%20regression" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://HannoReuvers.github.io/post/logisticregression/&amp;t=Low-%20and%20high-dimensional%20logistic%20regression" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Low-%20and%20high-dimensional%20logistic%20regression&amp;body=https://HannoReuvers.github.io/post/logisticregression/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://HannoReuvers.github.io/post/logisticregression/&amp;title=Low-%20and%20high-dimensional%20logistic%20regression" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Low-%20and%20high-dimensional%20logistic%20regression%20https://HannoReuvers.github.io/post/logisticregression/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://HannoReuvers.github.io/post/logisticregression/&amp;title=Low-%20and%20high-dimensional%20logistic%20regression" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://HannoReuvers.github.io/">Hanno Reuvers</a></h5>
+      <h6 class="card-subtitle">Assistant Professor</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/HannoReuvers" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
