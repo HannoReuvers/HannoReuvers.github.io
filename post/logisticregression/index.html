@@ -780,18 +780,18 @@ $$
 The solution to this set of equations is not available in closed form and we thus need to resort to numerical methods. The maximization of strictly concave objective functions is well-studied and numerical solution schemes are readily available. Especially for small $p$ (say $p&lt;50$ and $p&laquo;n$), we can rely on the Newton-Rhapson algorithm. The sketch of the algorithm is as follows:</p>
 <ol>
 <li>
-<p>Make a starting guess for the parameters, say $b_{[0]}$ and $\boldsymbol\theta_{[0]}$.</p>
+<p>Make a starting guess for the parameters, say $b_{\{0\}}$ and $\boldsymbol\theta_{\{0\}}$.</p>
 </li>
 <li>
-<p>Iteratively update the parameters based on a quadratic approximation of log-likelihood. That is, being located at the point $\big\{b_{[i]},\boldsymbol\theta_{[i]}\big\}$, the local quadratic approximation of the log-likelihood (read: its second order Taylor expansion) is
+<p>Iteratively update the parameters based on a quadratic approximation of log-likelihood. That is, being located at the point $\big\{b_{\{i\}},\boldsymbol\theta_{\{i\}}\big\}$, the local quadratic approximation of the log-likelihood (read: its second order Taylor expansion) is
 \begin{equation}
-L(b,\boldsymbol \theta) \approx \log L(b_{[i]},\boldsymbol \theta_{[i]}) + \mathbf{S}(b_{[i]},\boldsymbol\theta_{[i]})^\prime
-\begin{bmatrix} b - b_{[i]} \\ \boldsymbol{\theta}-\boldsymbol{\theta}_{[i]} \end{bmatrix} + \frac{1}{2} \begin{bmatrix} b - b_{[i]}\\ \boldsymbol\theta - \boldsymbol\theta_{[i]} \end{bmatrix}^\prime \mathbf{H}(b_{[i]}, \boldsymbol\theta_{[i]})\begin{bmatrix} b - b_{[i]}\\ \boldsymbol\theta - \boldsymbol\theta_{[i]} \end{bmatrix}.
+L(b,\boldsymbol \theta) \approx \log L(b_{\{i\}},\boldsymbol \theta_{\{i\}}) + \mathbf{S}(b_{\{i\}},\boldsymbol\theta_{\{i\}})^\prime
+\begin{bmatrix} b - b_{\{i\}} \\ \boldsymbol{\theta}-\boldsymbol{\theta}_{\{i\}} \end{bmatrix} + \frac{1}{2} \begin{bmatrix} b - b_{\{i\}}\\ \boldsymbol\theta - \boldsymbol\theta_{\{i\}} \end{bmatrix}^\prime \mathbf{H}(b_{\{i\}}, \boldsymbol\theta_{\{i\}})\begin{bmatrix} b - b_{\{i\}}\\ \boldsymbol\theta - \boldsymbol\theta_{\{i\}} \end{bmatrix}.
 \end{equation}</p>
-<p>The updates $b_{[i+1]}$ and $\boldsymbol{\theta}_{[i+1]}$ are the optimizers of this quadratic approximation, or
+<p>The updates $b_{\{i+1\}}$ and $\boldsymbol{\theta}_{\{i+1\}}$ are the optimizers of this quadratic approximation, or
 \begin{equation}
-\begin{bmatrix} b_{[i+1]}\\ \boldsymbol \theta_{[i+1]} \end{bmatrix}
-= \begin{bmatrix} b_{[i]}\\ \boldsymbol \theta_{[i]} \end{bmatrix} - \big[ \mathbf{H}(b_{[i]},\boldsymbol\theta_{[i]}) \big]^{-1} \mathbf{S}(b_{[i]},\boldsymbol\theta_{[i]}).
+\begin{bmatrix} b_{\{i+1\}}\\ \boldsymbol \theta_{\{i+1\}} \end{bmatrix}
+= \begin{bmatrix} b_{\{i\}}\\ \boldsymbol \theta_{\{i\}} \end{bmatrix} - \big[ \mathbf{H}(b_{[i]},\boldsymbol\theta_{\{i\}}) \big]^{-1} \mathbf{S}(b_{\{i\}},\boldsymbol\theta_{\{i\}}).
 \label{eq:NewtonRhapsonUpdate}
 \tag{3}
 \end{equation}</p>

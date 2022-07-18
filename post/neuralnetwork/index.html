@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Hanno Reuvers">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Mathematical details on forward and backward propagation and a small illustration">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://HannoReuvers.github.io/post/neuralnetwork/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://HannoReuvers.github.io/post/neuralnetwork/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Hanno Reuvers">
+  <meta property="og:url" content="https://HannoReuvers.github.io/post/neuralnetwork/">
+  <meta property="og:title" content="The math of neural networks | Hanno Reuvers">
+  <meta property="og:description" content="Mathematical details on forward and backward propagation and a small illustration"><meta property="og:image" content="https://HannoReuvers.github.io/post/neuralnetwork/featured.png">
+  <meta property="twitter:image" content="https://HannoReuvers.github.io/post/neuralnetwork/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2022-06-19T00:00:00&#43;02:00">
+    
+    <meta property="article:modified_time" content="2022-06-19T00:00:00&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://HannoReuvers.github.io/post/neuralnetwork/"
+  },
+  "headline": "The math of neural networks",
+  
+  "image": [
+    "https://HannoReuvers.github.io/post/neuralnetwork/featured.png"
+  ],
+  
+  "datePublished": "2022-06-19T00:00:00+02:00",
+  "dateModified": "2022-06-19T00:00:00+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Hanno Reuvers"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hanno Reuvers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://HannoReuvers.github.io/img/icon-512.png"
+    }
+  },
+  "description": "Mathematical details on forward and backward propagation and a small illustration"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>The math of neural networks | Hanno Reuvers</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Hanno Reuvers</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Blogs</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#courses"><span>Course info</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>The math of neural networks</h1>
+
+  
+  <p class="page-subtitle">Math details on forward and backward propagation and a small illustration</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 19, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    18 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="schematic-representation">Schematic representation</h2>
+<p>Some neural network notation will be introduced using Figure 1. This schematic representation visualizes how the three inputs $x_1$, $x_2$ and $x_3$ (on the far left) are propagated through a series of layers and create the three outputs $\hat{y}_1$, $\hat{y}_2$ and $\hat{y}_3$ (on the far right). The neurons of the input layer contain input features only. As this layer is typically uncounted, Figure 1 shows a neural network of three layers. A superscript ``$[\ell]$&rsquo;&rsquo; will be used to refer to quantities in the $\ell$<sup>th</sup> layer. We will subsequently discuss the connections between the layers of the network.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="NeuralNetworkFigure.png" data-caption="Figure 1: A simplified neural network with $L=3$ layers. For this particular layout of the neural network we have: $n^{[0]}=3$, $n^{[1]}=5$, $n^{[2]}=2$, and $n^{[L]}=3$.">
+<img data-src="NeuralNetworkFigure.png" class="lazyload" alt="" width="90%" height="90%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 1: A simplified neural network with $L=3$ layers. For this particular layout of the neural network we have: $n^{[0]}=3$, $n^{[1]}=5$, $n^{[2]}=2$, and $n^{[L]}=3$.
+  </figcaption>
+
+
+</figure>
+
+<ol>
+<li>The value of neuron $a_1^{[1]}$ has similarities to a logistic regression. The three incoming arrows from $x_1$, $x_2$ and $x_3$ tell us to linearly combine these three inputs and to add the bias term $b_1^{[1]}$.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Stacking $\mathbf{x}=(x_1,x_2,x_3)^\prime$ and defining the weight vector $\mathbf{w}_{1}^{[1]}=(w_{11}^{[1]}, w_{12}^{[1]},w_{13}^{[1]})^\prime$, the linear combination is expressed compactly as $z_1^{[1]}=\mathbf{w}_{1}^{[1]\prime}\mathbf{x}+b_1^{[1]}$. Applying the sigmoid function $\Lambda(x)=\frac{1}{1+\exp(-x)}$, the result is $a_1^{[1]}=\Lambda(z_1^{[1]})$.</li>
+</ol>
+<blockquote>
+<p>The other neurons in hidden layer 1 are computed in the same way. Each neuron will receive its own weight vector and bias. For $i=1,2,\ldots,5$, we have $z_i^{[1]}=\mathbf{w}_i^{[1]\prime}\mathbf{x}+ b_i^{[1]}$ and $a_i^{[1]}=\Lambda(z_i^{[1]})$.</p>
+</blockquote>
+<ol start="2">
+<li>Hidden layer 2 takes the values from the neurons in hidden layer 1 as inputs. For ease of notation, define $\mathbf{a}^{[1]}=(a_1^{[1]},a_2^{[1]},\ldots,a_5^{[1]})$. To compute $a_1^{[2]}$, calculate $z_1^{[2]}=\mathbf{w}_{1}^{[2]\prime}\mathbf{a}^{[1]}+b_1^{[2]}$ and $a_1^{[2]}=\Lambda(z_1^{[2]})$.</li>
+</ol>
+<blockquote>
+<p>Similarly, $a_2^{[2]}=\Lambda(z_2^{[2]})$ with $z_2^{[2]}=\mathbf{w}_{2}^{[2]\prime}\mathbf{a}^{[1]}+b_2^{[2]}$.</p>
+</blockquote>
+<ol start="3">
+<li>The two-step computation for the output layer is somewhat different. As a start, we can still calculate the usual linear combinations
+$$
+\begin{aligned}
+z_1^{[3]}     &amp;=\mathbf{w}_{1}^{[3]\prime}\mathbf{a}^{[2]}+b_1^{[3]}, \\<br>
+&amp; \vdots \\<br>
+z_3^{[3]}     &amp;=\mathbf{w}_{3}^{[3]\prime}\mathbf{a}^{[2]}+b_3^{[3]},   <br>
+\end{aligned}
+$$
+with $\mathbf{a}^{[2]}=(a_1^{[2]},a_2^{[2]})$. The subsequent transformation however should provide outcomes matching the type of data that is being modeled. For example, if $\hat{y}_1,\hat{y}_2,\hat{y}_3 \in \mathbb{R}$ (a multivariate regression), then no subsequent transformation is needed and we can simply use $\hat{y}_1=z_1^{[3]}$, $\hat{y}_2=z_2^{[3]}$ and $\hat{y}_3=z_3^{[3]}$. We pursue this case in the main text of this post. If the neural network output is used for classification, then a softmax output layer is more appropriate (Appendix C).</li>
+</ol>
+<h4 id="what-are-the-benefits-of-neural-networks">What are the benefits of neural networks?</h4>
+<p>The main advantage of a neural network is its flexible link between input features and output variable(s). That is, even highly nonlinear relationships in the data can be modelled throught these subsequent cascades of (1) linear combinations and (2) nonlinear transforms (through the sigmoid function).<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> This is particularly useful in data-rich environments when parametric relationship are just too restrictive.</p>
+<h2 id="training-a-neural-network">Training a neural network</h2>
+<p>The values of the weight vectors and bias terms are still to be selected. We perform this selection using a cost function $\mathcal{C}$. This cost function quantifies the quality of a particular choice of weights and bias values. A higher cost indicates a worse choice of parameters. The evaluation of the cost function happens in the forward-propagation step. Backward-propagation suggests the direction in which the cost function is lower.</p>
+<h4 id="forward-propagation">Forward-propagation</h4>
+<p>The forward propagation step evaluates the cost function $\mathcal{C}$. The procedure becomes more concise if we use matrix notation. For each layer $\ell=1,\ldots,L$, we stack the results for each neuron:
+$$
+\mathbf{z}^{[\ell]}
+= \begin{bmatrix}
+z_1^{[\ell]} \\<br>
+\vdots \\<br>
+z_{n^{[\ell]}}^{[\ell]}
+\end{bmatrix}
+,
+\mathbf{b}^{[\ell]}
+= \begin{bmatrix}
+b_1^{[\ell]} \\<br>
+\vdots \\<br>
+b_{n^{[\ell]}}^{[\ell]}
+\end{bmatrix}
+,
+\mathbf{a}^{[\ell]}
+= \begin{bmatrix}
+a_1^{[\ell]} \\<br>
+\vdots \\<br>
+a_{n^{[\ell]}}^{[\ell]}
+\end{bmatrix}
+,\text{and }
+\mathbf{W}^{[\ell]}
+= \begin{bmatrix}
+\mathbf{w}_1^{[\ell]\prime} \\<br>
+\vdots \\<br>
+\mathbf{w}_{n^{[\ell]}}^{[\ell]\prime},
+\end{bmatrix}
+$$
+where $n^{[\ell]}$ denotes the number of neurons in layer $\ell$. If we agree to apply the function $\Lambda$ elements-wise to vectors, then all computations of the previous section can be summarized by
+$$
+\begin{aligned}
+\mathbf{z}^{[1]} &amp;= \mathbf{W}^{[1]} \mathbf{x} + \mathbf{b}^{[1]}, &amp;\mathbf{a}^{[1]} = \Lambda(\mathbf{z}^{[1]}), \\<br>
+\mathbf{z}^{[2]} &amp;= \mathbf{W}^{[2]} \mathbf{a}^{[1]} + \mathbf{b}^{[2]}, &amp;\mathbf{a}^{[2]} = \Lambda(\mathbf{z}^{[2]}), \\<br>
+\hat{\mathbf{y}} = \mathbf{z}^{[3]} &amp;= \mathbf{W}^{[3]} \mathbf{a}^{[2]} + \mathbf{b}^{[3]}.
+\end{aligned}
+\label{eq:NNlayout}
+\tag{1}
+$$
+It remains to compare the neural network output to the actual data. We let $\mathbf{y}=(y_1,y_2,y_3)^\prime$ denote the vector of observed outcomes. A possible cost function for this single-observation setting is the squared error $\| \hat{\mathbf{y}} - \mathbf{y} \|^2$.</p>
+<p>In practice, we have <em>multiple</em> observations to determine $\mathbf{W}^{[1]}$, $\mathbf{W}^{[2]}$, $\mathbf{W}^{[3]}$, $\mathbf{b}^{[1]}$, $\mathbf{b}^{[2]}$, and $\mathbf{b}^{[3]}$. We assume a sample size of $T$ observations and enumerate the input-output pairs as $(\mathbf{x}^{(1)},\mathbf{y}^{(1)}),\ldots,(\mathbf{x}^{(T)},\mathbf{y}^{(T)})$. For each $t\in\{1,\ldots,T\}$, we now propagate the input $\mathbf{x}^{(t)}$ through the recursions in \eqref{eq:NNlayout} and find the implied prediction $\hat{\mathbf{y}}^{(t)}$. The cost function that takes all the samples into account is the <strong>Mean Square Error (MSE)</strong> defined as
+$$
+MSE = \frac{1}{T} \sum_{t=1}^T \|\hat{\mathbf{y}}^{(t)} -\mathbf{y}^{(t)} \|^2.
+$$</p>
+<hr>
+<p><strong>NOTE:</strong>
+Instead of iterating through \eqref{eq:NNlayout} for each $\mathbf{x}^{(t)}$, a more efficient algorithm vectorizes this process. For example, after stacking $\mathbf{X}=[\mathbf{x}^{(1)} \cdots \mathbf{x}^{(T)}] \in \mathbb{R}^{3\times T}$, the matrix product $\mathbf{W}^{[1]}\mathbf{X}$ will immediately hold $\mathbf{W}^{[1]}\mathbf{x}^{(t)}$ in its $t$<sup>th</sup> column.</p>
+<hr>
+<h4 id="backward-propagation">Backward-propagation</h4>
+<p>The learning in the neural network is nothing but a series of successively better updates for $\mathbf{W}^{[1]}$, $\mathbf{W}^{[2]}$, $\mathbf{W}^{[3]}$, $\mathbf{b}^{[1]}$, $\mathbf{b}^{[2]}$, and $\mathbf{b}^{[3]}$. A popular method to perform these updates is <strong>gradient descent</strong>. Using a subscript ``$\{k\}$&rsquo;&rsquo; to denote the $k$<sup>th</sup> parameter update, we perform:</p>
+<ul>
+<li>Initialize $\mathbf{W}_{\{0\}}^{[1]}$, $\mathbf{W}_{\{0\}}^{[2]}$, $\mathbf{W}_{\{0\}}^{[3]}$, $\mathbf{b}_{\{0\}}^{[1]}$, $\mathbf{b}_{\{0\}}^{[2]}$, and $\mathbf{b}_{\{0\}}^{[3]}$ (more details later).</li>
+<li>For $\ell=1,\ldots,3$, update the parameters according to
+\begin{equation}
+\begin{aligned}
+\mathbf{W}_{\{k+1\}}^{[\ell]} &amp;= \mathbf{W}_{\{k\}}^{[\ell]} - \alpha \frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[\ell]}} \\<br>
+\mathbf{b}_{\{k+1\}}^{[\ell]} &amp;= \mathbf{b}_{\{k\}}^{[\ell]} - \alpha \frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[\ell]}}
+\end{aligned}
+\label{eq:GradientDescent}
+\tag{2}
+\end{equation}
+where
+<ul>
+<li>The learning rate $\alpha$ is a <em>hyperparameter</em> to be set by the researcher.</li>
+<li>The terms $\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[\ell]}}$ and $\frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[\ell]}}$ are the gradients of the cost function with respect to the weight matrices and bias vectors, respectively (see Appendix A for explanations on matrix and vector derivatives). The gradients in \eqref{eq:GradientDescent} are evaluated at the parameter values of iteration $k$.</li>
+</ul>
+</li>
+<li>Stop updating upon convergence. Quantitative convergence criteria are difficult to formulate because we are generally not trying to find the global minimum of the cost function. The neural network is typically heavily parametrised and the global minimum is thus likely to overfit the data.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> We want to continue decreasing the training cost function as long as this also leads to decreases in the validation cost function.</li>
+</ul>
+<p>The crucial components in \eqref{eq:GradientDescent} are $\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[\ell]}}$ and $\frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[\ell]}}$ ($\ell=1,2,3$). These gradients are computed during backward-propagation. We will work our way backwards and start with the derivatives with respect to $\mathbf{W}^{[3]}$ and $\mathbf{b}^{[3]}$. For brevity, a single feature vector $\mathbf{x}$ is propagated as in \eqref{eq:NNlayout} to produce a single output vector $\hat{\mathbf{y}}$. The cost function is the squared error.</p>
+<ol>
+<li>The cost function $\mathcal{C}=\| \mathbf{z}^{[3]} - \mathbf{y} \|^2$ depends on $\mathbf{W}^{[3]}$ and $\mathbf{b}^{[3]}$ through $\mathbf{z}^{[3]} = \mathbf{W}^{[3]} \mathbf{a}^{[2]} + \mathbf{b}^{[3]}$. We will have to use the chain rule. First, write $\mathcal{C}= \sum_{i=1}^{[n^L]} (z_{i}^{[3]}-y_i)^2$, calculate
+\begin{equation}
+\frac{\partial \mathcal{C}}{\partial z_i^{[3]}}
+=  2(z_i^{[3]}-y_i)
+= \left[ 2 (\mathbf{z}^{[3]} - \mathbf{y}) \right]_i
+\end{equation}
+and conclude that $\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}= 2 (\mathbf{z}^{[3]} - \mathbf{y})$. The gradient with respect to $\mathbf{b}^{[3]}$ is also $2 (\mathbf{z}^{[3]} - \mathbf{y})$ because
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial b_i^{[3]}}
+&amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial z_j^{[3]}}{\partial b_i^{[3]}}
+= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial}{\partial b_i^{[3]}} \left(\mathbf{w}_{j}^{[3]\prime} \mathbf{a}^{[2]}+b_j^{[3]}\right) \\<br>
+&amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \delta_{ij}
+= \frac{\partial \mathcal{C}}{\partial z_i^{[3]}}
+= \left[ 2 (\mathbf{z}^{[3]} - \mathbf{y}) \right]_i
+\end{aligned}
+$$
+where we used the Kronecker delta
+\begin{equation}
+\delta_{ij} = \begin{cases}
+1       &amp; \quad \text{if } i=j,\\<br>
+0       &amp; \quad{ otherwise.}
+\end{cases}
+\end{equation}
+The calculation of $\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[3]}}$ is somewhat similar. Relabeling the summation index to avoid confusion with the subscripts of $w_{ij}$, we find
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial w_{ij}^{[3]}}
+&amp;= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \frac{\partial z_m^{[3]}}{\partial b_i^{[3]}}
+= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \frac{\partial}{\partial w_{ij}^{[3]}} \left(\mathbf{w}_{m}^{[3]\prime} \mathbf{a}^{[2]}+b_m^{[3]}\right) \\<br>
+&amp;= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \delta_{im} a_j^{[2]}
+= \frac{\partial \mathcal{C}}{\partial z_i^{[3]}} a_j^{[2]}
+= \left[ \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}} \mathbf{a}^{[2]\prime} \right]_{ij}.
+\end{aligned}
+$$</li>
+</ol>
+<blockquote>
+<p>For the parameters in <strong>layer 3</strong>, we find the following gradients:
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[3]}}
+= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}
+&amp;=  2 (\mathbf{z}^{[3]} - \mathbf{y}), \\<br>
+\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[3]}} &amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}} \mathbf{a}^{[2]\prime}.
+\end{aligned}
+$$</p>
+</blockquote>
+<ol start="2">
+<li>Moving back one more layer, we are in layer 2. Four equations now determine the gradients with respect to $\mathbf{W}^{[2]}$ and $\mathbf{b}^{[2]}$, namely:
+$$
+\begin{aligned}
+\mathcal{C} &amp;=\| \mathbf{z}^{[3]} - \mathbf{y} \|^2, \\
+\mathbf{z}^{[3]} &amp;= \mathbf{W}^{[3]} \mathbf{a}^{[2]} + \mathbf{b}^{[3]}, \\<br>
+\mathbf{a}^{[2]} &amp;= \Lambda(\mathbf{z}^{[2]})\\<br>
+\mathbf{z}^{[2]} &amp;= \mathbf{W}^{[2]} \mathbf{a}^{[1]} + \mathbf{b}^{[2]}.
+\end{aligned}
+$$
+Because we derived $\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}$ before, we can continue with $\frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}}$. Defining $w_{ij}^{[3]}$ as the $(i,j)$<sup>th</sup> element of $\mathbf{W}^{[3]}$, the chain rule implies
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial a_i^{[2]}}
+&amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial z_j^{[3]}}{\partial a_i^{[2]}}
+= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial}{\partial a_i^{[2]}} \left(\mathbf{w}_{j}^{[3]\prime} \mathbf{a}^{[2]}+b_j^{[3]}\right) \\<br>
+&amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} w_{ji}^{[3]}
+= \left[ \mathbf{W}^{[3]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}\right]_i.
+\end{aligned}
+$$
+We subsequently need to take care of $\mathbf{a}^{[2]}= \Lambda(\mathbf{z}^{[2]})$. This transformation is <em>elements-wise</em> implying that $a_i^{[2]}=\Lambda(z_{i}^{[2]})$ for $i\in\{1,2\}$ and thus
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial z_i^{[2]}}
+&amp;= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \frac{\partial a_i^{[2]}}{\partial z_i^{[2]}}
+= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \Lambda&rsquo;(z_i^{[2]}) \\<br>
+&amp;= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \Lambda(z_i^{[2]})\big(1-\Lambda(z_i^{[2]}) \big),
+\end{aligned}
+\label{eq:NonlinearTransformGradient}
+\tag{3}
+$$
+where we used $\Lambda&rsquo;(x)=\Lambda(x)\big(1-\Lambda(x)\big)$ (see <a href="https://hannoreuvers.github.io/post/logisticregression/">this post</a> on logistic regression). In matrix notation, we can use the Hadamard product (i.e. the elements-wise multiplication symbol &ldquo;$\odot$&rdquo;) to express \eqref{eq:NonlinearTransformGradient} as $\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}} = \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}} \odot \Lambda(\mathbf{z}^{[2]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[2]})\big)$. Having computed the gradient with respect to $\mathbf{z}^{[2]}$, the calculations for $\frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[2]}}$ and $\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[2]}}$ are exactly as in layer 3 because only another linear transformation $\mathbf{z}^{[2]} = \mathbf{W}^{[2]} \mathbf{a}^{[1]} + \mathbf{b}^{[2]}$ remains.</li>
+</ol>
+<blockquote>
+<p>For the parameters in <strong>layer 2</strong>, we find the following gradients:
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}}
+&amp;=  \mathbf{W}^{[3]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}, \\<br>
+\frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[2]}}=\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}}
+&amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}} \odot \Lambda(\mathbf{z}^{[2]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[2]})\big), \\<br>
+\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[2]}} &amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}} \mathbf{a}^{[1]\prime}.
+\end{aligned}
+$$</p>
+</blockquote>
+<ol start="3">
+<li>Layer 1 is a fully-connected layer just like layer 2. Because the mathematical structure is identical to layer 2, the gradients follow immediately. We should only realized that the input variables to the first layer are $\mathbf{a}^{[0]}=\mathbf{x}$.</li>
+</ol>
+<blockquote>
+<p>For the parameters in <strong>layer 1</strong>, we find the following gradients:
+$$
+\begin{aligned}
+\frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[1]}}
+&amp;=  \mathbf{W}^{[2]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}}, \\<br>
+\frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[1]}}=\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[1]}}
+&amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[1]}} \odot \Lambda(\mathbf{z}^{[1]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[1]})\big), \\<br>
+\frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[1]}} &amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[1]}} \mathbf{a}^{[0]\prime}= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[1]}} \mathbf{x}^{\prime}.
+\end{aligned}
+$$</p>
+</blockquote>
+<hr>
+<p><strong>NOTE:</strong>
+Our single-observation derivations generalize easily to a multiple-observation setting due to linearity of derivatives. Consider the input-output pairs $(\mathbf{x}^{(1)},\mathbf{y}^{(1)}),\ldots,(\mathbf{x}^{(T)},\mathbf{y}^{(T)})$ and $MSE = \frac{1}{T} \sum_{t=1}^T \|\hat{\mathbf{y}}^{(t)} -\mathbf{y}^{(t)} \|^2$. The gradient of the MSE with respect to say $\mathbf{W}^{[1]}$ is
+$$
+\frac{\partial}{\partial \mathbf{W}^{[1]}} MSE = \frac{1}{T}\sum_{T=1}^T\frac{\partial}{\partial \mathbf{W}^{[1]}}\|\hat{\mathbf{y}}^{(t)} -\mathbf{y}^{(t)} \|^2.
+$$
+The overall gradient is clearly just the average of all single-observation gradients. Theoretically, we can thus run the back-propagation algorithm for each observation and average. A practical implementation vectorizes this process to leverage the performance benefits of linear algebra libraries.</p>
+<hr>
+<h2 id="remarks">Remarks</h2>
+<ul>
+<li>It is standard to initialize the gradient descent algorithm with $\mathbf{b}^{[1]}=\mathbf{b}^{[2]}=\mathbf{b}^{[3]}=\mathbf{0}$. This zero initialization should not be used for the weight matrix. Such a choice would imply $\frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}}=\frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[1]}}=\mathbf{0}$ and all gradients would be zero. Gradient descent would not update any parameter. It is instead common practice to initialize the weight matrices with (small) random numbers. Concrete examples are the heuristic and normalized initializations in (1) and (16) of Glorot and Bengio (2010).</li>
+<li>The learning rate $\alpha$ is specified by the user. Common values are 0.1, 0.01, and 0.001. Determining a good choice for $\alpha$ typically requires some trial-and-error. If the learning rate is too high, then the cost function can oscillate strongly and even fail to converge. If the learning rate is too low, then cost function improvements are small and many iterations are needed.</li>
+<li>The nonlinear functional transform in our neural network was the sigmoid function $\Lambda(x)=\frac{1}{1+\exp(-x)}$. Other activation functions can be used (Table 1). An inspection of the derivations shows that a change in activation function only impacts the backward propagation algorithm through \eqref{eq:NonlinearTransformGradient}. That is, if the new relationship is $\mathbf{a}^{[2]}=g(\mathbf{z}^{[2]})$, then \eqref{eq:NonlinearTransformGradient} becomes $\frac{\partial \mathcal{C}}{\partial z_i^{[2]}}
+= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \frac{\partial a_i^{[2]}}{\partial z_i^{[2]}}
+= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} g&rsquo;(z_i^{[2]})$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="ActivationFunctions.png" data-caption="Table 1: Several activation functions and their gradients. The derivative of the rectified linear unit is undefined at $x=0$ but the non-existence of the derivative at this single isolated point is usually ignored.">
+<img data-src="ActivationFunctions.png" class="lazyload" alt="" width="85%" height="85%" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 1: Several activation functions and their gradients. The derivative of the rectified linear unit is undefined at $x=0$ but the non-existence of the derivative at this single isolated point is usually ignored.
+  </figcaption>
+
+
+</figure>
+</li>
+<li>Several extensions of the baseline gradient descent algorithm have been proposed. Two of the most popular examples are:
+<ul>
+<li>The gradient descent updates can be smoothed across iterations. This can dampen oscilations and thus allow for higher learning rates (read: faster convergence). An example is the <strong>Adam optimizer</strong> by Kingma and Ba (2015) which keeps track of an exponential moving average of the gradient and squared gradient to smoothen the parameter update.</li>
+<li><strong>Mini batch gradient descent</strong> is particularly popular on larger datasets. With gradients being averages of the single-observation gradients, the gradient based on say 1,000 observations will already give a good indication of the direction of steepest descent. It is thus natural to update the parameters after evaluating the gradient based on a subset of the data (a mini batch). This effectively increases the parameter update speed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="small-illustration">Small illustration</h2>
+<p>We use a neural network to classify the artificial data shown in Figure 2. The input feature vector $\mathbf{x}$ is 2-dimensional and there are three categories (the letter H, the letter R, and the background). This simulation design clearly generates a highly nonlinear mapping from input features to labels and a flexible classifier is thus needed. This justifies the use of a neural network. The details of the neural network implementation are listed in Table 2.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="DataOverview.png" data-caption="Figure 2: The artifical data for the neural network illustration with (a) training data (5,000 observations), (b) validation data (1,000 observations), and (c) test data (1,000 observations).">
+<img data-src="DataOverview.png" class="lazyload" alt="" width="90%" height="90%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 2: The artifical data for the neural network illustration with <strong>(a)</strong> training data (5,000 observations), <strong>(b)</strong> validation data (1,000 observations), and <strong>(c)</strong> test data (1,000 observations).
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="NNdetails.png" data-caption="Table 2: The neural network architecture.">
+<img data-src="NNdetails.png" class="lazyload" alt="" width="85%" height="85%" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 2: The neural network architecture.
+  </figcaption>
+
+
+</figure>
+
+<p>We initialize the weight matrices according to the ``<em>normalized initialization</em>&rsquo;&rsquo; in Glorot and Bengio (2010) and start all bias vectors as $\boldsymbol{0}$. We subsequently use gradient descent with a learning rate of 0.2 to update the 2,853 parameters. In combination with the hyperbolic tangent activation functions, this results in a steady decrease of the cost function (Figure 3). The decrease is nearly monotonic except for a temporary spike in the cost function around learning epoch 1,260. Further debugging shows that this coincides with a sudden large increases of points in the left of the figure being classified as belonging to the blue category. This overshoot is corrected in subsequent iterations.</p>
+<p>The learning process is further illustrated in Figure 4. The first 2,000 learning epochs provide a rather blurry outline of the letters H and R but subsequent parameter updates add more and more detail. As there are only tiny improvements during learning epochs 6,000 to 8,000 (both in the decision regions and in the cost function of Figure 3), we stop the learning process after 8,000 epochs.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="TrainingCost.png" data-caption="Figure 3: The training cost as a function of learning epoch.">
+<img data-src="TrainingCost.png" class="lazyload" alt="" width="60%" height="60%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 3: The training cost as a function of learning epoch.
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="DecisionRegionsWithUpdates.png" data-caption="Figure 4: The evolution of the decision regions (as determined by majority voting) for increasing number of learning epochs.">
+<img data-src="DecisionRegionsWithUpdates.png" class="lazyload" alt="" width="90%" height="90%" ></a>
+
+
+  
+  
+  <figcaption>
+    Figure 4: The evolution of the decision regions (as determined by majority voting) for increasing number of learning epochs.
+  </figcaption>
+
+
+</figure>
+
+<p>Finally, we verify the performance on the test data set. The overall performance is satisfactory with an accuracy of 93.9%. The confusion matrix (Table 3) shows that there is little mislabeling between the classes that define the H and R. Most errors are made when distinguishing the letters from the background.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure>
+
+
+  <a data-fancybox="" href="NNConfusionMatrix.png" data-caption="Table 3: The confusion matrix for the test data of the HR-classification example. The encoding of the labels is: 1 (H; blue), 2 (R; red), and 3 (background, grey).">
+<img data-src="NNConfusionMatrix.png" class="lazyload" alt="" width="55%" height="55%" ></a>
+
+
+  
+  
+  <figcaption>
+    Table 3: The confusion matrix for the test data of the HR-classification example. The encoding of the labels is: 1 (H; blue), 2 (R; red), and 3 (background, grey).
+  </figcaption>
+
+
+</figure>
+
+<h2 id="appendix-a-vector-and-matrix-derivatives">Appendix A: Vector and matrix derivatives</h2>
+<p>As an $m$-dimensional vector can be interpreted as an $m\times 1$ matrix, it suffices to center this discussion around matrix derivatives. Defining the $m\times n$ matrix $\mathbf{A}$,
+\begin{equation}
+\mathbf{A}
+=\begin{bmatrix}
+a_{11}   &amp; \cdots        &amp; a_{1n} \\<br>
+\vdots   &amp; \ddots        &amp; \vdots \\<br>
+a_{m1}   &amp; \cdots        &amp; a_{mn}
+\end{bmatrix}
+\end{equation}
+and the function $f:\mathbb{R}^{m\times n}\to\mathbb{R}$, the matrix derivative $\frac{\partial f}{\partial \mathbf{A}}\in \mathbb{R}^{m\times n}$ is defined as
+\begin{equation}
+\frac{\partial f}{\partial \mathbf{A}}
+=\begin{bmatrix}
+\frac{\partial f}{\partial a_{11}} &amp; \cdots        &amp; \frac{\partial f}{\partial a_{1n}} \\<br>
+\vdots   &amp; \ddots        &amp; \vdots \\<br>
+\frac{\partial f}{\partial a_{m1}} &amp; \cdots        &amp; \frac{\partial f}{\partial a_{mn}}
+\end{bmatrix}.
+\end{equation}
+Two consequences of this definition should be stressed: (1) the dimensions of $\mathbf{A}$ and $\frac{\partial f}{\partial \mathbf{A}}$ are identical, and (2) the $(i,j)$<sup>th</sup> element of $\frac{\partial f}{\partial \mathbf{A}}$ is $\frac{\partial f}{\partial a_{ij}}$. The second property is particularly interesting as it connects the calculation of a matrix derivative to the calculation of an ordinary partial derivative. The general recipe to compute matrix derivatives is therefore as follows:</p>
+<ol>
+<li>Compute $\frac{\partial f}{\partial a_{ij}}$ for arbitrary $i$ and $j$.</li>
+<li>The matrix derivative $\frac{\partial f}{\partial \mathbf{A}}$ is the matrix having $\frac{\partial f}{\partial a_{ij}}$ as its $(i,j)$<sup>th</sup> element.</li>
+</ol>
+<p>For example, let $f(\mathbf{A})=\mathbf{x}^\prime \mathbf{A}\mathbf{x}$ for $\mathbf{A}\in\mathbb{R}^{n\times n}$ and some fixed vector $\mathbf{x}\in\mathbb{R}^n$. As $\mathbf{x}^\prime \mathbf{A}\mathbf{x}= \sum_{k=1}^n \sum_{l=1}^n a_{kl}  x_k x_l$, we have $\frac{\partial f}{\partial a_{ij}}= x_i x_j$. We conclude that $\frac{\partial}{\partial \mathbf{A}} \mathbf{x}^\prime \mathbf{A}\mathbf{x} = \mathbf{x} \mathbf{x}^\prime$, because
+\begin{equation}
+\left[\frac{\partial f}{\partial \mathbf{A}} \right]_{ij}= \frac{\partial f}{\partial a_{ij}} = x_i x_j = \left[\mathbf{x} \mathbf{x}^\prime \right]_{ij}.
+\end{equation}</p>
+<h2 id="appendix-b-cross-entropy-loss-function">Appendix B: Cross-entropy loss function</h2>
+<p>Consider a random sample $Y_1, Y_2,\ldots,Y_n$ of categorical data.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> For ease of notation, we will label these categories as $1,2,\ldots,K$ and denote the corresponding probabilities as $p_1,p_2,\ldots,p_K$. The associated likelihood is:
+$$
+L(p_1,p_2,\ldots,p_K)
+= \prod_{i=1}^n p_1^{\mathbb{1}_{ \{ y_i=1 \} }} p_2^{\mathbb{1}_{ \{ y_i=2 \} }}\times \cdots \times p_K^{\mathbb{1}_{ \{ y_i=K \} }}
+$$
+with $\mathbb{1}_{ \{ \mathcal{A} \} }$ denoting the indicator function for condition $\mathcal{A}$.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> The maximization of the likelihood is equal to the <em>minimization</em> of the cross-entropy loss function (the negative and logarithm of the previous likelihood)
+$$
+-\sum_{i=1}^n \sum_{k=1}^K \mathbb{1}_{ \{ y_i = k \} } \log(p_k).
+$$
+The intuition behind this formula is as follows. For any $y_i$, the indicator function inside the summation over $k$ will be equal to 1 exactly once (namely when $k$ equals the class label stored in $y_i$). The contribution of $- \sum_{k=1}^K \mathbb{1}_{ \{ y_i = k \} } \log(p_k)$ to the loss function is lowest if the probability for this class is as high as possible.</p>
+<h2 id="appendix-c-classification-output-layer">Appendix C: Classification output layer</h2>
+<p>We consider a neural network in which the output layer, layer $L$, should act as a classifier for $K$ classes. The combination of softmax activation and cross-entropy evaluation metric is very popular because (1) it works well in practice,<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> and (2) it results in concise mathematical expressions for the back-propagation step.</p>
+<p>The concrete implementation details are as follows. First, we match the number of neurons in the output layer to the number of output classes, i.e. $n^{[L]}=K$. The linear transformation towards the $L$<sup>th</sup> layer is thus $\mathbf{z}^{[L]}= \mathbf{W}^{[L]} \mathbf{a}^{[L-1]} + \mathbf{b}^{[L]}$ with $\mathbf{W}^{[L]}\in\mathbb{R}^{K\times n^{[L-1]}}$ and $\mathbf{b}\in\mathbb{R}^{K}$. Second, we convert $\mathbf{z}^{[L]}$ into a $K$-dimensional vector of probabilities using the softmax activation. That is, we calculate
+\begin{equation}
+p_i^{[L]} = \frac{ \exp(z_i^{[L]}) }{ \sum_{k=1}^{K}  \exp(z_k^{[L]})  }, \qquad\text{for }i=1,2,\ldots,K,
+\label{eq:SoftmaxActivation}
+\tag{2}
+\end{equation}
+and stack $\mathbf{p}^{[L]} = (p_1^{[L]},\ldots,p_K^{[L]})^\prime$. The crucial component of \eqref{eq:SoftmaxActivation} is the use of the exponential function to obtain positive outcomes and the standardization in the denominator to ensure that probabilities add to $1$.</p>
+<p>Finally, let us look at the back-propagation step. For brevity of notation, we will consider a single outcome observation $y$ and omit superscripts referring to the final layer. The cost function and softmax activation are thus $C=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \log(p_k)$ and $p_i = \exp(z_i) / \sum_{\kappa=1}^{K}  \exp(z_\kappa)$ $(i=1,2,\ldots,K)$, respectively. We are interested in $\frac{\partial C}{\partial \mathbf{z}}$.</p>
+<p>Motivated by Appendix A, we derive the $j$<sup>th</sup> component of $\frac{\partial C}{\partial \mathbf{z}}$. We have
+$$
+\begin{aligned}
+\frac{\partial C}{\partial z_j}
+&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \frac{1}{p_k} \frac{ \partial p_k}{\partial z_j} \\<br>
+&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \frac{1}{p_k} \left(\frac{ \exp(z_j) }{ \sum_{\kappa=1}^{K}  \exp(z_\kappa)  }\mathbb{1}_{ \{ j=k \}} - \frac{ \exp(z_k) \exp(z_j) }{ ( \sum_{\kappa=1}^{K}  \exp(z_\kappa) )^2  } \right) \\<br>
+&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \left(\mathbb{1}_{ \{ j=k \}} - p_j  \right)
+= p_j- \mathbb{1}_{ \{ y=j \}} .
+\end{aligned}
+$$
+In conclusion, if we use one-hot encoding for the outcome $y$, then $\frac{\partial C}{\partial \mathbf{z}} = \mathbf{p}-\mathbf{y}$. Having calculated the derivative with respect to $\mathbf{z}$, the resulting derivates for $\mathbf{W}$ and $\mathbf{b}$ take the usual form.</p>
+<h2 id="references">References</h2>
+<p>X. Glorot and Y. Bengio (2010), <em>Understanding the Difficulty of Training Deep Feedforward Neural Networks</em>, Proceedings of the 13<sup>th</sup> International Conference on Artificial Intelligence and Statistics (AISTATS)</p>
+<p>N.J. Guliyevand V.E. Ismailov (2018), <em>On the Approximation by Single Hidden Layer Feedforward Neural Networks with Fixed Weights</em>, Neural Networks</p>
+<p>D.P. Kingma and J. Ba (2015), <em>Adam: A Method for Stochastic Optimization</em>, <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
+<p>S.A. Solla, E. Levin and M. Fleisher (1988), <em>Accelerated Learning in Layered Neural Networks</em>, Complex Systems</p>
+<h2 id="notes">Notes</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>The bias terms are sometimes explicitly included in the graphical representation of the neural network. For improved readability, we omit the biases in Figure 1. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Theoretically, there are many results establishing that a neural network with a single hidden layer can approximate any continuous function on a compact set with arbitrary precision (see Guliyev and Ismailov (2018) and references therein). Empirically, neural networks with several layers work better. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>It can easily happen that the amount of parameters exceeds the number of training instances. The global minimum of the cost function could coincide with a perfect fit implying that the neural network is no longer distinguishing signal from noise. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>The cost as computed on the validation set is very similar to the graph in Figure 4. That is, this cost is also steadily decreasing until epoch 6,000 and stabilizing afterwards. With 8,000 learning epochs we are not yet over-fitting the data. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>In this section we use upper case $Y_1, Y_2,\ldots,Y_n$ to denote the random variables and lower case $y_1, y_2,\ldots,y_n$ to denote the observations. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>Explicitly, we have $\mathbb{1}_{ \{ \mathcal{A} \} }=1$ if $\mathcal{A}$ is true, and $\mathbb{1}_{ \{ \mathcal{A} \} }=0$ if $\mathcal{A}$ is false. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p>Solla, Levin and Fleisher (1988) compares the performance of $L_2$-loss and logarithmic error functions. The authors conclude that a logarithmic loss function has steeper gradients which improves learning. The finding was re-emphasized in Glorot and Bengio (2010). <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://HannoReuvers.github.io/post/neuralnetwork/&amp;text=The%20math%20of%20neural%20networks" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://HannoReuvers.github.io/post/neuralnetwork/&amp;t=The%20math%20of%20neural%20networks" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=The%20math%20of%20neural%20networks&amp;body=https://HannoReuvers.github.io/post/neuralnetwork/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://HannoReuvers.github.io/post/neuralnetwork/&amp;title=The%20math%20of%20neural%20networks" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=The%20math%20of%20neural%20networks%20https://HannoReuvers.github.io/post/neuralnetwork/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://HannoReuvers.github.io/post/neuralnetwork/&amp;title=The%20math%20of%20neural%20networks" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://HannoReuvers.github.io/">Hanno Reuvers</a></h5>
+      <h6 class="card-subtitle">Assistant Professor</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/HannoReuvers" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
