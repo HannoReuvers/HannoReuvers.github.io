@@ -5,7 +5,7 @@
     <link>https://HannoReuvers.github.io/post/</link>
       <atom:link href="https://HannoReuvers.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 19 Jun 2022 00:00:00 +0200</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 18 Jul 2022 00:00:00 +0200</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Posts</title>
@@ -15,7 +15,7 @@
     <item>
       <title>The math of neural networks</title>
       <link>https://HannoReuvers.github.io/post/neuralnetwork/</link>
-      <pubDate>Sun, 19 Jun 2022 00:00:00 +0200</pubDate>
+      <pubDate>Mon, 18 Jul 2022 00:00:00 +0200</pubDate>
       <guid>https://HannoReuvers.github.io/post/neuralnetwork/</guid>
       <description>&lt;h2 id=&#34;schematic-representation&#34;&gt;Schematic representation&lt;/h2&gt;
 &lt;p&gt;Some neural network notation will be introduced using Figure 1. This schematic representation visualizes how the three inputs $x_1$, $x_2$ and $x_3$ (on the far left) are propagated through a series of layers and create the three outputs $\hat{y}_1$, $\hat{y}_2$ and $\hat{y}_3$ (on the far right). The neurons of the input layer contain input features only. As this layer is typically uncounted, Figure 1 shows a neural network of three layers. A superscript ``$[\ell]$&amp;rsquo;&amp;rsquo; will be used to refer to quantities in the $\ell$&lt;sup&gt;th&lt;/sup&gt; layer. We will subsequently discuss the connections between the layers of the network.&lt;/p&gt;
