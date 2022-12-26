@@ -1,120 +1,72 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://HannoReuvers.github.io/</loc>
-    <lastmod>2022-07-18T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/</loc>
-    <lastmod>2022-07-18T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/neuralnetwork/</loc>
-    <lastmod>2022-07-18T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/logisticregression/</loc>
-    <lastmod>2022-06-15T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/garch11/</loc>
-    <lastmod>2022-05-10T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/authors/</loc>
-    <lastmod>2021-12-31T00:02:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</loc>
-    <lastmod>2021-12-31T00:02:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication/</loc>
-    <lastmod>2021-12-31T00:02:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication/teun-paper/</loc>
-    <lastmod>2021-12-31T00:02:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication/flexible-trend/</loc>
-    <lastmod>2021-12-13T00:02:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-13T00:02:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</loc>
-    <lastmod>2021-12-13T00:02:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-12-13T00:02:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/vasicek/</loc>
-    <lastmod>2021-03-22T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication/ekc-paper/</loc>
-    <lastmod>2020-06-01T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication/liege-paper/</loc>
-    <lastmod>2020-05-01T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/authors/marina-friedrich-eric-beutner-hanno-reuvers-stephan-smeekes-jean-pierre-urbain-whitney-bader-bruno-franco-bernard-lejeune-and-emmanuel-mahieu/</loc>
-    <lastmod>2020-05-01T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-05-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication/fic-paper/</loc>
-    <lastmod>2019-02-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2019-02-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/authors/jan-lohmeyer-franz-palm-hanno-reuvers-and-jean-pierre-urbain/</loc>
-    <lastmod>2019-02-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2019-02-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/climate-econometrics-1/</loc>
-    <lastmod>2020-07-30T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-07-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/which-language/</loc>
-    <lastmod>2019-06-01T00:00:00+02:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2019-06-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/authors/admin/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://HannoReuvers.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://HannoReuvers.github.io/publication_types/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://HannoReuvers.github.io/talk/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://HannoReuvers.github.io/tags/</loc>
   </url>
-  
 </urlset>

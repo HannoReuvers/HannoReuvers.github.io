@@ -229,9 +229,9 @@
   <meta property="twitter:image" content="https://HannoReuvers.github.io/post/logisticregression/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2022-06-15T00:00:00&#43;02:00">
+      <meta property="article:published_time" content="2022-06-15T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2022-06-15T00:00:00&#43;02:00">
+    <meta property="article:modified_time" content="2022-06-15T00:00:00&#43;00:00">
   
 
   
@@ -265,8 +265,8 @@
     "https://HannoReuvers.github.io/post/logisticregression/featured.png"
   ],
   
-  "datePublished": "2022-06-15T00:00:00+02:00",
-  "dateModified": "2022-06-15T00:00:00+02:00",
+  "datePublished": "2022-06-15T00:00:00Z",
+  "dateModified": "2022-06-15T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -559,7 +559,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    11 min read
+    15 min read
   </span>
   
 
@@ -710,7 +710,7 @@ where we introduced the sigmoid function $\Lambda(x) = \frac{1}{1+\exp(-x)}$ in 
 $$
 \begin{aligned}
 L(b,\boldsymbol\theta)
-&amp;= \prod_{i=1}^n  \Big(\Lambda ( b + \boldsymbol \theta&rsquo;\mathbf{x}_i)\Big)^{y_i} \Big(1-\Lambda ( b + \boldsymbol\theta&rsquo;\mathbf{x}_i)\Big)^{1-y_i} \\<br>
+&amp;= \prod_{i=1}^n  \Big(\Lambda ( b + \boldsymbol \theta&rsquo;\mathbf{x}_i)\Big)^{y_i} \Big(1-\Lambda ( b + \boldsymbol\theta&rsquo;\mathbf{x}_i)\Big)^{1-y_i} \\
 &amp;= \prod_{i=1}^n \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big).
 \end{aligned}
 $$
@@ -722,8 +722,8 @@ The second identity is subsequently used to easily compute the derivatives of th
 $$
 \begin{aligned}
 \frac{\partial \log L(b,\boldsymbol\theta) }{\partial b}
-&amp;= \sum_{i=1}^n \frac{1}{\Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big)} \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big) \Big)\Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)\Big) \Big] (2y_i -1) \\<br>
-&amp;= \sum_{i=1}^n  (2y_i -1) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big], \\<br>
+&amp;= \sum_{i=1}^n \frac{1}{\Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big)} \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big) \Big)\Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)\Big) \Big] (2y_i -1) \\
+&amp;= \sum_{i=1}^n  (2y_i -1) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big], \\
 \frac{\partial \log L(b,\boldsymbol \theta) }{\partial \boldsymbol\theta}
 &amp;= \sum_{i=1}^n  (2y_i -1) \mathbf{x}_i \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big].
 \end{aligned}
@@ -734,48 +734,49 @@ As these gradients are linear in $\Lambda\big( (2y_i -1) \big( b + \boldsymbol\t
 \begin{aligned}
 \mathbf{H}(b, \boldsymbol\theta)
 &amp;= \left[\begin{smallmatrix}
-\frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b^2}                    &amp; \frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b \partial \boldsymbol\theta&rsquo;} \\<br>
+\frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b^2}                    &amp; \frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b \partial \boldsymbol\theta&rsquo;} \\
 \frac{\partial^2  \log L(b,\boldsymbol\theta) }{\partial b \partial \boldsymbol\theta}        &amp; \frac{\partial^2  \log L(b,\boldsymbol \theta) }{\partial \boldsymbol \theta \partial \boldsymbol \theta&rsquo;}
-\end{smallmatrix}\right] \\<br>
+\end{smallmatrix}\right] \\
 &amp;= -\sum_{i=1}^n \left[\begin{smallmatrix} 1 &amp; \mathbf{x}_i&rsquo; \\ \mathbf{x}_i  &amp; \mathbf{x}_i \mathbf{x}_i&rsquo;\end{smallmatrix}\right]   \Lambda\Big( (2y_i -1) \big( b + \boldsymbol \theta&rsquo;\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big],
 \end{aligned}
 \end{equation}
-where $(2 y_i-1)^2=1$ has been used. Finally, take an arbitrary $\mathbf{a} = (a_0,a_1,\ldots, a_p)'\in \mathbb{R}^{p+1}$, then
+where $(2 y_i-1)^2=1$ has been used. Finally, take an arbitrary $\mathbf{a} = (a_0,a_1,\ldots, a_p)&rsquo;\in \mathbb{R}^{p+1}$, then
 \begin{equation}
-\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)\mathbf{a} = - \sum_{i=1}^n (a_0 + \mathbf{a}_{1:p}'\mathbf{x}_i)^2  \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big],
+\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)\mathbf{a} = - \sum_{i=1}^n (a_0 + \mathbf{a}_{1:p}&rsquo;\mathbf{x}_i)^2  \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( b + \boldsymbol\theta&rsquo;\mathbf{x}_i \big)   \Big) \Big],
 \label{eq:PosDefHession}
 \tag{2}
 \end{equation}
 with $\mathbf{a}_{1:p}= (a_1,\ldots,a_p)^\prime$. We make several observations related to \eqref{eq:PosDefHession}:</p>
 <ol>
 <li>The sigmoid function satisfies $0 &lt; \Lambda(x) &lt; 1$ for all $x$. Each term within the summation is thus non-negative.</li>
-<li>The equality $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)  \mathbf{a} =0$ holds if and only if $a_0 + \mathbf{a}_{1:p}'\mathbf{x}_i=0$ for all $i\in{1,2,\ldots,n}$. Or equivalently, $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)  \mathbf{a} =0$ if and only if $\mathbf{a}$ is orthogonal to all vectors in the collection
-$$
+<li>The equality $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)  \mathbf{a} =0$ holds if and only if $a_0 + \mathbf{a}_{1:p}&rsquo;\mathbf{x}_i=0$ for all $i\in{1,2,\ldots,n}$. Or equivalently, $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta)  \mathbf{a} =0$ if and only if $\mathbf{a}$ is orthogonal to all vectors in the collection
+\begin{equation}
 \left\{\begin{bmatrix}
-1 \\<br>
+1 \\
 \mathbf{x}_1
 \end{bmatrix},
 \begin{bmatrix}
-1 \\<br>
+1 \\
 \mathbf{x}_2
 \end{bmatrix},
 \ldots,
 \begin{bmatrix}
-1 \\<br>
+1 \\
 \mathbf{x}_n
 \end{bmatrix}
 \right\}.
-$$
+\label{eq:vectorset}
+\tag{3}
+\end{equation}
 This analysis naturally leads to two important regimes.</li>
 </ol>
 <p><em>Low-dimensional</em>: If $p$ is small, then $\mathbf{a}&rsquo; \mathbf{H}(b, \boldsymbol\theta) \mathbf{a}$ is strictly negative. The objective function is strictly concave because the Hessian matrix is negative-definite. The likelihood function has an unique minimizer and asymptotically valid inference is possible.</p>
 <p><em>High-dimensional</em>: If $p$ is large, then we enter a high-dimensional regime with (1) many parameters to estimate, and (2) a Hessian matrix with eigenvalues (close to) 0. The dimensionality of the problem requires faster algorithms and parameter regularization.</p>
-<p><br /></p>
 <h2 id="the-low-dimensional-regime">The low-dimensional regime</h2>
 <h3 id="estimation">Estimation</h3>
 <p>Let us denote the maximum likelihood estimators by $\hat b$ and $\hat{\boldsymbol\theta}$. These estimators are the solutions of
 $$
-\mathbf{S}(\hat b, \hat{\boldsymbol\theta})= \sum_{i=1}^n  (2y_i -1)\begin{bmatrix} 1 \\ \mathbf{x}_i \end{bmatrix} \Big[1 - \Lambda\Big( (2y_i -1) \big( \hat b + \hat{\boldsymbol \theta}'\mathbf{x}_i \big)   \Big) \Big] = \mathbf{0}.
+\mathbf{S}(\hat b, \hat{\boldsymbol\theta})= \sum_{i=1}^n  (2y_i -1)\begin{bmatrix} 1 \\ \mathbf{x}_i \end{bmatrix} \Big[1 - \Lambda\Big( (2y_i -1) \big( \hat b + \hat{\boldsymbol \theta}&rsquo;\mathbf{x}_i \big)   \Big) \Big] = \mathbf{0}.
 $$
 The solution to this set of equations is not available in closed form and we thus need to resort to numerical methods. The maximization of strictly concave objective functions is well-studied and numerical solution schemes are readily available. Especially for small $p$ (say $p&lt;50$ and $p&laquo;n$), we can rely on the Newton-Rhapson algorithm. The sketch of the algorithm is as follows:</p>
 <ol>
@@ -793,7 +794,7 @@ L(b,\boldsymbol \theta) \approx \log L(b_{\{i\}},\boldsymbol \theta_{\{i\}}) + \
 \begin{bmatrix} b_{\{i+1\}}\\ \boldsymbol \theta_{\{i+1\}} \end{bmatrix}
 = \begin{bmatrix} b_{\{i\}}\\ \boldsymbol \theta_{\{i\}} \end{bmatrix} - \big[ \mathbf{H}(b_{[i]},\boldsymbol\theta_{\{i\}}) \big]^{-1} \mathbf{S}(b_{\{i\}},\boldsymbol\theta_{\{i\}}).
 \label{eq:NewtonRhapsonUpdate}
-\tag{3}
+\tag{4}
 \end{equation}</p>
 </li>
 <li>
@@ -806,15 +807,15 @@ L(b,\boldsymbol \theta) \approx \log L(b_{\{i\}},\boldsymbol \theta_{\{i\}}) + \
 $$
 \sqrt{n}\left( \hat{\boldsymbol \gamma} - \boldsymbol \gamma \right) \stackrel{D}{\to} \mathcal{N}(\mathbf{0}, \mathbf{J}^{-1}) \quad \text{as} \quad T\to\infty,
 \label{eq:AsymptoticDistr}
-\tag{4}
+\tag{5}
 $$
 where $\mathbf{J}= - \mathbb{E}\left[ \frac{\partial^2 \log \Lambda\big( (2y-1) (b+\boldsymbol\theta&rsquo;\mathbf{x}) \big) }{\partial \boldsymbol \gamma \partial \boldsymbol \gamma&rsquo;} \right]$ (the expectation is computed w.r.t. the joint distribution of $(y,\mathbf{x})$). A consistent estimator for $\mathbf{J}$, for example
 $$
 \hat{\mathbf{J}} = \frac{1}{n}\mathbf{H}(\hat b, \hat{\boldsymbol\theta})
-=-\frac{1}{n}\sum_{i=1}^n \left[\begin{smallmatrix} 1 &amp; \mathbf{x}_i&rsquo; \\ \mathbf{x}_i  &amp; \mathbf{x}_i \mathbf{x}_i&rsquo;\end{smallmatrix}\right]   \Lambda\Big( (2y_i -1) \big( \hat{b} + \hat{\boldsymbol \theta}'\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( \hat b + \hat{\boldsymbol\theta}'\mathbf{x}_i \big)   \Big) \Big],
+=-\frac{1}{n}\sum_{i=1}^n \left[\begin{smallmatrix} 1 &amp; \mathbf{x}_i&rsquo; \\ \mathbf{x}_i  &amp; \mathbf{x}_i \mathbf{x}_i&rsquo;\end{smallmatrix}\right]   \Lambda\Big( (2y_i -1) \big( \hat{b} + \hat{\boldsymbol \theta}&rsquo;\mathbf{x}_i \big)\Big) \Big[1 - \Lambda\Big( (2y_i -1) \big( \hat b + \hat{\boldsymbol\theta}&rsquo;\mathbf{x}_i \big)   \Big) \Big],
 $$
 is an almost immediate byproduct of the Newton-Rhapson algorithm. Asymptotically valid hypothesis tests are thus easy to construct in this low-dimensional regime.</p>
-<h3 id="illustration-1-habermans-survival-data-set">Illustration 1: Haberman's survival data set</h3>
+<h3 id="illustration-1-habermans-survival-data-set">Illustration 1: Haberman&rsquo;s survival data set</h3>
 <p>The data is freely available <a href="https://archive.ics.uci.edu/ml/datasets/haberman%27s+survival">here</a>, or you can readily download the SQL-file $\texttt{HabermanDataSet.sqlite}$ from <a href="https://github.com/HannoReuvers">my GitHub page</a>. The binary variable in this study is the survival status of $n=306$ patients who had undergone surgery for breast cancer. For $i=1,\ldots,n$, we recode this variable into $y_i=1$ (patient $i$ survived 5 years or longer) and $y_i=0$ (patient $i$ died within 5 years). There are three explanatory variables:</p>
 <ol>
 <li>$Age_i$: age of patient $i$ at the time of operation</li>
@@ -991,34 +992,78 @@ where $z_{1i}=Age_{i}-52$ and $z_{2i} = Year_{i} - 63$.<sup id="fnref:2"><a href
 
 <p>Some comments on Figure 4 are:</p>
 <ul>
-<li>With more features it becomes increasingly more difficult to determine which explanatory variables are driving the success probability. The mean squared error of the parameter estimators increases. This effect amplifies if the regressors are more similar (increasing $\rho$).</li>
+<li>More features make it more difficult to determine which explanatory variables are driving the success probability. The mean squared error of the parameter estimators increases. This effect amplifies if the regressors are more correlated (increasing $\rho$).</li>
 <li>Computational times increase faster than linear in $p$. The correlation parameter $\rho$ does not influence computational times.</li>
 </ul>
-<p><br /></p>
 <h2 id="the-high-dimensional-regime">The high-dimensional regime</h2>
-<p>(UNDER CONSTRUCTION)</p>
+<p>Two issues arise when $p$ becomes larger:</p>
+<p><em><strong>Issue 1</strong></em>: If $p&gt;n$, then there exist vectors that are orthogonal to all vectors in \eqref{eq:vectorset}. The likelihood is flat in these directions and the maximum likelihood estimator is no longer uniquely defined. In practice, performance typically deteriorates earlier. As soon as $p$ and $n$ are of similar orders of magnitude, then decreased curvature in the objective function causes additional noise to start leaking into the estimator. These effects are more pronounced when the regressors are more correlated.</p>
+<p><em><strong>Issue 2</strong></em>: The computational costs of the objective function do not scale well with increasing $p$. That is, calculating $\big[ \mathbf{H}(b_{[i]},\boldsymbol\theta_{\{i\}}) \big]^{-1}$ becomes increasingly time-consuming because standard matrix inversion algorithms have a computational complexity of about $\mathcal{O}(p^3)$.</p>
+<p>Regularization is the typical solution to the first issue. In this post we will consider $L_1$- and $L_2$-regularization. The algorithmic modifications originate from findings in Tseng (2001). The results in this paper guarantee the convergence of a <strong>cyclic coordinate descent method</strong> whenever the objective function is a sum of a convex function and a seperable function.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> These repeated updates of single coordinates/parameters will decrease computational costs by avoiding issue 2.</p>
+<h3 id="regularization-with-l_2-penalty">Regularization with $L_2$-penalty</h3>
+<p>We start with $L_2$-regularization because it is easiest to explain. The objective function adds an additional penalty term $\lambda \|\boldsymbol \theta\|_2^2=\lambda \sum_{j=1}^p \theta_j^2$ to the previous negative log-likelihood. The estimators for $b$ and $\boldsymbol \theta$ are now the minimizers of
+\begin{equation}
+Q_\lambda(b,\boldsymbol \theta) = \sum_{i=1}^n \log \Lambda \Big( (2y_i -1) \big( b + \boldsymbol \theta&rsquo;\mathbf{x}_i \big)   \Big) + \lambda \|\boldsymbol \theta\|_2^2.
+\label{eq:L2ObjectiveFunction}
+\tag{6}
+\end{equation}
+The intercept parameter $b$ is not penalized.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> There are (at least) two intuitive explanations for the penalty term $\lambda \|\boldsymbol \theta\|_2^2$:</p>
+<ol>
+<li>The Hessian of the penalty term with respect to the parameter vector $\boldsymbol \theta$ is $\frac{\partial^2}{\partial \boldsymbol \theta \partial \boldsymbol \theta^\prime} \lambda \|\boldsymbol \theta\|_2^2 = 2 \lambda \boldsymbol{I}_p$. The penalty term adds additional curvature to the objective function and thus provides a better defined minimum.</li>
+<li>The $L_2$-penalty discourages parameter solutions with a large norm. This avoids overfitting. For example, with strongly positively correlated variables it occurs that excessively positive and excessively negative parameters mostly cancel out to only describe small and noisy effects. These large parameter vectors marginally improve the fit but cause high variance. This situation is avoided if parameter vectors with a high norm are penalized.</li>
+</ol>
+<p>Given the validity of cyclic coordinate descent, the solution algorithm for optimization problem  is relatively straightforward:</p>
+<ol>
+<li>Make a starting guess for the parameters, say $b_{\{0\}}$ and $\boldsymbol\theta_{\{0\}}$.</li>
+<li>We cycle through each $k\in\{1,2,\ldots,p\}$ and determine the parameter value $\theta_k$ with the lowest value for $Q_\lambda(b,\boldsymbol \theta)$. To clarify, we split the vector $\boldsymbol \theta$ into its $k$<sup>th</sup> component $\theta_k$, and a vector with its $k$<sup>th</sup> component being omitted, i.e. $\boldsymbol \theta_{-k}=(\theta_1,\ldots,\theta_{k-1},\theta_{k+1},\ldots,\theta_p)^\prime$ (and similar notational conventions for $\boldsymbol x_i$). The new <em>single-parameter</em> objective function reads
+\begin{equation}
+Q_\lambda^*(\theta_k) = \sum_{i=1}^n \log \Lambda \Big( (2y_i -1) \big( b + \boldsymbol \theta_{-k}&rsquo;\mathbf{x}_{i,-k}+\theta_k x_{i,k} \big)\Big)+\lambda \theta_k^2 +\lambda\|\boldsymbol\theta_{-k} \|_2^2,
+\end{equation}
+where the last contribution $\lambda\|\boldsymbol\theta_{-k} \|_2^2$ is irrevelvant to the solution. This univariate problem is easily solved using the Newton-Rhapson algorithm. We stress that any parameter update continues to be used in the subsequent coordinate descents.</li>
+<li>Update the intercept parameter $b$ using Newton-Rhapson.</li>
+<li>Repeat steps 2 and 3 until the (relative) changes in all parameters are negligible.</li>
+</ol>
 <h2 id="references">References</h2>
 <p>J.M. Landwehr, D. Pregibon and A.C. Shoemaker (1984), <em>Graphical Methods for Assessing Logistic Regression Models</em>, Journal of the American Statistical Association</p>
 <p>D. McFadden and W.K. Newey (1994), <em>Large Sample Estimation and Hypothesis Testing</em>, Chapter 36, Handbook of Econometrics</p>
 <p>A. Sankaran, N.A. Alashti and C. Psarras (2022), <em>Benchmarking the Linear Algebra Awareness of TensorFlow and PyTorch</em>, <a href="https://arxiv.org/abs/2202.09888">arXiv:2202.09888</a></p>
+<p>P. Tseng (2001), <em>Convergence of a Block Coordinate Descent Method for Nondifferentiable Minimization</em>, Journal of Optimization Theory and Applications</p>
 <h2 id="notes">Notes</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>Foreshadowing the discussion on penalized estimation, we prefer a model representation with an explicit bias term instead of implicitly assuming a specific element in $\mathbf{x}$ (typically the first) to always take the value 1. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>Foreshadowing the discussion on penalized estimation, we prefer a model representation with an explicit bias term instead of implicitly assuming a specific element in $\mathbf{x}$ (typically the first) to always take the value 1.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>Following Landwehr et al. (1984), we center (but not rescale) $Age_i$ and $Year_i$. Such rescaling is probably advisable because $z_1^3$ attains very high values compared to the other explanatory variables. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>Following Landwehr et al. (1984), we center (but not rescale) $Age_i$ and $Year_i$. Such rescaling is probably advisable because $z_1^3$ attains very high values compared to the other explanatory variables.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>As the logistic regression model is nonlinear, the numerical decrease in 5-year survival probability with increasing $Age$ depends on the specific values of all other explanatory variables. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>As the logistic regression model is nonlinear, the numerical decrease in 5-year survival probability with increasing $Age$ depends on the specific values of all other explanatory variables.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
-<p>The asymptotically valid t-statistics are not automatically available from GLM (R) and Scikit-learn (Python). I added some extra lines of code to estimate the asymptotic covariance matrix. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4">
+<p>The asymptotically valid t-statistics are not automatically available from GLM (R) and Scikit-learn (Python). I added some extra lines of code to estimate the asymptotic covariance matrix.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>The results in Tseng (2001) are more general. We focus on results that are most relevant for the continuation of this post.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>One possible motivation for not penalizing $b$ is as follows. Abbreviating $\Lambda ( b + \boldsymbol\theta&rsquo;\mathbf{x}_i)$ as $\Lambda_i$, $Q_\lambda(b,\boldsymbol \theta)$ can be written as
+\begin{equation}
+Q_\lambda(b,\boldsymbol \theta) = \sum_{i=1}^n y_i \log \Lambda_i + (1-y_i)\log\big(1-\Lambda_i \big)+\lambda \|\boldsymbol \theta\|_2^2.
+\end{equation}
+With $b$ not being penalized, the derivative with respect to $b$ does not involve the penalty and
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial b}Q_\lambda(b,\boldsymbol \theta)
+&amp;= \sum_{i=1}^n y_i (1-\Lambda_i) - (1-y_i) \Lambda_i \\
+&amp;= \sum_{i=1}^n y_i - \sum_{i=1}^n \Lambda_i.
+\end{aligned}
+\end{equation}
+The first order condition for an optimum implies $\frac{\partial}{\partial b}Q_\lambda(b,\boldsymbol \theta)=0$ or $\frac{1}{n}\sum_{i=1}^n y_i = \frac{1}{n}\sum_{i=1}^n \Lambda_i$. This latter equation states that the fraction of observations with $y=1$ matches the average success probability. By not penalizing $b$, we ensure that this intuitive equality holds.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
     </div>
 
@@ -1141,7 +1186,7 @@ where $z_{1i}=Age_{i}-52$ and $z_{2i} = Year_{i} - 63$.<sup id="fnref:2"><a href
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_3.png" alt="Avatar">
     
 
     <div class="media-body">
@@ -1299,7 +1344,7 @@ where $z_{1i}=Age_{i}-52$ and $z_{2i} = Year_{i} - 63$.<sup id="fnref:2"><a href
     
     
     
-    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+    <script src="/js/academic.min.80a66c285ce8d3b1efe0ee347dd5f9cf.js"></script>
 
     
 

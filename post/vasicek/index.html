@@ -229,9 +229,9 @@
   <meta property="twitter:image" content="https://HannoReuvers.github.io/post/vasicek/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2021-03-22T00:00:00&#43;01:00">
+      <meta property="article:published_time" content="2021-03-22T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2021-03-22T00:00:00&#43;01:00">
+    <meta property="article:modified_time" content="2021-03-22T00:00:00&#43;00:00">
   
 
   
@@ -265,8 +265,8 @@
     "https://HannoReuvers.github.io/post/vasicek/featured.png"
   ],
   
-  "datePublished": "2021-03-22T00:00:00+01:00",
-  "dateModified": "2021-03-22T00:00:00+01:00",
+  "datePublished": "2021-03-22T00:00:00Z",
+  "dateModified": "2021-03-22T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -605,8 +605,8 @@ with initial condition $r(0) = r_0$ and $W(t)$ denoting a standard Brownian moti
 \begin{equation}
 \begin{aligned}
 df\big(r(t),t\big)
-&amp;= \kappa r(t) e^{\kappa t} dt + e^{\kappa t} dr(t) \\<br>
-&amp;= \kappa r(t) e^{\kappa t} dt + e^{\kappa t}\Big[  \kappa \big( \theta -r(t)\big) dt + \sigma dW(t)\Big] \\<br>
+&amp;= \kappa r(t) e^{\kappa t} dt + e^{\kappa t} dr(t) \\
+&amp;= \kappa r(t) e^{\kappa t} dt + e^{\kappa t}\Big[  \kappa \big( \theta -r(t)\big) dt + \sigma dW(t)\Big] \\
 &amp;= \kappa \theta e^{\kappa t} dt + \sigma e^{\kappa t} dW(t).
 \end{aligned}
 \tag{2}
@@ -617,7 +617,7 @@ $$
 \begin{aligned}
 f\big( r(t), t \big) &amp;- f\big( r(0),0\big)
 = r(t) e^{\kappa t} -r_0
-= \int_0^t df\big( r(s),s\big) \\<br>
+= \int_0^t df\big( r(s),s\big) \\
 &amp;= \int_0^t \kappa \theta e^{\kappa s} ds + \int_0^t \sigma e^{\kappa s} dW(s).
 \end{aligned}
 $$
@@ -632,7 +632,7 @@ $$
 \begin{aligned}
 \mathbb{E}\big[ r(t) \big]
 &amp;= r_0 e^{-\kappa t} + \theta e^{-\kappa t} \left[ e^{\kappa t} -1 \right]
-= r_0 e^{-\kappa t} + \theta  \left[ 1-e^{-\kappa t} \right] \\<br>
+= r_0 e^{-\kappa t} + \theta  \left[ 1-e^{-\kappa t} \right] \\
 &amp;=: r_0 e^{-\kappa t} + \theta \kappa \Lambda(t),
 \end{aligned}
 $$
@@ -647,17 +647,17 @@ $$
 \begin{aligned}
 f &amp;\big( r(t), t \big) - f\big( r(t-h),t-h\big)
 = \int_{t-h}^t df\big( r(s),s\big) \\
-&amp;= \theta \big( e^{\kappa t} - e^{\kappa(t-h)}\big) + \int_{t-h}^t \sigma e^{\kappa s} dW(s) \\<br>
+&amp;= \theta \big( e^{\kappa t} - e^{\kappa(t-h)}\big) + \int_{t-h}^t \sigma e^{\kappa s} dW(s) \\
 &amp; \iff r(t) = \theta \big(1-e^{-\kappa h}\big) +e^{-\kappa h}r(t-h) + e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s).
 \end{aligned}
 $$
 The discretized process of $r(t)$ thus follows an AR(1) model with intercept $\theta \big(1-e^{-\kappa h}\big)$, autoregressive coefficient $e^{-\kappa h}$, and innovation process $e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s)$. These innovations have some interesting properties. First, note how the integration intervals of subsequent steps of the discretization do not overlap. For example, $\int_{t-h}^t \sigma e^{\kappa s} dW(s)$ depends on $ \{ W(s) : t-h \leq s \leq t \}$, whereas $\int_{t}^{t+h} \sigma e^{\kappa s} dW(s)$ depends on $\{W(s) : t \leq s \leq t+h \}$. With increments of Brownian motions being independent, we must conclude that these stochastic integrals are independent. Second, stochastic integrals are normally distributed and mean zero. The distributions of the innovations is thus fully specified after computing its variance, or
 $$
 \begin{aligned}
-\mathbb{V} &amp;\text{ar}\left[ e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s) \right] \\<br>
+\mathbb{V} &amp;\text{ar}\left[ e^{-\kappa t} \int_{t-h}^t \sigma e^{\kappa s} dW(s) \right] \\
 &amp;= \sigma^2 e^{-2\kappa t} \int_{t-h}^t e^{2\kappa s} ds
 = \tfrac{\sigma^2}{2\kappa }\left[ 1 - e^{-2\kappa h} \right]
-= \sigma^2 h \left[ \frac{e^{-2\kappa h}-1}{-2\kappa h} \right] \\<br>
+= \sigma^2 h \left[ \frac{e^{-2\kappa h}-1}{-2\kappa h} \right] \\
 &amp;=: \sigma^2 h \alpha\big( -2\kappa h \big),
 \end{aligned}
 $$
@@ -715,7 +715,7 @@ The expectation in \eqref{eq:zerocouponbond} can be calculated rather quickly us
 <p>\begin{equation}
 \begin{aligned}
 P(t,T)
-&amp;= \exp\left\{  -r(t) \Lambda(T-t) - \theta\Big[(T-t) - \Lambda(T-t) \Big]+ \tfrac{\sigma^2}{2\kappa^2} \left[  (T-t) -2\Lambda(T-t) + \frac{1}{2} \Lambda\Big(2(T-t) \Big) \right] \right\} \\<br>
+&amp;= \exp\left\{  -r(t) \Lambda(T-t) - \theta\Big[(T-t) - \Lambda(T-t) \Big]+ \tfrac{\sigma^2}{2\kappa^2} \left[  (T-t) -2\Lambda(T-t) + \frac{1}{2} \Lambda\Big(2(T-t) \Big) \right] \right\} \\
 &amp;= \exp\left\{ -r(t) \Lambda(T-t) + \left( \tfrac{\sigma^2}{2\kappa^2} -\theta \right) (T-t) + \left(\theta -\tfrac{\sigma^2}{\kappa^2}  \right)
 \Lambda(T-t) + \tfrac{\sigma^2}{4 \kappa^2}  \Lambda\Big(2(T-t) \Big)\right\}.
 \end{aligned}
@@ -754,8 +754,8 @@ $$
 The boundary condition is $F(T,r;T) = \exp[-A(T,T)-B(T,T)r]=1$ or $A(T,T)+B(T,T)r=0$. If these relations need to hold for all $r\in\mathbb{R}$, then intercept terms should be zero as well as the expressions proportional to $r$. The PDE for $F(T,r(t);T)$ is now seen to reduce to a set of coupled ordinary differential equations (ODEs):</p>
 <p>\begin{equation}
 \begin{aligned}
-&amp; -\frac{\partial A}{\partial t}-\kappa \theta B+ \frac{\sigma^2}{2} B^2=0,\\<br>
-&amp; -\frac{\partial B}{\partial t}+\kappa B -1=0,\\<br>
+&amp; -\frac{\partial A}{\partial t}-\kappa \theta B+ \frac{\sigma^2}{2} B^2=0,\\
+&amp; -\frac{\partial B}{\partial t}+\kappa B -1=0,\\
 &amp;A(T,T) = B(T,T) = 0.
 \end{aligned}
 \label{eq:ODEs}
@@ -770,10 +770,10 @@ $$
 \begin{aligned}
 &amp;A(t,T)
 = -\big[A(T,T)-A(t,T)\big]
-=\int_t^T -\frac{\partial A}{\partial s} ds \\<br>
-&amp;= \int_t^T \Big[ \kappa \theta B(s,T) - \frac{\sigma^2}{2} \big[B(s,T)\big]^2 \Big]ds \\<br>
-&amp;= \theta \left[(T-t) - \int_t^T e^{-\kappa (T-s)} ds  \right] - \tfrac{\sigma^2}{2\kappa^2} \int_t^T \big[1 -2 e^{-\kappa(T-s)}+e^{-2\kappa(T-s)} \big]ds , \\<br>
-&amp;=  \theta \Big[(T-t) - \Lambda(T-t)  \Big] - \tfrac{\sigma^2}{2\kappa^2}\left[ (T-t) -2 \Lambda(T-t) + \frac{1}{2} \Lambda\big( 2(T-t)\big) \right] \\<br>
+=\int_t^T -\frac{\partial A}{\partial s} ds \\
+&amp;= \int_t^T \Big[ \kappa \theta B(s,T) - \frac{\sigma^2}{2} \big[B(s,T)\big]^2 \Big]ds \\
+&amp;= \theta \left[(T-t) - \int_t^T e^{-\kappa (T-s)} ds  \right] - \tfrac{\sigma^2}{2\kappa^2} \int_t^T \big[1 -2 e^{-\kappa(T-s)}+e^{-2\kappa(T-s)} \big]ds , \\
+&amp;=  \theta \Big[(T-t) - \Lambda(T-t)  \Big] - \tfrac{\sigma^2}{2\kappa^2}\left[ (T-t) -2 \Lambda(T-t) + \frac{1}{2} \Lambda\big( 2(T-t)\big) \right] \\
 &amp;= \left( \theta - \tfrac{\sigma^2}{2\kappa^2}  \right) (T-t) +\left( \tfrac{\sigma^2}{\kappa^2} - \theta\right) \Lambda(T-t) - \tfrac{\sigma^2}{4 \kappa^2}\Lambda\big( 2(T-t)\big),
 \end{aligned}
 $$
@@ -790,7 +790,7 @@ where we used $\int_t^T e^{-\kappa (T-s)} ds = \tfrac{1}{\kappa}\left[ 1 - e^{-\
 \tag{8}
 \end{equation}</li>
 </ol>
-<p>The computation of \eqref{eq:approx} requires choices for $n$ and $N_{sim}$. We like both these quantities to be large. A large number of simulated paths is needed because the expectation in $\mathbb{E}_{\mathbb{Q}} \big[e^{-\int_0^T r(s) ds} \big]$ is being replaced by a sample average across the simulated paths. The large value for $n$ should ensure that the integral $\int_0^T r(s) ds$ is sufficiently well approximated  by the Riemann sum $\sum_{j=1}^n r^{(i)}(t_j)\big[ t_j - t_{j-1} \big] = h \sum_{j=1}^n r^{(i)}(t_j)$.</p>
+<p>The computation of \eqref{eq:approx} requires choices for $n$ and $N_{sim}$. We like both these quantities to be large. A large number of simulated paths is needed because the expectation in $\mathbb{E}<em>{\mathbb{Q}} \big[e^{-\int_0^T r(s) ds} \big]$ is being replaced by a sample average across the simulated paths. The large value for $n$ should ensure that the integral $\int_0^T r(s) ds$ is sufficiently well approximated  by the Riemann sum $\sum</em>{j=1}^n r^{(i)}(t_j)\big[ t_j - t_{j-1} \big] = h \sum_{j=1}^n r^{(i)}(t_j)$.</p>
 
 
 
@@ -856,7 +856,7 @@ where we used $\int_t^T e^{-\kappa (T-s)} ds = \tfrac{1}{\kappa}\left[ 1 - e^{-\
 \begin{aligned}
 \int_x^T e^{-\kappa(s-x)} ds
 &amp;= e^{\kappa x} \Big[ \Lambda(T) - \Lambda(x) \Big]
-= \tfrac{1}{\kappa} e^{\kappa x} \left[ e^{-\kappa x} - e^{-\kappa T}\right] \\<br>
+= \tfrac{1}{\kappa} e^{\kappa x} \left[ e^{-\kappa x} - e^{-\kappa T}\right] \\
 &amp; = \Lambda(T-x).
 \end{aligned}
 \label{eq:MyINT}
@@ -866,8 +866,8 @@ The integral in this last equation will be used at several occasions in the deri
 $$
 \begin{aligned}
 \int_t^T r(s) ds
-&amp;= \int_t^T e^{-\kappa s} r(0) ds \\<br>
-&amp; \quad + \int_t^T \int_0^s e^{-\kappa(s-x)} \kappa \theta dx ds + \int_t^T \int_0^s e^{-\kappa (s-x)}\sigma dW(x) ds \\<br>
+&amp;= \int_t^T e^{-\kappa s} r(0) ds \\
+&amp; \quad + \int_t^T \int_0^s e^{-\kappa(s-x)} \kappa \theta dx ds + \int_t^T \int_0^s e^{-\kappa (s-x)}\sigma dW(x) ds \\
 &amp;=: I+II+III.
 \end{aligned}
 $$
@@ -907,45 +907,45 @@ $$</p>
 <p>Term $II$ requires a change in the order of integration. Inspecting the area of integration in Figure 4, we arrive at the following integral relation
 $$
 \begin{aligned}
-II &amp;= \int_t^T \int_0^s e^{-\kappa(s-x)} \kappa \theta dx ds \\<br>
-&amp;= \int_0^t \int_t^T e^{-\kappa(s-x)} \kappa \theta ds dx + \int_t^T \int_x^T e^{-\kappa(s-x)} \kappa \theta ds dx \\<br>
-&amp;= \int_0^t \int_t^T e^{-\kappa(s-t+t-x)} \kappa \theta ds dx  + \kappa \theta \int_t^T \Lambda(T-x) dx \\<br>
+II &amp;= \int_t^T \int_0^s e^{-\kappa(s-x)} \kappa \theta dx ds \\
+&amp;= \int_0^t \int_t^T e^{-\kappa(s-x)} \kappa \theta ds dx + \int_t^T \int_x^T e^{-\kappa(s-x)} \kappa \theta ds dx \\
+&amp;= \int_0^t \int_t^T e^{-\kappa(s-t+t-x)} \kappa \theta ds dx  + \kappa \theta \int_t^T \Lambda(T-x) dx \\
 &amp;= \int_0^t e^{-\kappa(t-x)}\kappa \theta dx , \Lambda(T-t) + \kappa \theta \int_t^T \Lambda(T-x) dx.
 \end{aligned}
 $$
 We apply exactly the same change in the order of integration to term $III$. The result is
 $$
 \begin{aligned}
-III &amp;= \int_t^T \int_0^s e^{-\kappa (s-x)}\sigma dW(x) ds \\<br>
-&amp;= \int_0^t \int_t^T e^{-\kappa (s-x)}\sigma ds dW(x) + \int_t^T \int_x^T e^{-\kappa (s-x)}\sigma ds dW(x) \\<br>
-&amp;= \int_0^t \int_t^T e^{-\kappa (s-t+t-x)}\sigma ds dW(x) + \sigma \int_t^T \Lambda(T-x)dW(x) \\<br>
+III &amp;= \int_t^T \int_0^s e^{-\kappa (s-x)}\sigma dW(x) ds \\
+&amp;= \int_0^t \int_t^T e^{-\kappa (s-x)}\sigma ds dW(x) + \int_t^T \int_x^T e^{-\kappa (s-x)}\sigma ds dW(x) \\
+&amp;= \int_0^t \int_t^T e^{-\kappa (s-t+t-x)}\sigma ds dW(x) + \sigma \int_t^T \Lambda(T-x)dW(x) \\
 &amp;= \int_0^t e^{-\kappa(t-x)} \sigma dW(x) , \Lambda(T-t) + \sigma \int_t^T \Lambda(T-x)dW(x).
 \end{aligned}
 $$
 If terms $I$&ndash;$III$ are added together, then we see that $\int_x^T e^{-\kappa(s-x)} ds$ is an affine transformation of the prevailing short rate $r(t)$, i.e.
 $$
 \begin{aligned}
-\int_t^T &amp;r(s) ds \\<br>
-&amp; = I+II+III \\<br>
-&amp;= \left[ r(0) e^{-\kappa t} +  \int_0^t e^{-\kappa(t-x)}\kappa \theta dx+\int_0^t e^{-\kappa(t-x)} \sigma dW(x) \right] \Lambda(T-t) \\<br>
-&amp;\quad+ \kappa \theta \int_t^T \Lambda(T-x) dx+\sigma \int_t^T \Lambda(T-x)dW(x) \\<br>
+\int_t^T &amp;r(s) ds \\
+&amp; = I+II+III \\
+&amp;= \left[ r(0) e^{-\kappa t} +  \int_0^t e^{-\kappa(t-x)}\kappa \theta dx+\int_0^t e^{-\kappa(t-x)} \sigma dW(x) \right] \Lambda(T-t) \\
+&amp;\quad+ \kappa \theta \int_t^T \Lambda(T-x) dx+\sigma \int_t^T \Lambda(T-x)dW(x) \\
 &amp;= r(t) \Lambda(T-t)+\kappa \theta \int_t^T \Lambda(T-x) dx+\sigma \int_t^T \Lambda(T-x)dW(x).
 \end{aligned}
 $$
 Conditional on all information up to time t, i.e. conditional on $\mathcal{F}_t$, the first two terms are deterministic. Moreover, since (1) increments of Brownian motions are independent of the current value and (2) stochastic integrals are normally distributed, we know that $ \left.\int_t^T r(s) ds\right| \mathcal{F}_t$ is normally distributed with mean
 $$
 \begin{aligned}
-r(t) \Lambda(T-t) &amp;+\kappa \theta \int_t^T \Lambda(T-x) dx \\<br>
-&amp;= r(t) \Lambda(T-t)+\kappa \theta \int_0^{T-t} \Lambda(x) dx \\<br>
+r(t) \Lambda(T-t) &amp;+\kappa \theta \int_t^T \Lambda(T-x) dx \\
+&amp;= r(t) \Lambda(T-t)+\kappa \theta \int_0^{T-t} \Lambda(x) dx \\
 &amp;= r(t) \Lambda(T-t) + \theta\Big[(T-t) - \Lambda(T-t) \Big]
 \end{aligned}
 $$
 and by Itô isometry a variance of
 $$
 \begin{aligned}
-\sigma^2 \int_t^T &amp;\big[ \Lambda(T-x) \big]^2 dx = \sigma^2 \int_0^{T-t} \big[ \Lambda(x) \big]^2 dx \\<br>
-&amp;= \tfrac{\sigma^2}{\kappa^2} \int_0^{T-t} \left( 1-2 e^{-\kappa x} + e^{-2\kappa x} \right) dx \\<br>
-&amp;= \tfrac{\sigma^2}{\kappa^2} \left[ (T-t) -2 \int_0^{T-t} e^{-\kappa x} dx + \tfrac{1}{2} \int_0^{2(T-t)} e^{-\kappa x} dx  \right] \\<br>
+\sigma^2 \int_t^T &amp;\big[ \Lambda(T-x) \big]^2 dx = \sigma^2 \int_0^{T-t} \big[ \Lambda(x) \big]^2 dx \\
+&amp;= \tfrac{\sigma^2}{\kappa^2} \int_0^{T-t} \left( 1-2 e^{-\kappa x} + e^{-2\kappa x} \right) dx \\
+&amp;= \tfrac{\sigma^2}{\kappa^2} \left[ (T-t) -2 \int_0^{T-t} e^{-\kappa x} dx + \tfrac{1}{2} \int_0^{2(T-t)} e^{-\kappa x} dx  \right] \\
 &amp;= \tfrac{\sigma^2}{\kappa^2} \left[  (T-t) -2 \Lambda(T-t) + \tfrac{1}{2} \Lambda\Big(2(T-t) \Big) \right].
 \end{aligned}
 $$</p>
@@ -1075,7 +1075,7 @@ $$</p>
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_3.png" alt="Avatar">
     
 
     <div class="media-body">
@@ -1233,7 +1233,7 @@ $$</p>
     
     
     
-    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+    <script src="/js/academic.min.80a66c285ce8d3b1efe0ee347dd5f9cf.js"></script>
 
     
 

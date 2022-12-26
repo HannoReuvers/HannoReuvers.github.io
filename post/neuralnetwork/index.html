@@ -229,9 +229,9 @@
   <meta property="twitter:image" content="https://HannoReuvers.github.io/post/neuralnetwork/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2022-07-18T00:00:00&#43;02:00">
+      <meta property="article:published_time" content="2022-07-18T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2022-07-18T00:00:00&#43;02:00">
+    <meta property="article:modified_time" content="2022-07-18T00:00:00&#43;00:00">
   
 
   
@@ -265,8 +265,8 @@
     "https://HannoReuvers.github.io/post/neuralnetwork/featured.png"
   ],
   
-  "datePublished": "2022-07-18T00:00:00+02:00",
-  "dateModified": "2022-07-18T00:00:00+02:00",
+  "datePublished": "2022-07-18T00:00:00Z",
+  "dateModified": "2022-07-18T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -559,7 +559,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    18 min read
+    17 min read
   </span>
   
 
@@ -683,8 +683,8 @@
 <li>The two-step computation for the output layer is somewhat different. As a start, we can still calculate the usual linear combinations
 $$
 \begin{aligned}
-z_1^{[3]}     &amp;=\mathbf{w}_{1}^{[3]\prime}\mathbf{a}^{[2]}+b_1^{[3]}, \\<br>
-&amp; \vdots \\<br>
+z_1^{[3]}     &amp;=\mathbf{w}_{1}^{[3]\prime}\mathbf{a}^{[2]}+b_1^{[3]}, \\
+&amp; \vdots \\
 z_3^{[3]}     &amp;=\mathbf{w}_{3}^{[3]\prime}\mathbf{a}^{[2]}+b_3^{[3]},   <br>
 \end{aligned}
 $$
@@ -699,37 +699,37 @@ with $\mathbf{a}^{[2]}=(a_1^{[2]},a_2^{[2]})$. The subsequent transformation how
 $$
 \mathbf{z}^{[\ell]}
 = \begin{bmatrix}
-z_1^{[\ell]} \\<br>
-\vdots \\<br>
+z_1^{[\ell]} \\
+\vdots \\
 z_{n^{[\ell]}}^{[\ell]}
 \end{bmatrix}
 ,
 \mathbf{b}^{[\ell]}
 = \begin{bmatrix}
-b_1^{[\ell]} \\<br>
-\vdots \\<br>
+b_1^{[\ell]} \\
+\vdots \\
 b_{n^{[\ell]}}^{[\ell]}
 \end{bmatrix}
 ,
 \mathbf{a}^{[\ell]}
 = \begin{bmatrix}
-a_1^{[\ell]} \\<br>
-\vdots \\<br>
+a_1^{[\ell]} \\
+\vdots \\
 a_{n^{[\ell]}}^{[\ell]}
 \end{bmatrix}
 ,\text{and }
 \mathbf{W}^{[\ell]}
 = \begin{bmatrix}
-\mathbf{w}_1^{[\ell]\prime} \\<br>
-\vdots \\<br>
+\mathbf{w}_1^{[\ell]\prime} \\
+\vdots \\
 \mathbf{w}_{n^{[\ell]}}^{[\ell]\prime},
 \end{bmatrix}
 $$
 where $n^{[\ell]}$ denotes the number of neurons in layer $\ell$. If we agree to apply the function $\Lambda$ elements-wise to vectors, then all computations of the previous section can be summarized by
 $$
 \begin{aligned}
-\mathbf{z}^{[1]} &amp;= \mathbf{W}^{[1]} \mathbf{x} + \mathbf{b}^{[1]}, &amp;\mathbf{a}^{[1]} = \Lambda(\mathbf{z}^{[1]}), \\<br>
-\mathbf{z}^{[2]} &amp;= \mathbf{W}^{[2]} \mathbf{a}^{[1]} + \mathbf{b}^{[2]}, &amp;\mathbf{a}^{[2]} = \Lambda(\mathbf{z}^{[2]}), \\<br>
+\mathbf{z}^{[1]} &amp;= \mathbf{W}^{[1]} \mathbf{x} + \mathbf{b}^{[1]}, &amp;\mathbf{a}^{[1]} = \Lambda(\mathbf{z}^{[1]}), \\
+\mathbf{z}^{[2]} &amp;= \mathbf{W}^{[2]} \mathbf{a}^{[1]} + \mathbf{b}^{[2]}, &amp;\mathbf{a}^{[2]} = \Lambda(\mathbf{z}^{[2]}), \\
 \hat{\mathbf{y}} = \mathbf{z}^{[3]} &amp;= \mathbf{W}^{[3]} \mathbf{a}^{[2]} + \mathbf{b}^{[3]}.
 \end{aligned}
 \label{eq:NNlayout}
@@ -751,7 +751,7 @@ Instead of iterating through \eqref{eq:NNlayout} for each $\mathbf{x}^{(t)}$, a 
 <li>For $\ell=1,\ldots,3$, update the parameters according to
 \begin{equation}
 \begin{aligned}
-\mathbf{W}_{\{k+1\}}^{[\ell]} &amp;= \mathbf{W}_{\{k\}}^{[\ell]} - \alpha \frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[\ell]}} \\<br>
+\mathbf{W}_{\{k+1\}}^{[\ell]} &amp;= \mathbf{W}_{\{k\}}^{[\ell]} - \alpha \frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[\ell]}} \\
 \mathbf{b}_{\{k+1\}}^{[\ell]} &amp;= \mathbf{b}_{\{k\}}^{[\ell]} - \alpha \frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[\ell]}}
 \end{aligned}
 \label{eq:GradientDescent}
@@ -778,7 +778,7 @@ $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial b_i^{[3]}}
 &amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial z_j^{[3]}}{\partial b_i^{[3]}}
-= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial}{\partial b_i^{[3]}} \left(\mathbf{w}_{j}^{[3]\prime} \mathbf{a}^{[2]}+b_j^{[3]}\right) \\<br>
+= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial}{\partial b_i^{[3]}} \left(\mathbf{w}_{j}^{[3]\prime} \mathbf{a}^{[2]}+b_j^{[3]}\right) \\
 &amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \delta_{ij}
 = \frac{\partial \mathcal{C}}{\partial z_i^{[3]}}
 = \left[ 2 (\mathbf{z}^{[3]} - \mathbf{y}) \right]_i
@@ -787,7 +787,7 @@ $$
 where we used the Kronecker delta
 \begin{equation}
 \delta_{ij} = \begin{cases}
-1       &amp; \quad \text{if } i=j,\\<br>
+1       &amp; \quad \text{if } i=j,\\
 0       &amp; \quad{ otherwise.}
 \end{cases}
 \end{equation}
@@ -796,7 +796,7 @@ $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial w_{ij}^{[3]}}
 &amp;= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \frac{\partial z_m^{[3]}}{\partial b_i^{[3]}}
-= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \frac{\partial}{\partial w_{ij}^{[3]}} \left(\mathbf{w}_{m}^{[3]\prime} \mathbf{a}^{[2]}+b_m^{[3]}\right) \\<br>
+= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \frac{\partial}{\partial w_{ij}^{[3]}} \left(\mathbf{w}_{m}^{[3]\prime} \mathbf{a}^{[2]}+b_m^{[3]}\right) \\
 &amp;= \sum_{m=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_m^{[3]}} \delta_{im} a_j^{[2]}
 = \frac{\partial \mathcal{C}}{\partial z_i^{[3]}} a_j^{[2]}
 = \left[ \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}} \mathbf{a}^{[2]\prime} \right]_{ij}.
@@ -809,7 +809,7 @@ $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[3]}}
 = \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}
-&amp;=  2 (\mathbf{z}^{[3]} - \mathbf{y}), \\<br>
+&amp;=  2 (\mathbf{z}^{[3]} - \mathbf{y}), \\
 \frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[3]}} &amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}} \mathbf{a}^{[2]\prime}.
 \end{aligned}
 $$</p>
@@ -819,8 +819,8 @@ $$</p>
 $$
 \begin{aligned}
 \mathcal{C} &amp;=\| \mathbf{z}^{[3]} - \mathbf{y} \|^2, \\
-\mathbf{z}^{[3]} &amp;= \mathbf{W}^{[3]} \mathbf{a}^{[2]} + \mathbf{b}^{[3]}, \\<br>
-\mathbf{a}^{[2]} &amp;= \Lambda(\mathbf{z}^{[2]})\\<br>
+\mathbf{z}^{[3]} &amp;= \mathbf{W}^{[3]} \mathbf{a}^{[2]} + \mathbf{b}^{[3]}, \\
+\mathbf{a}^{[2]} &amp;= \Lambda(\mathbf{z}^{[2]})\\
 \mathbf{z}^{[2]} &amp;= \mathbf{W}^{[2]} \mathbf{a}^{[1]} + \mathbf{b}^{[2]}.
 \end{aligned}
 $$
@@ -829,7 +829,7 @@ $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial a_i^{[2]}}
 &amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial z_j^{[3]}}{\partial a_i^{[2]}}
-= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial}{\partial a_i^{[2]}} \left(\mathbf{w}_{j}^{[3]\prime} \mathbf{a}^{[2]}+b_j^{[3]}\right) \\<br>
+= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} \frac{\partial}{\partial a_i^{[2]}} \left(\mathbf{w}_{j}^{[3]\prime} \mathbf{a}^{[2]}+b_j^{[3]}\right) \\
 &amp;= \sum_{j=1}^{[n^L]} \frac{\partial \mathcal{C}}{\partial z_j^{[3]}} w_{ji}^{[3]}
 = \left[ \mathbf{W}^{[3]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}\right]_i.
 \end{aligned}
@@ -839,7 +839,7 @@ $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial z_i^{[2]}}
 &amp;= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \frac{\partial a_i^{[2]}}{\partial z_i^{[2]}}
-= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \Lambda&rsquo;(z_i^{[2]}) \\<br>
+= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \Lambda&rsquo;(z_i^{[2]}) \\
 &amp;= \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \Lambda(z_i^{[2]})\big(1-\Lambda(z_i^{[2]}) \big),
 \end{aligned}
 \label{eq:NonlinearTransformGradient}
@@ -852,9 +852,9 @@ where we used $\Lambda&rsquo;(x)=\Lambda(x)\big(1-\Lambda(x)\big)$ (see <a href=
 $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}}
-&amp;=  \mathbf{W}^{[3]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}, \\<br>
+&amp;=  \mathbf{W}^{[3]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[3]}}, \\
 \frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[2]}}=\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}}
-&amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}} \odot \Lambda(\mathbf{z}^{[2]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[2]})\big), \\<br>
+&amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[2]}} \odot \Lambda(\mathbf{z}^{[2]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[2]})\big), \\
 \frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[2]}} &amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}} \mathbf{a}^{[1]\prime}.
 \end{aligned}
 $$</p>
@@ -867,9 +867,9 @@ $$</p>
 $$
 \begin{aligned}
 \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[1]}}
-&amp;=  \mathbf{W}^{[2]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}}, \\<br>
+&amp;=  \mathbf{W}^{[2]\prime} \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[2]}}, \\
 \frac{\partial \mathcal{C}}{\partial \mathbf{b}^{[1]}}=\frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[1]}}
-&amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[1]}} \odot \Lambda(\mathbf{z}^{[1]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[1]})\big), \\<br>
+&amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{a}^{[1]}} \odot \Lambda(\mathbf{z}^{[1]})\odot \big(\mathbf{1}-\Lambda(\mathbf{z}^{[1]})\big), \\
 \frac{\partial \mathcal{C}}{\partial \mathbf{W}^{[1]}} &amp;= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[1]}} \mathbf{a}^{[0]\prime}= \frac{\partial \mathcal{C}}{\partial \mathbf{z}^{[1]}} \mathbf{x}^{\prime}.
 \end{aligned}
 $$</p>
@@ -890,33 +890,33 @@ The overall gradient is clearly just the average of all single-observation gradi
 = \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} \frac{\partial a_i^{[2]}}{\partial z_i^{[2]}}
 = \frac{\partial \mathcal{C}}{\partial a_i^{[2]}} g&rsquo;(z_i^{[2]})$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-<figure>
-
-
-  <a data-fancybox="" href="ActivationFunctions.png" data-caption="Table 1: Several activation functions and their gradients. The derivative of the rectified linear unit is undefined at $x=0$ but the non-existence of the derivative at this single isolated point is usually ignored.">
-<img data-src="ActivationFunctions.png" class="lazyload" alt="" width="85%" height="85%" ></a>
-
-
   
   
-  <figcaption>
-    Table 1: Several activation functions and their gradients. The derivative of the rectified linear unit is undefined at $x=0$ but the non-existence of the derivative at this single isolated point is usually ignored.
-  </figcaption>
-
-
-</figure>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <figure>
+  
+  
+    <a data-fancybox="" href="ActivationFunctions.png" data-caption="Table 1: Several activation functions and their gradients. The derivative of the rectified linear unit is undefined at $x=0$ but the non-existence of the derivative at this single isolated point is usually ignored.">
+  <img data-src="ActivationFunctions.png" class="lazyload" alt="" width="85%" height="85%" ></a>
+  
+  
+    
+    
+    <figcaption>
+      Table 1: Several activation functions and their gradients. The derivative of the rectified linear unit is undefined at $x=0$ but the non-existence of the derivative at this single isolated point is usually ignored.
+    </figcaption>
+  
+  
+  </figure>
 </li>
 <li>Several extensions of the baseline gradient descent algorithm have been proposed. Two of the most popular examples are:
 <ul>
@@ -1080,8 +1080,8 @@ The overall gradient is clearly just the average of all single-observation gradi
 \begin{equation}
 \mathbf{A}
 =\begin{bmatrix}
-a_{11}   &amp; \cdots        &amp; a_{1n} \\<br>
-\vdots   &amp; \ddots        &amp; \vdots \\<br>
+a_{11}   &amp; \cdots        &amp; a_{1n} \\
+\vdots   &amp; \ddots        &amp; \vdots \\
 a_{m1}   &amp; \cdots        &amp; a_{mn}
 \end{bmatrix}
 \end{equation}
@@ -1089,8 +1089,8 @@ and the function $f:\mathbb{R}^{m\times n}\to\mathbb{R}$, the matrix derivative 
 \begin{equation}
 \frac{\partial f}{\partial \mathbf{A}}
 =\begin{bmatrix}
-\frac{\partial f}{\partial a_{11}} &amp; \cdots        &amp; \frac{\partial f}{\partial a_{1n}} \\<br>
-\vdots   &amp; \ddots        &amp; \vdots \\<br>
+\frac{\partial f}{\partial a_{11}} &amp; \cdots        &amp; \frac{\partial f}{\partial a_{1n}} \\
+\vdots   &amp; \ddots        &amp; \vdots \\
 \frac{\partial f}{\partial a_{m1}} &amp; \cdots        &amp; \frac{\partial f}{\partial a_{mn}}
 \end{bmatrix}.
 \end{equation}
@@ -1128,8 +1128,8 @@ and stack $\mathbf{p}^{[L]} = (p_1^{[L]},\ldots,p_K^{[L]})^\prime$. The crucial 
 $$
 \begin{aligned}
 \frac{\partial C}{\partial z_j}
-&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \frac{1}{p_k} \frac{ \partial p_k}{\partial z_j} \\<br>
-&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \frac{1}{p_k} \left(\frac{ \exp(z_j) }{ \sum_{\kappa=1}^{K}  \exp(z_\kappa)  }\mathbb{1}_{ \{ j=k \}} - \frac{ \exp(z_k) \exp(z_j) }{ ( \sum_{\kappa=1}^{K}  \exp(z_\kappa) )^2  } \right) \\<br>
+&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \frac{1}{p_k} \frac{ \partial p_k}{\partial z_j} \\
+&amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \frac{1}{p_k} \left(\frac{ \exp(z_j) }{ \sum_{\kappa=1}^{K}  \exp(z_\kappa)  }\mathbb{1}_{ \{ j=k \}} - \frac{ \exp(z_k) \exp(z_j) }{ ( \sum_{\kappa=1}^{K}  \exp(z_\kappa) )^2  } \right) \\
 &amp;=-\sum_{k=1}^K \mathbb{1}_{ \{ y = k \} } \left(\mathbb{1}_{ \{ j=k \}} - p_j  \right)
 = p_j- \mathbb{1}_{ \{ y=j \}} .
 \end{aligned}
@@ -1141,32 +1141,32 @@ In conclusion, if we use one-hot encoding for the outcome $y$, then $\frac{\part
 <p>D.P. Kingma and J. Ba (2015), <em>Adam: A Method for Stochastic Optimization</em>, <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
 <p>S.A. Solla, E. Levin and M. Fleisher (1988), <em>Accelerated Learning in Layered Neural Networks</em>, Complex Systems</p>
 <h2 id="notes">Notes</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>The bias terms are sometimes explicitly included in the graphical representation of the neural network. For improved readability, we omit the biases in Figure 1. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>The bias terms are sometimes explicitly included in the graphical representation of the neural network. For improved readability, we omit the biases in Figure 1.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>Theoretically, there are many results establishing that a neural network with a single hidden layer can approximate any continuous function on a compact set with arbitrary precision (see Guliyev and Ismailov (2018) and references therein). Empirically, neural networks with several layers work better. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>Theoretically, there are many results establishing that a neural network with a single hidden layer can approximate any continuous function on a compact set with arbitrary precision (see Guliyev and Ismailov (2018) and references therein). Empirically, neural networks with several layers work better.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>It can easily happen that the amount of parameters exceeds the number of training instances. The global minimum of the cost function could coincide with a perfect fit implying that the neural network is no longer distinguishing signal from noise. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>It can easily happen that the amount of parameters exceeds the number of training instances. The global minimum of the cost function could coincide with a perfect fit implying that the neural network is no longer distinguishing signal from noise.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
-<p>The cost as computed on the validation set is very similar to the graph in Figure 4. That is, this cost is also steadily decreasing until epoch 6,000 and stabilizing afterwards. With 8,000 learning epochs we are not yet over-fitting the data. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4">
+<p>The cost as computed on the validation set is very similar to the graph in Figure 4. That is, this cost is also steadily decreasing until epoch 6,000 and stabilizing afterwards. With 8,000 learning epochs we are not yet over-fitting the data.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
-<p>In this section we use upper case $Y_1, Y_2,\ldots,Y_n$ to denote the random variables and lower case $y_1, y_2,\ldots,y_n$ to denote the observations. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:5">
+<p>In this section we use upper case $Y_1, Y_2,\ldots,Y_n$ to denote the random variables and lower case $y_1, y_2,\ldots,y_n$ to denote the observations.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:6" role="doc-endnote">
-<p>Explicitly, we have $\mathbb{1}_{ \{ \mathcal{A} \} }=1$ if $\mathcal{A}$ is true, and $\mathbb{1}_{ \{ \mathcal{A} \} }=0$ if $\mathcal{A}$ is false. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:6">
+<p>Explicitly, we have $\mathbb{1}_{ \{ \mathcal{A} \} }=1$ if $\mathcal{A}$ is true, and $\mathbb{1}_{ \{ \mathcal{A} \} }=0$ if $\mathcal{A}$ is false.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:7" role="doc-endnote">
-<p>Solla, Levin and Fleisher (1988) compares the performance of $L_2$-loss and logarithmic error functions. The authors conclude that a logarithmic loss function has steeper gradients which improves learning. The finding was re-emphasized in Glorot and Bengio (2010). <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:7">
+<p>Solla, Levin and Fleisher (1988) compares the performance of $L_2$-loss and logarithmic error functions. The authors conclude that a logarithmic loss function has steeper gradients which improves learning. The finding was re-emphasized in Glorot and Bengio (2010).&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
     </div>
 
@@ -1289,7 +1289,7 @@ In conclusion, if we use one-hot encoding for the outcome $y$, then $\frac{\part
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_3.png" alt="Avatar">
     
 
     <div class="media-body">
@@ -1447,7 +1447,7 @@ In conclusion, if we use one-hot encoding for the outcome $y$, then $\frac{\part
     
     
     
-    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+    <script src="/js/academic.min.80a66c285ce8d3b1efe0ee347dd5f9cf.js"></script>
 
     
 

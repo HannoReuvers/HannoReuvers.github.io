@@ -5,7 +5,7 @@
     <link>https://HannoReuvers.github.io/publication/</link>
       <atom:link href="https://HannoReuvers.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 31 Dec 2021 00:02:00 +0100</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 31 Dec 2021 00:02:00 +0000</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Publications</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Sparse Generalized Yule-Walker Estimation of Large Spatio-temporal Models with an Application to NO2 Satellite Data</title>
       <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
-      <pubDate>Fri, 31 Dec 2021 00:02:00 +0100</pubDate>
+      <pubDate>Fri, 31 Dec 2021 00:02:00 +0000</pubDate>
       <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
       <description></description>
     </item>
@@ -23,7 +23,7 @@
     <item>
       <title>Cointegrating Polynomial Regressions with Power Law Trends: Environmental Kuznets Curve or Omitted Time Effects?</title>
       <link>https://HannoReuvers.github.io/publication/flexible-trend/</link>
-      <pubDate>Mon, 13 Dec 2021 00:02:00 +0100</pubDate>
+      <pubDate>Mon, 13 Dec 2021 00:02:00 +0000</pubDate>
       <guid>https://HannoReuvers.github.io/publication/flexible-trend/</guid>
       <description></description>
     </item>
@@ -31,7 +31,7 @@
     <item>
       <title>Efficient Estimation by Fully Modified GLS with an Application to the Environmental Kuznets Curve</title>
       <link>https://HannoReuvers.github.io/publication/ekc-paper/</link>
-      <pubDate>Mon, 01 Jun 2020 00:00:00 +0200</pubDate>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://HannoReuvers.github.io/publication/ekc-paper/</guid>
       <description></description>
     </item>
@@ -39,7 +39,7 @@
     <item>
       <title>A Statistical Analysis of Time Trends in Atmospheric Ethane</title>
       <link>https://HannoReuvers.github.io/publication/liege-paper/</link>
-      <pubDate>Fri, 01 May 2020 00:00:00 +0200</pubDate>
+      <pubDate>Fri, 01 May 2020 00:00:00 +0000</pubDate>
       <guid>https://HannoReuvers.github.io/publication/liege-paper/</guid>
       <description></description>
     </item>
@@ -47,7 +47,7 @@
     <item>
       <title>Focused Information Criterion for Locally Misspecified Vector Autoregressive Models</title>
       <link>https://HannoReuvers.github.io/publication/fic-paper/</link>
-      <pubDate>Fri, 01 Feb 2019 00:00:00 +0100</pubDate>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://HannoReuvers.github.io/publication/fic-paper/</guid>
       <description></description>
     </item>

@@ -229,9 +229,9 @@
   <meta property="twitter:image" content="https://HannoReuvers.github.io/post/which-language/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2018-06-01T00:00:00&#43;02:00">
+      <meta property="article:published_time" content="2018-06-01T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2019-06-01T00:00:00&#43;02:00">
+    <meta property="article:modified_time" content="2019-06-01T00:00:00&#43;00:00">
   
 
   
@@ -265,8 +265,8 @@
     "https://HannoReuvers.github.io/post/which-language/featured.png"
   ],
   
-  "datePublished": "2018-06-01T00:00:00+02:00",
-  "dateModified": "2019-06-01T00:00:00+02:00",
+  "datePublished": "2018-06-01T00:00:00Z",
+  "dateModified": "2019-06-01T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -643,7 +643,7 @@
 <h2 id="the-durbin-watson-test-statistic">The Durbin-Watson test statistic</h2>
 <p>Consider a standard multivariate regression model $y_t^{} = \mathbf{x}_t&rsquo; \boldsymbol \beta + u_t^{}$ for $t = 1, 2, . . . , T$. The presence of serial correlation in $u_t$ will render standard ordinary least squares (OLS) inference invalid. The Durbin-Watson test statistic was one of the first test statistics to test for the presence of serial correlation.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> It is computed as follows:</p>
 <ol>
-<li>Calculate the OLS estimator $\widehat{\boldsymbol \beta}=(\mathbf{X}'\mathbf{X})^{-1} \mathbf{X}'\mathbf{y}$.</li>
+<li>Calculate the OLS estimator $\widehat{\boldsymbol \beta}=(\mathbf{X}&rsquo;\mathbf{X})^{-1} \mathbf{X}&rsquo;\mathbf{y}$.</li>
 <li>Obtain the residuals $\widehat{u}_t=y_t- \mathbf{x}_t&rsquo;\widehat{\boldsymbol \beta}$ for $t = 1, 2, . . . , T$.</li>
 <li>The Durbin-Watson test statisic is now computed as $DW= \frac{\sum_{t=2}^T \left(\widehat{u}_t-\widehat{u}_{t-1}\right)^2  }{\sum_{t=1}^T \widehat{u}_t^2}$.</li>
 </ol>
@@ -660,7 +660,7 @@
 <p>We consider a simple simulation setting to compare the different programming environments, namely</p>
 <p>$$
 \begin{aligned}
-y_t &amp;= \mathbf{x}_t&rsquo;\boldsymbol{\beta}+u_t \\\<br>
+y_t &amp;= \mathbf{x}_t&rsquo;\boldsymbol{\beta}+u_t \\\
 u_t &amp;= \rho u_{t-1}+\varepsilon_t, \qquad \qquad t=1,2,\ldots,T,
 \end{aligned}
 $$</p>
@@ -698,20 +698,20 @@ $$</p>
 
 <p>The conclusions from this table are unambiguous. The C++ implementation is significantly faster than the scientific programming environments of Matlab and R. However, this should be balanced against the fact that the programming itself is much easier/faster in the user-friendly environments offered by either of these languages. The results do not promote the use of Python. The computational times are longest and coding is less comfortable because matrix algebra requires an additional library (such as numpy). My conclusions are qualitatively the same as those in Borağan Aruoba and Fernández-Villaverde (2015).<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
 <h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>J. Durbin and G. S. Watson (1971), <em>Testing for Serial Correlation in Least Squares Regression</em>, Biometrika <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>J. Durbin and G. S. Watson (1971), <em>Testing for Serial Correlation in Least Squares Regression</em>, Biometrika&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>J. Jeong and S. Chung (2001), <em>Bootstrap Tests for Autocorrelation</em>, Computational Statistics and Data Analysis <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>J. Jeong and S. Chung (2001), <em>Bootstrap Tests for Autocorrelation</em>, Computational Statistics and Data Analysis&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>S.  Borağan Aruoba and J. Fernández-Villaverde (2015), <em>A Comparison of Programming Languages in Macroeconomics</em>, Journal of Economic Dynamics &amp; Control <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>S.  Borağan Aruoba and J. Fernández-Villaverde (2015), <em>A Comparison of Programming Languages in Macroeconomics</em>, Journal of Economic Dynamics &amp; Control&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
     </div>
 
@@ -834,7 +834,7 @@ $$</p>
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_3.png" alt="Avatar">
     
 
     <div class="media-body">
@@ -992,7 +992,7 @@ $$</p>
     
     
     
-    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+    <script src="/js/academic.min.80a66c285ce8d3b1efe0ee347dd5f9cf.js"></script>
 
     
 

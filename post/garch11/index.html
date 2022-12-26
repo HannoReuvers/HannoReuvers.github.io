@@ -229,9 +229,9 @@
   <meta property="twitter:image" content="https://HannoReuvers.github.io/post/garch11/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2022-05-10T00:00:00&#43;02:00">
+      <meta property="article:published_time" content="2022-05-10T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2022-05-10T00:00:00&#43;02:00">
+    <meta property="article:modified_time" content="2022-05-10T00:00:00&#43;00:00">
   
 
   
@@ -265,8 +265,8 @@
     "https://HannoReuvers.github.io/post/garch11/featured.png"
   ],
   
-  "datePublished": "2022-05-10T00:00:00+02:00",
-  "dateModified": "2022-05-10T00:00:00+02:00",
+  "datePublished": "2022-05-10T00:00:00Z",
+  "dateModified": "2022-05-10T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -637,7 +637,7 @@
       <p>The GARCH(1,1) model was proposed in Bollerslev (1986). The early publication date of this paper might give the impression that the model is somewhat outdated. Regardless of whether or not this last sentence is true, there are still two important reasons to discuss this model: (1) a discussion of the GARCH(1,1) model facilitates the understanding of more complex univariate GARCH specifications, and (2) many multivariate GARCH models follow a similar methodology. The GARCH(1,1) specification reads:</p>
 <p>\begin{equation}
 \begin{aligned}
-y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1), \\<br>
+y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1), \\
 \sigma_t^2 &amp;= \omega + \alpha y_{t-1}^2 + \beta \sigma_{t-1}^2,
 \end{aligned}
 \tag{1}
@@ -648,8 +648,8 @@ where $\eta_t \stackrel{i.i.d.}{\sim} (0,1)$ is shorthand indicating an independ
 \begin{equation}
 \begin{aligned}
 \sigma_t^2
-&amp;= \omega + \big( \alpha \eta_{t-1}^2+ \beta \big) \sigma_{t-1}^2 \\<br>
-&amp;= \omega + \big( \alpha \eta_{t-1}^2+ \beta \big) \Bigg( \omega + \big( \alpha \eta_{t-2}^2+ \beta \big) \sigma_{t-2}^2 \Bigg) \\<br>
+&amp;= \omega + \big( \alpha \eta_{t-1}^2+ \beta \big) \sigma_{t-1}^2 \\
+&amp;= \omega + \big( \alpha \eta_{t-1}^2+ \beta \big) \Bigg( \omega + \big( \alpha \eta_{t-2}^2+ \beta \big) \sigma_{t-2}^2 \Bigg) \\
 &amp;= \ldots = \omega \left(1 + \sum_{j=1}^\infty \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \right),
 \end{aligned}
 \tag{2}
@@ -700,7 +700,7 @@ This convergence criterion depends on: the parameter $\alpha$, the parameter $\b
 <p>\begin{equation}
 \begin{aligned}
 \mathbb{E}[\sigma_t^2]
-&amp;= \omega \left(1 + \sum_{i=1}^\infty \mathbb{E}\big[a(\eta_{t-1}^2;\boldsymbol \theta)\big] \cdots \mathbb{E}\big[ a(\eta_{t-i}^2;\boldsymbol \theta) \big] \right) \\<br>
+&amp;= \omega \left(1 + \sum_{i=1}^\infty \mathbb{E}\big[a(\eta_{t-1}^2;\boldsymbol \theta)\big] \cdots \mathbb{E}\big[ a(\eta_{t-i}^2;\boldsymbol \theta) \big] \right) \\
 &amp;= \omega \left(1 + \sum_{i=1}^\infty (\alpha+\beta)^i \right)= \frac{\omega}{1-\alpha-\beta},
 \end{aligned}
 \label{eq:expsigma2}
@@ -709,7 +709,7 @@ This convergence criterion depends on: the parameter $\alpha$, the parameter $\b
 $$
 \begin{aligned}
 \mathbb{C}\text{ov}[y_t, y_{t-j}]
-&amp;= \mathbb{E}[y_t y_{t-j}] \\<br>
+&amp;= \mathbb{E}[y_t y_{t-j}] \\
 &amp;= \mathbb{E}\big[ \sigma_t y_{t-j} \mathbb{E}[\eta_t|\mathcal{F}_{t-1}] \big] = 0,\qquad\text{for }j=1,2,\ldots.
 \end{aligned}
 $$
@@ -720,7 +720,7 @@ Overall, this shows that the levels of a GARCH(1,1) process have an unconditiona
 $$
 \begin{aligned}
 \kappa_y
-&amp;= \left( 1 + \frac{\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]}{1-\lambda} \right)  \kappa_\eta \\<br>
+&amp;= \left( 1 + \frac{\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]}{1-\lambda} \right)  \kappa_\eta \\
 &amp;=  \frac{1-(\alpha+\beta)^2}{1-(\alpha+\beta)^2 - \alpha^2(\kappa_\eta -1)} \kappa_\eta.
 \end{aligned}
 $$
@@ -838,7 +838,7 @@ $$</p>
 <p>The digits in the GARCH(1,1) specification indicate the number of lags of the volatility and squared observations influencing $\sigma_t^2$, respectively. That is, the general GARCH($p$,$q$) process reads
 \begin{equation}
 \begin{aligned}
-y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1). \\<br>
+y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1). \\
 \sigma_t^2 &amp;= \omega +  \sum_{i=1}^q \alpha y_{t-i}^2 + \sum_{j=1}^p \beta_j \sigma_{t-j}^2,
 \end{aligned}
 \label{eq:GARCHpq}
@@ -849,7 +849,7 @@ Clearly, the GARCH(1,1) process is simply a GARCH($p$,$q$) process with $p=q=1$.
 <p>The volatility of the GARCH(1,1) model does not distinguish positive and negative past returns. That is, only $y_{t-1}^2$ (note the square) affects the volatility. However, if volatility is interpreted as riskiness, then we might expect a past negative return to have a larger impact on volatility than a past positive return. A Threshold GARCH (TGARCH) model  allows for this leverage effect. Defining $y_t^+=\max(y_t,0)$ and $y_t^- = \max(-y_t,0)$, the TGARCH(1,1) specification is
 \begin{equation}
 \begin{aligned}
-y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1). \\<br>
+y_t &amp;= \sigma_t \eta_t,\qquad\qquad\qquad\qquad\qquad\qquad\qquad  \eta_t \stackrel{i.i.d.}{\sim} (0,1). \\
 \sigma_t^2 &amp;= \omega + \alpha_{1,+} y_{t-1}^+  + \alpha_{1,-} y_{t-1}^- + \beta \sigma_{t-1}^2,
 \end{aligned}
 \label{eq:TGARCHspec}
@@ -868,7 +868,7 @@ as introduced in Engle and Kroner (1995).<sup id="fnref:4"><a href="#fn:4" class
 <p>The second strategy, the so-called Cholesky GARCH models, starts from a collection of $m$ univariate processes. For $i=1,\ldots,m$, we thus consider
 \begin{equation}
 \begin{aligned}
-v_{it} &amp;= \sqrt{g_{it}} \eta_{it},\\<br>
+v_{it} &amp;= \sqrt{g_{it}} \eta_{it},\\
 g_{it} &amp;= \omega_i + \alpha_i v_{i,t-1}^2 + \beta_i g_{i,t-1},
 \end{aligned}
 \label{eq:CholeskyGARCHspec}
@@ -878,10 +878,10 @@ $$
 \boldsymbol L
 =
 \begin{bmatrix}
-1        \\<br>
-l_{2,1}      &amp; 1    \\<br>
-\vdots      &amp; \ddots    &amp; \ddots \\<br>
-l_{m-1,1}    &amp;           &amp; \ddots &amp; 1\\<br>
+1        \\
+l_{2,1}      &amp; 1    \\
+\vdots      &amp; \ddots    &amp; \ddots \\
+l_{m-1,1}    &amp;           &amp; \ddots &amp; 1\\
 l_{m,1}     &amp; l_{m,2}  &amp; \cdots &amp; l_{m,m-1}    &amp; 1 <br>
 \end{bmatrix},
 $$
@@ -954,13 +954,13 @@ subsequently connects the univarariate GARCH(1,1) process with the return series
 <li>The Matlab and Python implementation are fastest and slowest, respectively. The same ranking was also observed in <a href="https://hannoreuvers.github.io/post/which-language/">this</a> previous post. The overall speed of the implementation is probably determined by the speed of for-loops (to recursively compute the volatility process) and the numerical optimiser (<em>fmincon()</em> for Matlab, the <em>minimize()</em> function from scipy for Python, and <em>optim()</em> for R). The good performance of Matlab is thus perhaps unsurprising. Its for-loops are known to be quick and <em>fmincon()</em> is a pretty robust nonlinear optimisation routine.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
 </ol>
 <h2 id="appendix">Appendix</h2>
-<h4 id="calculating-mathbbey-t4">Calculating $\mathbb{E}[y_t^4]$</h4>
+<h4 id="calculating-mathbbey_t4">Calculating $\mathbb{E}[y_t^4]$</h4>
 <p>By the law of iterated expectations, we have $\mathbb{E}[y_t^4]= \mathbb{E}[\sigma_t^4] \mathbb{E}[\eta_t^4]$. Clearly, $\mathbb{E}[\eta_t^4]$ is implied by the distributional assumption on $\eta_t$ and we only need to calculate $\mathbb{E}[\sigma_t^4]$. Using \eqref{eq:sigma2expr}, we find
 \begin{equation}
 \begin{aligned}
 \mathbb{E}\big[\sigma_t^4\big]
-&amp;= \mathbb{E}\left[ \omega^2 \left(1 + \sum_{j=1}^\infty \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \right)^2 \right] \\<br>
-&amp;= \omega^2 \Bigg( 1 +  2 \sum_{j=1}^\infty \mathbb{E}\Bigg[ \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \Bigg] \\<br>
+&amp;= \mathbb{E}\left[ \omega^2 \left(1 + \sum_{j=1}^\infty \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \right)^2 \right] \\
+&amp;= \omega^2 \Bigg( 1 +  2 \sum_{j=1}^\infty \mathbb{E}\Bigg[ \prod_{i=1}^j  \big( \alpha \eta_{t-i}^2+ \beta \big) \Bigg] \\
 &amp;\qquad\qquad+ \sum_{j=1}^\infty \sum_{k=1}^\infty \mathbb{E}\Bigg[\prod_{i=1}^j \prod_{l=1}^k  \big( \alpha \eta_{t-i}^2+ \beta \big) \big( \alpha \eta_{t-l}^2+ \beta \big)  \Bigg] \Bigg).
 \end{aligned}
 \label{eq:expsigma4}
@@ -969,10 +969,10 @@ For brevity, we define $\zeta = \mathbb{E}\big[\alpha \eta_t^2+ \beta\big]=\alph
 \begin{equation}
 \begin{aligned}
 \mathbb{E}\big[\sigma_t^4\big]
-&amp;= \omega^2 \left( 1 + 2 \sum_{j=1}^\infty \zeta^j + \sum_{j=1}^\infty \sum_{k=1}^\infty \lambda^{\min(j,k)} \zeta^{\max(j,k)-\min(j,k)} \right) \\<br>
-&amp;= \omega^2 \left( 1 + 2 \sum_{j=1}^\infty \zeta^j + \sum_{j=1}^\infty \lambda^j + 2 \sum_{j=1}^\infty \sum_{k=j+1}^\infty \lambda^j \zeta^{k-j} \right) \\<br>
-&amp;=  \omega^2 \left( 1 + \frac{2\zeta}{1-\zeta}+ \frac{\lambda}{1-\lambda}+ \frac{2 \zeta}{1-\zeta} \frac{\lambda}{1-\lambda} \right) \\<br>
-&amp;= \omega^2 \left( \frac{1}{1-\lambda} + \frac{2\zeta}{(1-\zeta)(1-\lambda)} \right) = \omega^2 \frac{1+\zeta}{(1-\zeta)(1-\lambda)} \\<br>
+&amp;= \omega^2 \left( 1 + 2 \sum_{j=1}^\infty \zeta^j + \sum_{j=1}^\infty \sum_{k=1}^\infty \lambda^{\min(j,k)} \zeta^{\max(j,k)-\min(j,k)} \right) \\
+&amp;= \omega^2 \left( 1 + 2 \sum_{j=1}^\infty \zeta^j + \sum_{j=1}^\infty \lambda^j + 2 \sum_{j=1}^\infty \sum_{k=j+1}^\infty \lambda^j \zeta^{k-j} \right) \\
+&amp;=  \omega^2 \left( 1 + \frac{2\zeta}{1-\zeta}+ \frac{\lambda}{1-\lambda}+ \frac{2 \zeta}{1-\zeta} \frac{\lambda}{1-\lambda} \right) \\
+&amp;= \omega^2 \left( \frac{1}{1-\lambda} + \frac{2\zeta}{(1-\zeta)(1-\lambda)} \right) = \omega^2 \frac{1+\zeta}{(1-\zeta)(1-\lambda)} \\
 &amp;= \big( \mathbb{E}[\sigma_t^2] \big)^2 \frac{1-\zeta^2}{1-\lambda} = \big( \mathbb{E}[\sigma_t^2] \big)^2 \left( 1 + \frac{\mathbb{V}\mathrm{ar}[\alpha\eta_t^2+\beta]}{1-\lambda} \right) ,
 \end{aligned}
 \tag{5}
@@ -1001,7 +1001,7 @@ $$</p>
 \begin{aligned}
 \rho_k
 &amp;= \mathbb{C}\mathrm{or}[y_t^2,y_{t-k}^2]
-= \frac{\mathbb{C}\mathrm{ov}[y_t^2,y_{t-k}^2]}{\sqrt{\mathbb{V}\mathrm{ar}[y_t^2] , \mathbb{V}\mathrm{ar}[y_{t-k}^2]  }} \\<br>
+= \frac{\mathbb{C}\mathrm{ov}[y_t^2,y_{t-k}^2]}{\sqrt{\mathbb{V}\mathrm{ar}[y_t^2] , \mathbb{V}\mathrm{ar}[y_{t-k}^2]  }} \\
 &amp;= \frac{\mathbb{C}\mathrm{ov}[y_t^2,y_{t-k}^2]}{\mathbb{V}\mathrm{ar}[y_t^2] }
 = \frac{\mathbb{E}[y_t^2 y_{t-k}^2] - \big( \mathbb{E}[y_t^2] \big)^2 }{ \mathbb{E}[y_t^4] - \big( \mathbb{E}[y_t^2] \big)^2 }.
 \end{aligned}
@@ -1023,11 +1023,11 @@ The expression above allows us to evaluate $\mathbb{E}[y_t^2 y_{t-k}^2]$. We rep
 $$
 \begin{aligned}
 \mathbb{E}[y_t^2 y_{t-k}^2]
-&amp;= \mathbb{E}[\sigma_t^2 \sigma_{t-k}^2 \eta_{t-k}^2] \\<br>
-&amp;= \mathbb{E}\left[\Bigg\{  \omega\Bigg( 1 + \sum_{j=1}^{k-1} \prod_{i=1}^j \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg) + \sigma_{t-k}^2 \prod_{i=1}^k \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg\} \sigma_{t-k}^2 \eta_{t-k}^2 \right] \\<br>
+&amp;= \mathbb{E}[\sigma_t^2 \sigma_{t-k}^2 \eta_{t-k}^2] \\
+&amp;= \mathbb{E}\left[\Bigg\{  \omega\Bigg( 1 + \sum_{j=1}^{k-1} \prod_{i=1}^j \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg) + \sigma_{t-k}^2 \prod_{i=1}^k \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg\} \sigma_{t-k}^2 \eta_{t-k}^2 \right] \\
 &amp;= \omega \mathbb{E}\big[\sigma_{t-k}^2\big] \mathbb{E}\left[ \Bigg( 1 + \sum_{j=1}^{k-1} \prod_{i=1}^j \big(\alpha \eta_{t-i}^2 + \beta\big) \Bigg)  \right]
-+ \mathbb{E}\big[\sigma_{t-k}^4\big]  \mathbb{E}\left[ \prod_{i=1}^{k-1} \big(\alpha \eta_{t-i}^2 + \beta\big) \right]  \mathbb{E}\left[ \alpha \eta_{t-k}^4 + \beta \eta_{t-k}^2 \right] \\<br>
-&amp;= \omega \mathbb{E}\big[ \sigma_{t-k}^2\big]\left(1+\sum_{j=1}^{k-1} \zeta^j \right) + \mathbb{E}\big[\sigma_{t-k}^4\big]  \zeta^{k-1}  (\alpha \kappa_\eta + \beta) \\<br>
++ \mathbb{E}\big[\sigma_{t-k}^4\big]  \mathbb{E}\left[ \prod_{i=1}^{k-1} \big(\alpha \eta_{t-i}^2 + \beta\big) \right]  \mathbb{E}\left[ \alpha \eta_{t-k}^4 + \beta \eta_{t-k}^2 \right] \\
+&amp;= \omega \mathbb{E}\big[ \sigma_{t-k}^2\big]\left(1+\sum_{j=1}^{k-1} \zeta^j \right) + \mathbb{E}\big[\sigma_{t-k}^4\big]  \zeta^{k-1}  (\alpha \kappa_\eta + \beta) \\
 &amp;=  \big( \mathbb{E}[\sigma_t^2] \big)^2 \left( 1 - \zeta^k \right) + \big( \mathbb{E}[\sigma_t^2] \big)^2 \frac{\kappa_y}{\kappa_\eta} , \zeta^{k-1} , (\alpha \kappa_\eta + \beta)
 \end{aligned}
 $$
@@ -1047,29 +1047,29 @@ atom://tree-view
 C. Francq and J.-M. Zakoian (2019), <em>GARCH Models: Structure, Statistical Inference and Financial Applications</em>, John Wiley &amp; Sons</p>
 <p>P.R. Hansen and A. Lunde (2005), <em>A Forecast Comparison of Volatility Models: Does Anything Beat a GARCH(1,1)?</em>, Journal of Applied Econometrics</p>
 <h2 id="notes">Notes</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>The process ${X_t}$ is said to be strictly stationary if the random vectors $(X_1,\ldots,X_k)$&rsquo; and $(X_{1+h},\ldots,X_{k+h})$&rsquo; have the same joint distribution for any $k\in\mathbb{N}$ and $h\in\mathbb{Z}$. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>The process ${X_t}$ is said to be strictly stationary if the random vectors $(X_1,\ldots,X_k)$&rsquo; and $(X_{1+h},\ldots,X_{k+h})$&rsquo; have the same joint distribution for any $k\in\mathbb{N}$ and $h\in\mathbb{Z}$.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>The natural logarithm is a concave function. Jensen's inequality implies that $\gamma = \mathbb{E}\big[\log(\alpha \eta_t^2 + \beta) \big]\leq \log\big( \alpha \mathbb{E}[\eta_t^2] + \beta  \big)=\log(\alpha+\beta)$. In other words, if $\alpha+\beta&lt;1$ holds, then \eqref{eq:stationaritycondition} must hold as well. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>The natural logarithm is a concave function. Jensen&rsquo;s inequality implies that $\gamma = \mathbb{E}\big[\log(\alpha \eta_t^2 + \beta) \big]\leq \log\big( \alpha \mathbb{E}[\eta_t^2] + \beta  \big)=\log(\alpha+\beta)$. In other words, if $\alpha+\beta&lt;1$ holds, then \eqref{eq:stationaritycondition} must hold as well.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>A total of 57 missing observations (1.06% of all data points) were linearly interpolated. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>A total of 57 missing observations (1.06% of all data points) were linearly interpolated.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
-<p>The representation here is somewhat of a simplification of the original model because I take $K=1$. The model can be made more flexible by allowing $K&gt;1$. The current specification was selected because it makes the link with the univariate GARCH(1,1) model most explicit. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4">
+<p>The representation here is somewhat of a simplification of the original model because I take $K=1$. The model can be made more flexible by allowing $K&gt;1$. The current specification was selected because it makes the link with the univariate GARCH(1,1) model most explicit.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
-<p>The exposition here is once again a simplification. Possible generalisations of this Cholesky GARCH model include: (1) more complicated processes for $v_{it}$ ($i=1,\ldots,m$), and (2) making the parameters in the matrix $\boldsymbol L$ time-varying. Details can be found in Darolles, Francq and Laurent (2018). <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:5">
+<p>The exposition here is once again a simplification. Possible generalisations of this Cholesky GARCH model include: (1) more complicated processes for $v_{it}$ ($i=1,\ldots,m$), and (2) making the parameters in the matrix $\boldsymbol L$ time-varying. Details can be found in Darolles, Francq and Laurent (2018).&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:6" role="doc-endnote">
-<p>The nonlinear optimisation was started with the true parameter vector as initial guess. The Matlab function <em>fmincon()</em> typically does a better job at finding a nearby (possibly only local) optimum. The optimisers from Python and R show a tendency to wander around more before settling at a local optimum. I only imposed a lower bound on $\omega$, $\alpha$ and $\beta$ during optimisation. Computational times will differ if more elaborate parameter constraints are imposed during estimation. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:6">
+<p>The nonlinear optimisation was started with the true parameter vector as initial guess. The Matlab function <em>fmincon()</em> typically does a better job at finding a nearby (possibly only local) optimum. The optimisers from Python and R show a tendency to wander around more before settling at a local optimum. I only imposed a lower bound on $\omega$, $\alpha$ and $\beta$ during optimisation. Computational times will differ if more elaborate parameter constraints are imposed during estimation.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
     </div>
 
@@ -1192,7 +1192,7 @@ C. Francq and J.-M. Zakoian (2019), <em>GARCH Models: Structure, Statistical Inf
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_2.png" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu4b40f1035dfb5415c8a01763b6e37478_15053402_250x250_fill_lanczos_center_3.png" alt="Avatar">
     
 
     <div class="media-body">
@@ -1350,7 +1350,7 @@ C. Francq and J.-M. Zakoian (2019), <em>GARCH Models: Structure, Statistical Inf
     
     
     
-    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+    <script src="/js/academic.min.80a66c285ce8d3b1efe0ee347dd5f9cf.js"></script>
 
     
 
