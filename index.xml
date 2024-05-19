@@ -5,12 +5,28 @@
     <link>https://HannoReuvers.github.io/</link>
       <atom:link href="https://HannoReuvers.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Hanno Reuvers</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 20 Mar 2024 00:02:00 +0000</lastBuildDate>
     <image>
       <url>https://HannoReuvers.github.io/img/icon-192.png</url>
       <title>Hanno Reuvers</title>
       <link>https://HannoReuvers.github.io/</link>
     </image>
+    
+    <item>
+      <title>Cointegrating Polynomial Regressions with Power Law Trends</title>
+      <link>https://HannoReuvers.github.io/publication/flexible-trend/</link>
+      <pubDate>Wed, 20 Mar 2024 00:02:00 +0000</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/flexible-trend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sparse Generalized Yule–Walker Estimation for Large Spatio-temporal Autoregressions with an Application to NO2 Satellite Data</title>
+      <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
+      <pubDate>Thu, 01 Feb 2024 00:02:00 +0000</pubDate>
+      <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Low- and high-dimensional logistic regression</title>
@@ -1429,22 +1445,6 @@ C. Francq and J.-M. Zakoian (2019), &lt;em&gt;GARCH Models: Structure, Statistic
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Sparse Generalized Yule-Walker Estimation of Large Spatio-temporal Models with an Application to NO2 Satellite Data</title>
-      <link>https://HannoReuvers.github.io/publication/teun-paper/</link>
-      <pubDate>Fri, 31 Dec 2021 00:02:00 +0000</pubDate>
-      <guid>https://HannoReuvers.github.io/publication/teun-paper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cointegrating Polynomial Regressions with Power Law Trends: Environmental Kuznets Curve or Omitted Time Effects?</title>
-      <link>https://HannoReuvers.github.io/publication/flexible-trend/</link>
-      <pubDate>Mon, 13 Dec 2021 00:02:00 +0000</pubDate>
-      <guid>https://HannoReuvers.github.io/publication/flexible-trend/</guid>
-      <description></description>
     </item>
     
     <item>
