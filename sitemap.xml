@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://HannoReuvers.github.io/authors/</loc>
-    <lastmod>2024-03-20T00:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://HannoReuvers.github.io/publication/flexible-trend/</loc>
-    <lastmod>2024-03-20T00:02:00+00:00</lastmod>
-  </url><url>
     <loc>https://HannoReuvers.github.io/</loc>
-    <lastmod>2024-03-20T00:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://HannoReuvers.github.io/publication/</loc>
-    <lastmod>2024-03-20T00:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</loc>
-    <lastmod>2024-03-20T00:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</loc>
-    <lastmod>2024-02-01T00:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://HannoReuvers.github.io/publication/teun-paper/</loc>
-    <lastmod>2024-02-01T00:02:00+00:00</lastmod>
-  </url><url>
-    <loc>https://HannoReuvers.github.io/post/logisticregression/</loc>
-    <lastmod>2022-12-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://HannoReuvers.github.io/post/</loc>
-    <lastmod>2022-12-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://HannoReuvers.github.io/post/neuralnetwork/</loc>
     <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://HannoReuvers.github.io/post/logisticregression/</loc>
+    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://HannoReuvers.github.io/post/garch11/</loc>
     <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://HannoReuvers.github.io/authors/</loc>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://HannoReuvers.github.io/authors/hanno-reuvers-and-etienne-wijler/</loc>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://HannoReuvers.github.io/publication/</loc>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://HannoReuvers.github.io/publication/teun-paper/</loc>
+    <lastmod>2021-12-31T00:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://HannoReuvers.github.io/publication/flexible-trend/</loc>
+    <lastmod>2021-12-13T00:02:00+00:00</lastmod>
+  </url><url>
+    <loc>https://HannoReuvers.github.io/authors/yicong-lin-and-hanno-reuvers/</loc>
+    <lastmod>2021-12-13T00:02:00+00:00</lastmod>
   </url><url>
     <loc>https://HannoReuvers.github.io/post/vasicek/</loc>
     <lastmod>2021-03-22T00:00:00+00:00</lastmod>
